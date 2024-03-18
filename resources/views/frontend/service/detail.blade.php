@@ -10,11 +10,11 @@
     </div>
     <div class="container-md">
        <div class="t-center mt-25">
-          <h5 class="fs-11 ls-4 semibold white uppercase"> ONDANCE STUDIO - #burasiizmir </h5>
+          <h5 class="fs-11 ls-4 semibold white"> ON DANCE STUDIO - #burasiizmir </h5>
           <h1 class="mt-15 font-secondary lh-md"> {{ $Detay->title }}</h1>
           <div class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center">
              <a href="index.html"><i class="ti-home"></i></a>Anasayfa<i class="ti-angle-right fs-7 mx-15"></i> 
-             <a href="#">Headers</a> <i class="ti-angle-right fs-7 mx-15"></i> 
+             <a href="#">Eğitimlerimiz</a> <i class="ti-angle-right fs-7 mx-15"></i> 
              <a href="#" class="stay c-default opacity-7">{{ $Detay->title }}</a> </div>
        </div>
     </div>

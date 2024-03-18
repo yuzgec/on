@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <x-form-inputtext label="{{ request('name')}} Adı" name="title"></x-form-inputtext>
                     @if(request('name') == 'Ekip')
-                     <x-form-inputtext label="{{ request('name')}} Adı" name="title"></x-form-inputtext>
+                     <x-form-inputtext label="Görevi" name="seo_key"></x-form-inputtext>
                     @endif
                     <x-form-textarea label="Kısa Açıklama" name="short" :ck='null'></x-form-textarea>
                     <x-form-textarea label="Açıklama" name="desc"></x-form-textarea>
