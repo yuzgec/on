@@ -11,8 +11,13 @@
                     <li class="logo-for-mobile-navigation"><img src="/logob.png" alt="website logo" class="logo-white mxw-100"></li>
                     <li><a href="{{ route('home')}}" class="nav-link">Anasayfa</a></li>
                     <li><a href="{{ route('corporatedetail', 'hakkimizda')}}" class="nav-link">Hakkımızda</a></li>
-                    <li><a href="{{ route('studios')}}" class="nav-link">Stüdyolarımız</a></li>
-                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
+                    <li class="dd-toggle"> <a href="#" class="nav-link">Stüdyolar</a>
+                        <ul class="dropdown-menu to-right">
+                            @foreach ($Service->where('category',2) as $item) 
+                                <li><a href="{{ route('service', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
+                            @endforeach
+                        </ul> 
+                    </li>                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
                         <ul class="dropdown-menu to-right">
                             @foreach ($Service->where('category',1) as $item) 
                                 <li><a href="{{ route('service', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
@@ -36,12 +41,9 @@
                     <li class="extra-links">
                         <div class="bracket"></div>
                         <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
-                        <a href="https://www.facebook.com/{{ config('settings.facebook')}}" target="_blank" class="nav-link" title="facebook"><i class="ti-facebook"></i></a>
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
-                        <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><i class="ti-tiktok"></i></a>
-
+                        <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
                         <a href="{{ route('contactus')}}" class="nav-button white bg-colored bg-colored uppercase bold slow" title="Buy Quadra"><span>Bilgi Al</span></a>
-                        
                     </li>
                 </ul>
             </div>
