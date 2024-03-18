@@ -19,6 +19,8 @@
              <a href="#" class="stay c-default opacity-7">Eğitmenlerimiz</a> </div>
        </div>
     </div>
+
+
  </section>
 
 

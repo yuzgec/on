@@ -17,7 +17,13 @@
              <a href="#">Eğitimlerimiz</a> <i class="ti-angle-right fs-7 mx-15"></i> 
              <a href="#" class="stay c-default opacity-7">{{ $Detay->title }}</a> </div>
        </div>
+
+       <div class="home-content"> <div class="container t-center"> <!-- Animated Mouse Icon --> <div class="mouse-icon"><div class="wheel"></div></div> </div> </div>
+
     </div>
+
+
+
  </section>
 
 <section id="home" class="fullwidth bg-white">

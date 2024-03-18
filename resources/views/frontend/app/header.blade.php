@@ -11,7 +11,7 @@
                     <li class="logo-for-mobile-navigation"><img src="/logob.png" alt="website logo" class="logo-white mxw-100"></li>
                     <li><a href="{{ route('home')}}" class="nav-link">Anasayfa</a></li>
                     <li><a href="{{ route('corporatedetail', 'hakkimizda')}}" class="nav-link">Hakkımızda</a></li>
-                    <li><a href="#shop" class="nav-link">Stüdyomuz</a></li>
+                    <li><a href="{{ route('studios')}}" class="nav-link">Stüdyolarımız</a></li>
                     <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
                         <ul class="dropdown-menu to-right">
                             @foreach ($Service->where('category',1) as $item) 
