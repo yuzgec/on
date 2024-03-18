@@ -73,6 +73,8 @@ class ServiceController extends Controller
 
     public function update(ServiceRequest $request, $id)
     {
+
+        //dd($request->all());
         $Update = Service::findOrFail($id);
         $Update->title = $request->title;
         $Update->category = $request->category;
@@ -87,7 +89,7 @@ class ServiceController extends Controller
             $Update->media()->where('collection_name', 'page')->delete();
         }
 
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image') && $request->image) {
             imageupload($Update,$request->image);
         }
 

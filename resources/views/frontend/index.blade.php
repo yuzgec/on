@@ -82,12 +82,8 @@
                             <a href="{{ route('service', $item->slug)}}" class="cbp-caption-defaultWrap">
                                 <img src="https://www.on.dance/assets/img/egitimler.jpg" alt="{{ $item->title}} - Karşıyaka Yolo Studio">
                             </a>
-                            <a href="{{ $item->getFirstMediaUrl('page') }}" class="lightbox post-lightbox">
-                                <i class="ti-zoom-in"></i>
-                            </a>
                         </div>
-
-                        <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}}">
+                        <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}} - İzmir On Dance Studio">
                             <div class="d-flex justify-content-between">    
                                 <h4 class="post-title">
                                     {{ $item->title}}
@@ -97,7 +93,6 @@
                                     {{ $item->short }}
                                 </p>
                             </div>
-
                         </a>
                     </figcaption>
                 </div>

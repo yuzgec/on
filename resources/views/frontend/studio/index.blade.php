@@ -7,10 +7,10 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
     <div class="container-md">
         <div class="t-center">
             <h5 class="fs-11 ls-4 semibold white uppercase">
-                Ahmet Gökşin Güzeltepe
+               IZMIR - ONDANCE STUDIO
             </h5>
             <h1 class="mt-15 lh-md white">
-               Hizmetlerimiz
+                Stüdyolarımız
             </h1>
 
             <div
@@ -21,7 +21,7 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
                 <i class="ti-angle-right fs-7 mx-15"></i>
                 <a href="{{ route('home')}}" title="Anasayfa">Anasayfa</a>
                 <i class="ti-angle-right fs-7 mx-15"></i>
-                <a href="#" title="Hizmetlerimiz"  class="stay c-default opacity-7">Hizmetlerimiz</a>
+                <a href="#" title="Hizmetlerimiz"  class="stay c-default opacity-7">Stüdyolarımız</a>
             </div>
 
         </div>
@@ -43,9 +43,6 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
                             {{ $item->title}}
                         </a>
                     </h5>
-                    <p class="fs-16 lh-25 mt-15 light">
-                        In sit amet posuere felis. Suspendisse finibus viverra justo eget ullamcorper.
-                    </p>
                 </div>
             </div>
 
