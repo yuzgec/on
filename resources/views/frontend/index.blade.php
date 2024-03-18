@@ -93,8 +93,7 @@
                                 {{ $item->title}}
                             </h4>
                           
-                            <p class="post-message">
-                                Vivamus viverra felis eget ex ultricies eget ex ultricies viverra feugiat.
+                            <p class="post-message ikisatir">
                                 {{ $item->short }}
                             </p>
 
