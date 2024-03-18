@@ -11,21 +11,21 @@
         }
     }
 
-    function imageupload($method, $image){
-        if($method == 'Update'){
-            $method->media()->where('collection_name', 'page')->delete();
-        }
+    // function imageupload($method, $image){
+    //     if($method == 'Update'){
+    //         $method->media()->where('collection_name', 'page')->delete();
+    //     }
 
-        $method->media()->where('collection_name', 'page')->delete();
-        $method->addMedia($image)->toMediaCollection('page');
+    //     $method->media()->where('collection_name', 'page')->delete();
+    //     $method->addMedia($image)->toMediaCollection('page');
 
-    }
+    // }
 
-    function imagesupload($method, array $image){
-        foreach ($image as $item){
-            $method->addMedia($item)->toMediaCollection('gallery');
-        }
-    }
+    // function imagesupload($method, array $image){
+    //     foreach ($image as $item){
+    //         $method->addMedia($item)->toMediaCollection('gallery');
+    //     }
+    // }
 
 
     //KULLANICI ADI BAŞ HARFLERİNİ GÖSTERME
