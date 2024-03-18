@@ -42,14 +42,15 @@ class ServiceController extends Controller
         $New->seo_key = $request->seo_key;
         $New->seo_title = $request->seo_title;
 
+      
         if($request->hasfile('image')){
-            imageupload($New,$request->image);
+            $New->addMedia($request->image)->toMediaCollection('page');
         }
-
         if($request->hasfile('gallery')) {
-            imageupload($New,null ,$request->gallery);
+            foreach ($request->gallery as $item){
+                $New->addMedia($item)->toMediaCollection('gallery');
+            }
         }
-
         $New->save();
 
         toast(SWEETALERT_MESSAGE_CREATE,'success');
