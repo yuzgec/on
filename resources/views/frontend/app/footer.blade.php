@@ -3,7 +3,7 @@
         <div class="row row-eq-height">
 
             <div class="col-lg-3 col-sm-6 mt-40 t-left">
-                <img src="/logo.png" class="block width-100" alt="Yolo Fitness - Karşıyaka">
+                <img src="/logo.png" class="block width-250" alt="Yolo Fitness - Karşıyaka">
             </div>
 
             <div class="col-lg-3 col-sm-6 mt-40">

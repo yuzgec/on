@@ -46,6 +46,12 @@ class ServiceController extends Controller
         if($request->hasfile('image')){
             $New->addMedia($request->image)->toMediaCollection('page');
         }
+
+
+        if($request->hasfile('cover')){
+            $New->addMedia($request->image)->toMediaCollection('page');
+        }
+
         if($request->hasfile('gallery')) {
             foreach ($request->gallery as $item){
                 $New->addMedia($item)->toMediaCollection('gallery');
@@ -90,9 +96,18 @@ class ServiceController extends Controller
             $Update->media()->where('collection_name', 'page')->delete();
         }
 
+        if($request->removeCoverImage == "1"){
+            $Update->media()->where('collection_name', 'cover')->delete();
+        }
+
         if ($request->hasFile('image')) {
             $Update->media()->where('collection_name', 'page')->delete();
             $Update->addMedia($request->image)->toMediaCollection('page');
+        }
+
+        if ($request->hasFile('cover')) {
+            $Update->media()->where('collection_name', 'cover')->delete();
+            $Update->addMedia($request->cover)->toMediaCollection('cover');
         }
 
         if($request->hasfile('gallery')) {
