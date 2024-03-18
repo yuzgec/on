@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         Carbon::setLocale(config('app.locale'));
-        config()->set('settings', Setting::pluck('value','item')->all());
+        //config()->set('settings', Setting::pluck('value','item')->all());
         URL::forceScheme('https');
 
         define('SWEETALERT_MESSAGE_CREATE', 'Eklendi');
