@@ -89,13 +89,15 @@ class ServiceController extends Controller
             $Update->media()->where('collection_name', 'page')->delete();
         }
 
-        if ($request->hasFile('image') && $request->image) {
-            imageupload($Update,$request->image);
+        if ($request->hasFile('image')) {
+            $Update->media()->where('collection_name', 'page')->delete();
+            $Update->addMedia($request->image)->toMediaCollection('page');
         }
 
-
         if($request->hasfile('gallery')) {
-            imagesupload($Update,$request->gallery);
+            foreach ($request->gallery as $item){
+                $Update->addMedia($item)->toMediaCollection('gallery');
+            }
         }
 
         $Update->save();

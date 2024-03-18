@@ -1,7 +1,6 @@
 <?php
 
-use Spatie\Image\Image;
-    //SWEETALERT MESAJLARI -
+    use Spatie\Image\Image;
     use Gloudemans\Shoppingcart\Facades\Cart;
 
     function cartControl($id, $text = null){
@@ -16,18 +15,15 @@ use Spatie\Image\Image;
         if($method == 'Update'){
             $method->media()->where('collection_name', 'page')->delete();
         }
-        $w = Image::load($image)->getWidth();
-        $h = Image::load($image)->getHeight();
+
         $method->media()->where('collection_name', 'page')->delete();
-        $method->addMedia($image)->withCustomProperties(['width' => $w, 'height' => $h ])->toMediaCollection('page');
+        $method->addMedia($image)->toMediaCollection('page');
 
     }
 
     function imagesupload($method, array $image){
         foreach ($image as $item){
-            $w = Image::load($item)->getWidth();
-            $h = Image::load($item)->getHeight();
-            $method->addMedia($item)->withCustomProperties(['width' => $w, 'height' => $h ])->toMediaCollection('gallery');
+            $method->addMedia($item)->toMediaCollection('gallery');
         }
     }
 
