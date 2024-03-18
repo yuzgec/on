@@ -28,7 +28,7 @@
                         <img src="/logo.jpg" alt="{{ $item->title}}" class="" width="30px">
                     </div>
                     <h5 class="fs-18 medium mt-25">
-                        <a href="{{ route('servicedetail', $item->slug)}}" title="{{ $item->title}}">
+                        <a href="{{ route('studio', $item->slug)}}" title="{{ $item->title}}">
                             {{ $item->title}}
                         </a>
                     </h5>
