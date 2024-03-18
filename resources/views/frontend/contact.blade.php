@@ -7,9 +7,7 @@ data-was-processed="true"
 style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/background_25.jpg);">
     <div class="container-md">
         <div class="t-center">
-            <h5 class="fs-11 ls-4 semibold white uppercase">
-                Karşıyaka YOLO Fitness
-            </h5>
+            <h5 class="fs-11 ls-4 semibold white"> ON DANCE - #burasiizmir </h5>
             <h1 class="mt-15 lh-md white">
                İletişim
             </h1>
@@ -33,7 +31,7 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
         <div class="col-lg-7 col-12 o-auto scrollbar-styled height-full height-auto-sm px-0 d-flex align-items-center flex-wrap justify-content-center">
             <div id="contact-form-section" class="t-left width-percent-90 fullwidth-sm pt-50 pb-50 px-70 px-30-sm mxw-900">
                 <h5 class="uppercase fs-11 medium ls-3 ls-1-sm" data-color="#000">
-                    Karşıyaka YOLO Fitness
+                    ON DANCE
                 </h5>
                 <h4 class="mt-15 bold fs-32 fs-22-sm dark underline-hover-slide underline-slide ls--1 ls-0-sm">
                    <a href="mailto:{{ config('settins.email1')}}">{{ config('settings.email1') }}</a>
@@ -64,14 +62,14 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
         <div class="col-lg-5 col-12 px-0 height-full height-400-sm d-flex align-items-center justify-content-center">
             <div id="hotspots" class="hotspots fullwidth fullheight">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192697.8885068434!2d28.84737615365628!3d41.00546324248149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1703547132411!5m2!1str!2str"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12493.72722695332!2d27.0914394!3d38.477677!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9e96a284e45%3A0xad66083181d61a69!2sON%20Dance!5e0!3m2!1str!2str!4v1710775961772!5m2!1str!2str"
                     width="600"
-                    height="600"
+                    height="450"
                     style="border:0;"
                     allowfullscreen=""
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
-                </iframe>  
+                </iframe>             
           </div>
         </div>
     </div>
