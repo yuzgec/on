@@ -7,7 +7,7 @@ data-was-processed="true"
 style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/background_25.jpg);">
     <div class="container-md">
         <div class="t-center">
-            <h5 class="fs-11 ls-4 semibold white"> ON DANCE - #burasiizmir </h5>
+            <h5 class="fs-11 ls-4 semibold white"> ON DANCE - #burasıizmir </h5>
             <h1 class="mt-15 lh-md white">
                İletişim
             </h1>

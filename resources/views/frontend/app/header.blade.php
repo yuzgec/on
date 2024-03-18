@@ -1,5 +1,5 @@
 <nav id="navigation" class="modern-nav fixed bordered link-hover-01 hover-dark nav-dark dropdown-radius" data-offset="54">
-    <div class="container-fluid nav-container">
+    <div class="container nav-container">
         <div class="row nav-wrapper justify-content-end">
             <div class="col">
                 <a href="{{ route('home')}}" class="logo">
