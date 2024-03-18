@@ -1,6 +1,6 @@
 @extends('frontend.app.master')
 @section('content')
-<section id="home" class="relative white height-80vh height-60vh-sm mnh-450 align-items-center d-flex">
+<section id="home" class="relative white height-60vh height-60vh-sm mnh-450 align-items-center d-flex">
     <div class="videobg bg-soft bg-soft-dark5 loaded" data-background="images/videos/video-2-poster.jpg" style="background-image: url();">
        <video poster="images/videos/video-2-poster.jpg" playsinline="" autoplay="true" muted="" loop="true">
           <source src="/ondance.mp4" type="video/mp4">
