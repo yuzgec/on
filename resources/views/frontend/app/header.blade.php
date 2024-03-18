@@ -35,8 +35,13 @@
                 <ul class="nav-links justify-content-end">
                     <li class="extra-links">
                         <div class="bracket"></div>
-                        <a href="{{ route('contactus')}}" class="nav-button white bg-colored bg-colored uppercase bold slow" title="Buy Quadra"><span>Bilgi Al</span>
-                        </a>
+                        <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
+                        <a href="https://www.facebook.com/{{ config('settings.facebook')}}" target="_blank" class="nav-link" title="facebook"><i class="ti-facebook"></i></a>
+                        <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
+                        <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><i class="ti-tiktok"></i></a>
+
+                        <a href="{{ route('contactus')}}" class="nav-button white bg-colored bg-colored uppercase bold slow" title="Buy Quadra"><span>Bilgi Al</span></a>
+                        
                     </li>
                 </ul>
             </div>
