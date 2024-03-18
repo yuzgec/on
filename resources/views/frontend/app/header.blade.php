@@ -14,7 +14,7 @@
                     <li class="dd-toggle"> <a href="#" class="nav-link">Stüdyolar</a>
                         <ul class="dropdown-menu to-right">
                             @foreach ($Service->where('category',2) as $item) 
-                                <li><a href="{{ route('service', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
+                                <li><a href="{{ route('studio', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
                             @endforeach
                         </ul> 
                     </li>                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
