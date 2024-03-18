@@ -1,0 +1,31 @@
+
+/* Antares Demo Styles
+================================================== */
+
+	/* Page Fonts */
+	@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Vidaloka&display=swap');
+	.font-main{font-family: 'Rubik', sans-serif !important;}
+	.font-secondary{font-family: 'Vidaloka', serif !important;}
+
+	/* Body Options */
+	body{ font-family: 'Rubik', sans-serif; font-weight: 300; letter-spacing: 0.3px;}
+	body *{outline:none;}
+
+
+
+
+
+	/* About section styles */
+	.about .link-in-text{-webkit-transform:scale(1) translateZ(0);transform:scale(1) translateZ(0);}
+	.about .link-in-text:hover{-webkit-transform:scale(147) translateZ(0);transform:scale(1.4) translateZ(0);}
+	/* About section image styles */
+	.about .link-in-text img{box-shadow: 1px 5px 56px 0 rgba(0,0,0,0); border-radius: 50%;}
+	.about .link-in-text:hover img{box-shadow: 1px 5px 56px 0 rgba(0,0,0,0.56);}
+
+
+
+
+	/* Categories section spaces */
+	.categories .column-double-height{padding-left:0.75vw; padding-right:0.75vw;}
+	.categories .column-one-height{padding-left:0.75vw; padding-right:0.75vw;}
+	.categories .column-bottom{margin-top: calc(1.5vw + 1px);}
