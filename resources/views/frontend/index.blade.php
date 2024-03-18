@@ -88,14 +88,15 @@
                         </div>
 
                         <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}}">
-
-                            <h4 class="post-title">
-                                {{ $item->title}}
-                            </h4>
-                          
-                            <p class="post-message ikisatir">
-                                {{ $item->short }}
-                            </p>
+                            <div class="d-flex justify-content-between">    
+                                <h4 class="post-title">
+                                    {{ $item->title}}
+                                </h4>
+                            
+                                <span class="badge badge-success">
+                                    {{ $item->short }}
+                                </p>
+                            </div>
 
                         </a>
                     </figcaption>
