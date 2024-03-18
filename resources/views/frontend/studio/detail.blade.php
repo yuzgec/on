@@ -52,17 +52,16 @@
 <section id="portfolio-grid" class="pb-60 pt-50 bt-1 b-gray1 b-solid lightbox_gallery">
     <div class="container ">
   
-        <div id="portfolio-items" class="">
+        <div id="gallery-items" class="lightbox_gallery">
             @foreach ($Detay->getMedia('gallery') as $item)
-            <a href="{{ $item->getUrl() }}" class="cbp-item art photography d-block has-overlay-hover">
-                <div class="work-image">
-                    <img src="/front/images/image_loader.svg" data-cbp-src="{{ $item->getUrl() }}" 
-                   alt="{{ $Detay->title}}">
-                    <div class="overlay-hover bg-soft-dark4 d-flex align-items-center justify-content-center scale-hover-container slow">
-                        <i class="ti-plus fs-20 white scale-hover"></i>
+                <a href="{{ $item->getUrl() }}" class="cbp-item has-overlay-hover scale-hover-container">
+                    <div class="work-image">
+                        {{ $item }}
                     </div>
-                </div>
-            </a>
+                    <div class="zi-5 overlay-hover slow bg-blur bg-soft-dark5 flex-column t-center">
+                        <i class="ti-more white fs-22"></i>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>
@@ -73,29 +72,21 @@
 <script>
     (function($, window, document, undefined) {
         'use strict';
-        $('#portfolio-items').cubeportfolio({
+        $('#gallery-items').cubeportfolio({
             mediaQueries: [{
                 width: 992,
                 cols: 3,
             }, {
                 width: 640,
-                cols: 2,
+                cols: 3,
             }, {
                 width: 480,
-                cols: 1,
+                cols: 2,
             }],
-            filters: '.filter-tags',
-            defaultFilter: '*',
-            layoutMode: 'masonry',
-            gridAdjustment: 'responsive',
-            gapHorizontal: 10,
-            gapVertical: 10,
-            caption: 'none',
-            animationType: 'quicksand',
-            displayType: 'none',
+            gapHorizontal: 5,
+            gapVertical: 5,
             displayTypeSpeed: 0,
         });
-
 
     })(jQuery, window, document);
 </script>
