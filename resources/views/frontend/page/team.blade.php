@@ -28,8 +28,8 @@
     <div class="container">
        <div class="row">
         @foreach ($All as $item)
-          <figure class="col-lg-3 col-sm-6 col-12 mt-30 c-plus" data-bs-toggle="modal" data-bs-target="#modal-01">
-             <div class="fullwidth height-350" data-bg="url({{ $item->getFirstMediaUrl('page', 'thumb') }})" data-was-processed="true" style="background-image: url({{ $item->getFirstMediaUrl('page', 'thumb') }});"></div>
+          <figure class="col-lg-4 col-sm-6 col-12 mt-30">
+             <img src="{{ $item->getFirstMediaUrl('page', 'thumb') }}" class="img-fluid"/>
              <figcaption class="pt-20">
                 <h4 class="fs-18 dark2">{{$item->title}}</h4>
                 <p class="gray6 fs-14 mt-5">{{$item->seo_key}}</p>
@@ -38,5 +38,6 @@
           @endforeach         
        </div>
     </div>
- </section>
+</section>
+
 @endsection
