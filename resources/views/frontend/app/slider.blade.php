@@ -32,7 +32,7 @@
           <div class="t-left mt-25">
                <!-- Mini subtitle -->
                <h5 class="fs-16 white uppercase font-secondary">
-                    Welcome to Seta
+                   ON DANCE - İZMİR
                </h5>
                <!-- Title -->
                <h2 class="mt-15 fs--lg mxw-600 lh-sm mt-15 font-secondary uppercase t-left">
@@ -46,8 +46,8 @@
                </p>
                <!-- Button -->
                <div class="mt-50 mt-15-sm">
-                    <a href="#about" class="lg-btn py-15-sm fs-12-sm b-1 b-white white dark-hover bg-transparent bg-white-hover uppercase normal fs-14">
-                         Get Started
+                    <a href="{{ route('contactus')}}" class="lg-btn py-15-sm fs-12-sm b-1 b-white white dark-hover bg-transparent bg-white-hover uppercase normal fs-14">
+                        İletişime Geç
                     </a>
                </div>
 

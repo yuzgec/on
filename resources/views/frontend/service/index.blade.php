@@ -10,7 +10,7 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
                 Ondance Studio
             </h5>
             <h1 class="mt-15 lh-md white">
-               Hizmetlerimiz
+                Eğitimlerimiz
             </h1>
 
             <div
@@ -21,7 +21,7 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
                 <i class="ti-angle-right fs-7 mx-15"></i>
                 <a href="{{ route('home')}}" title="Anasayfa">Anasayfa</a>
                 <i class="ti-angle-right fs-7 mx-15"></i>
-                <a href="#" title="Hizmetlerimiz"  class="stay c-default opacity-7">Hizmetlerimiz</a>
+                <a href="#" title="Hizmetlerimiz"  class="stay c-default opacity-7">Eğitimlerimiz</a>
             </div>
         </div>
     </div>

@@ -17,7 +17,8 @@ class HomeController extends Controller
     public function index(){
 
         $About = Page::where('id',1)->first();
-        return view('frontend.index',compact('About'));
+        $Gallery = Page::where('id',2)->first();
+        return view('frontend.index',compact('About','Gallery'));
     }
 
     public function syllabus(){
@@ -46,7 +47,10 @@ class HomeController extends Controller
 
     public function service($slug){
         $Detay = Service::where('category', 1)->where('slug', $slug)->firstOrFail();
-        return view('frontend.service.detail', compact('Detay'));
+
+
+        $Format = substr($Detay->getFirstMediaUrl('cover'), -3);
+        return view('frontend.service.detail', compact('Detay', 'Format'));
     }
 
 

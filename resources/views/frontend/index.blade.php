@@ -103,6 +103,24 @@
 </section>  
 
 
+<section id="portfolio-grid" class="pb-60 pt-50 bt-1 b-gray1 b-solid lightbox_gallery">
+    <div class="container-fluid bg-dark">
+  
+        <div id="gallery-items" class="lightbox_gallery">
+            @foreach ($Gallery->getMedia('gallery') as $item)
+                <a href="{{ $item->getUrl() }}" class="cbp-item has-overlay-hover scale-hover-container">
+                    <div class="work-image">
+                        {{ $item }}
+                    </div>
+                    <div class="zi-5 overlay-hover slow bg-blur bg-soft-dark5 flex-column t-center">
+                        <i class="ti-more white fs-22"></i>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 
 @endsection
 @section('customJS')
@@ -266,5 +284,27 @@
         });
     });
     
+</script>
+
+<script>
+    (function($, window, document, undefined) {
+        'use strict';
+        $('#gallery-items').cubeportfolio({
+            mediaQueries: [{
+                width: 992,
+                cols: 3,
+            }, {
+                width: 640,
+                cols: 3,
+            }, {
+                width: 480,
+                cols: 2,
+            }],
+            gapHorizontal: 5,
+            gapVertical: 5,
+            displayTypeSpeed: 0,
+        });
+
+    })(jQuery, window, document);
 </script>
 @endsection

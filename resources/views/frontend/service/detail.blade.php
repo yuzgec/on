@@ -2,8 +2,8 @@
 @section('content')
 <section id="home" class="relative white height-60vh height-60vh-sm mnh-450 align-items-center d-flex">
     <div class="videobg bg-soft bg-soft-dark5 loaded" data-background="images/videos/video-2-poster.jpg" style="background-image: url();">
-       <video poster="images/videos/video-2-poster.jpg" playsinline="" autoplay="true" muted="" loop="true">
-          <source src="/ondance.mp4" type="video/mp4">
+        <video poster="{{ $Detay->getFirstMediaUrl('cover') }}" playsinline="" autoplay="true" muted="" loop="true">
+            <source src="{{ ($Detay->getFirstMediaUrl('cover')) ? $Detay->getFirstMediaUrl('cover')  : '/ondance.mp4'}}" type="video/mp4">
        </video>
     </div>
     <div class="container-md">
@@ -28,6 +28,13 @@
 <section id="home" class="fullwidth bg-white">
     <div class="container">
         <div class="row">
+            
+            <div class="col-md-9 col-12 pt-50">
+                <span class="fs-20 fs-16-sm gray7 ls-0 lh-35 light">
+                    {!! $Detay->desc !!}
+                </span>
+            </div>
+
             <div class="col-md-3 col-12 bg-gray">   
                 <div
                     class="fs-15 gray8  lh-lg mb-30  px-15-sm py-50 py-20-sm">
@@ -39,11 +46,7 @@
                     @endforeach
                 </div>
             </div> 
-            <div class="col-md-9 col-12 pt-50">
-                <span class="fs-20 fs-16-sm gray7 ls-0 lh-35 light">
-                    {!! $Detay->desc !!}
-                </span>
-            </div>
+            
         </div>
     </div>
 </section>
