@@ -14,6 +14,7 @@ Route::get('/sayfa/{url}', [HomeController::class, 'corporatedetail'])->name('co
 
 //Hizmetler Route
 Route::get('/egitimlerimiz', [HomeController::class, 'services'])->name('services');
+Route::get('/yonetim', [HomeController::class, 'management'])->name('management');
 Route::get('/egitim/{url}', [HomeController::class, 'service'])->name('service');
 
 Route::get('/studyolarimiz', [HomeController::class, 'studios'])->name('studios');

@@ -10,7 +10,14 @@
                 <ul class="nav-links justify-content-end">
                     <li class="logo-for-mobile-navigation"><img src="/logob.png" alt="website logo" class="logo-white mxw-100"></li>
                     <li><a href="{{ route('home')}}" class="nav-link">Anasayfa</a></li>
-                    <li><a href="{{ route('corporatedetail', 'hakkimizda')}}" class="nav-link">Hakkımızda</a></li>
+
+                    <li class="dd-toggle"> <a href="#" class="nav-link">Kurumsal</a>
+                        <ul class="dropdown-menu to-right">
+                            <li><a href="{{ route('corporatedetail', 'hakkimizda')}}" class="nav-link">Hakkımızda</a></li>
+                            <li><a href="{{ route('management')}}" class="nav-link">Yönetim</a></li>
+                        </ul> 
+                    </li>       
+
                     <li class="dd-toggle"> <a href="#" class="nav-link">Stüdyolar</a>
                         <ul class="dropdown-menu to-right">
                             @foreach ($Service->where('category',2) as $item) 

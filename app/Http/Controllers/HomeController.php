@@ -91,6 +91,13 @@ class HomeController extends Controller
         return view('frontend.page.team', compact('All'));
     }
 
+    public function management(){
+        $All = Service::where('category', 8)->get();
+        return view('frontend.page.management', compact('All'));
+    }
+
+    
+
     public function projectdetail($slug){
         $Detay = Service::where('slug', $slug)->firstOrFail();
         return view('frontend.project.detail', compact('Detay'));
