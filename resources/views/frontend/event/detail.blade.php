@@ -23,6 +23,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 pt-50">
+                @if (!$item->getFirstMediaUrl('page'))
+                    <img src="{{ $item->getFirstMediaUrl('page', 'img')}}" alt="ON DANCE - {{ $Detay->title}}" class="img-fluid mb-30" />
+                @endif
                 <span class="fs-20 fs-16-sm gray7 ls-0 lh-35 light">
                     {!! $Detay->desc !!}
                 </span>
