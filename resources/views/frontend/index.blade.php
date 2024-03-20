@@ -48,9 +48,9 @@
 <div class="container mt-40 mb-40">
     <div class="row">
         <div class="col-md-6">
-            <h6 class="colored fs-11 ls-6 uppercase  t-center">Ondance Studio</h6>
+            <h6 class="colored fs-11 ls-6 uppercase  t-center">ON DANCE</h6>
             <h1 class="lh-40 font-sedgwick mt-10  t-center">
-                Slogan Gelecek
+                {{ $About->seo_key}}
             </h1>
             <p class="light fs-20 gray7 lh-35 mt-30">
                {!!$About->short!!}
@@ -88,7 +88,7 @@
                             
                                 <span class="badge badge-success">
                                     {{ $item->short }}
-                                </p>
+                                </span>
                                </div>
                         </a>
                     </figcaption>

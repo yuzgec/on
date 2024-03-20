@@ -52,7 +52,7 @@
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
                         <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
                         {{-- <button class="sidebar-button lg-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-lg radius-no-rt"> Show Right Sidebar </button> --}}
-                        <button class="sidebar-button lg-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-lg radius-no-rt" title="Buy Quadra"><span>Bilgi Al</span></button>
+                        <button class="sidebar-button md-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-sm" title="Buy Quadra"><span>Bilgi Al</span></button>
                     </li>
                 </ul>
             </div>
