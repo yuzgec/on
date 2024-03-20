@@ -14,11 +14,14 @@ Route::get('/sayfa/{url}', [HomeController::class, 'corporatedetail'])->name('co
 
 //Hizmetler Route
 Route::get('/egitimlerimiz', [HomeController::class, 'services'])->name('services');
-Route::get('/yonetim', [HomeController::class, 'management'])->name('management');
 Route::get('/egitim/{url}', [HomeController::class, 'service'])->name('service');
+Route::get('/yonetim', [HomeController::class, 'management'])->name('management');
 
 Route::get('/studyolarimiz', [HomeController::class, 'studios'])->name('studios');
 Route::get('/studio/{url}', [HomeController::class, 'studio'])->name('studio');
+
+Route::get('/etkinlikler', [HomeController::class, 'events'])->name('events');
+Route::get('/etkinlik/{url}', [HomeController::class, 'event'])->name('event');
 
 Route::get('/kampanyalarimiz', [HomeController::class, 'campaigns'])->name('campaigns');
 Route::get('/kampanya/{url}', [HomeController::class, 'campaign'])->name('campaign');

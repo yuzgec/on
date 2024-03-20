@@ -67,22 +67,14 @@ class HomeController extends Controller
         return view('frontend.studio.detail', compact('Detay'));
     }
 
-    public function campaigns(){
-        $All = Service::where('category', 3)->get();
+    public function events(){
+        $All = Blog::where('category', 3)->get();
         return view('frontend.service.campaigns',compact('All'));
     }
 
-    public function campaign($slug){
-        $Detay = Service::where('category', 3)->where('slug', $slug)->firstOrFail();
+    public function event($slug){
+        $Detay = Blog::where('category', 3)->where('slug', $slug)->firstOrFail();
         return view('frontend.service.campaign', compact('Detay'));
-    }
-
-    public function project(){
-        return view('frontend.project.index');
-    }
-
-    public function hr(){
-        return view('frontend.page.hr');
     }
 
 
@@ -95,8 +87,6 @@ class HomeController extends Controller
         $All = Service::where('category', 8)->get();
         return view('frontend.page.management', compact('All'));
     }
-
-    
 
     public function projectdetail($slug){
         $Detay = Service::where('slug', $slug)->firstOrFail();
@@ -111,7 +101,6 @@ class HomeController extends Controller
         $New->subject =  $request->subject;
         $New->message =  $request->message;
         $New->save();
-
 
         return redirect()->route('home');
     }
