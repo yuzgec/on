@@ -49,14 +49,15 @@
     </div>
 </section>
 
+<
 <section id="portfolio-grid" class="pb-60 pt-50 bt-1 b-gray1 b-solid lightbox_gallery">
     <div class="container ">
-
+  
         <div id="gallery-items" class="lightbox_gallery">
             @foreach ($Gallery->getMedia('gallery') as $item)
-                <a href="{{ $item->getFirstMediaUrl('gallery', 'img') }}" class="cbp-item has-overlay-hover scale-hover-container">
+                <a href="{{ $item->getUrl('img') }}" class="cbp-item has-overlay-hover scale-hover-container">
                     <div class="work-image">
-                        <img src="{{ $item->getFirstMediaUrl('gallery', 'thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo"/>
+                        <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo"/>
                     </div>
                     <div class="zi-5 overlay-hover slow bg-blur bg-soft-dark5 flex-column t-center">
                         <i class="ti-more white fs-22"></i>
@@ -64,7 +65,7 @@
                 </a>
             @endforeach
         </div>
-        
+
     </div>
 </section>
 @endsection

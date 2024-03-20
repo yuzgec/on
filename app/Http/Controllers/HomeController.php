@@ -15,9 +15,12 @@ class HomeController extends Controller
 {
 
     public function index(){
-
         $About = Page::where('id',1)->first();
         $Gallery = Page::where('id',2)->first();
+
+        //dd($Gallery->getMedia('gallery'));
+
+
         return view('frontend.index',compact('About','Gallery'));
     }
 
