@@ -67,7 +67,6 @@ class BlogCategoryController extends Controller
         $Update = BlogCategory::findOrFail($id);
 
         $Update->title = $request->title;
-        $Update->slug = seo($request->title);
         $Update->short = $request->short;
         $Update->desc = $request->desc;
 
