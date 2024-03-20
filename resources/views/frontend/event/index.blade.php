@@ -26,7 +26,7 @@
                 <div class="bg-white bs-lg-hover dark2 slow c-default py-40 px-40">
                     <div class="fs-45 mt-150">
                         <a href="{{ route('event', $item->slug)}}" title="{{ $item->title}}">
-                        <img src="/logob.png" alt="{{ $item->title}}" class="" width="30px">
+                        <img src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}" alt="{{ $item->title}}" class="img-fluid">
                         </a>
                     </div>
                     <h5 class="fs-18 medium mt-25">
