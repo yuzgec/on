@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/front/css/skins/skin-portfolio.css" />
     <link rel="stylesheet" href="/front/css/blog.css" />
     <link rel="stylesheet" href="/front/css/components/quadra/gold.punch.navigation.css"/>
+    <link rel="stylesheet" href="/front/css/components/semantic.min.css"/>
 
     <style>
         .cbp-item .work-image{-webkit-transform:scale(1);transform:scale(1); -webkit-transition:transform 0.5s;transition:transform 0.5s;}
@@ -27,4 +28,15 @@
         .cbp-item .details .line{-webkit-transition:all 0.3s;transition:all 0.3s;}
         .cbp-item:hover .details .line{width:70px!important;}
     </style>
+
+<style>
+    /* SIDEBAR */
+    #sidebar{z-index:2725!important;width:350px;position:fixed!important;}
+    #sidebar.top{max-height:75%;padding:0;}
+    #sidebar.bottom{max-height:50%;padding:0;}
+    .pushable>.pusher{z-index:1010!important;}
+    body #sidebar.right + .pusher.dimmed{-webkit-transform:translate3d(-100px,0,0)!important;transform:translate3d(-100px,0,0)!important;}
+    body #sidebar.left + .pusher.dimmed{-webkit-transform:translate3d(100px,0,0)!important;transform:translate3d(100px,0,0)!important;}
+    .pushable>.pusher:after{z-index:2500;-webkit-transition:all 0.2s;transition:all 0.2s; background: rgba(26,26,26,0.27) !important;}
+</style>
         

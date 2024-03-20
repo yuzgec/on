@@ -1,3 +1,11 @@
+<div id="sidebar" class="ui right sidebar vertical scrollbar-styled">
+    <div class="d-flex flex-column align-items-between justify-content-start t-left  fullwidth mnh-full o-hidden" style="background-color: #ececec">
+        <div>
+          <iframe src="https://ondance.sporakademik.com/OnKayit" width="100%" height="1000px" class="mt-50 mb-30"></iframe>
+        </div>
+    </div>
+</div>
+
 <div id="cookie__notification_10_21553" class="cookie fixed bottom-30 right-30 right-0-sm px-15-sm fullwidth t-right pointer-events-none" data-expire="15">
     <div class="mxw-450 fullwidth bg-white bs-xl pt-50 pt-30-sm t-left d-inline-block pointer-events-all">
          <p class="fs-20 px-40 px-30-sm dark4 lh-30 light">
@@ -40,6 +48,9 @@
 <script src="/front/js/components/quadra/gold.punch.navigation.js"></script>
 
 <script src="/front/js/scripts.js?v=3.0"></script>
+
+<script src="/front/js/components/semantic.min.js"></script>
+
 
 <script src="/front/content/portfolio/js/plugins.js?v=3"></script>
 <script src="/front/js/components/masonry.pkgd.min.js"></script>

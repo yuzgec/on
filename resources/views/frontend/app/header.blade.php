@@ -51,7 +51,8 @@
                         <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
                         <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
-                        <a href="{{ route('contactus')}}" class="nav-button white bg-colored bg-colored uppercase bold slow" title="Buy Quadra"><span>Bilgi Al</span></a>
+                        {{-- <button class="sidebar-button lg-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-lg radius-no-rt"> Show Right Sidebar </button> --}}
+                        <button class="sidebar-button lg-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-lg radius-no-rt" title="Buy Quadra"><span>Bilgi Al</span></button>
                     </li>
                 </ul>
             </div>
@@ -123,20 +124,19 @@
                </div>
            </div>
 
-           <div class="col-lg-4 col-12 punch-nav-col bg-gradient d-flex align-items-center flex-wrap justify-content-center py-70">
-               <!-- Keeper for content -->
-               <div class="t-center">
-                   <!-- Clock -->
-                   <div id="myclock" class="pointer-events-none animate" data-animation="blurIn" data-animation-delay="1000"></div>
-                   <h3 class="light gray6 mt-50 animate" data-animation="blurIn" data-animation-delay="1200">
-                       Solve your problems in minutes, save your time.
-                   </h3>
-               </div>
-               <!-- End keeper for content -->
+           <div class="col-lg-4 col-12 punch-nav-col bg-black d-flex align-items-center justify-content-center">
+                 
+                <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12493.72722695332!2d27.0914394!3d38.477677!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9e96a284e45%3A0xad66083181d61a69!2sON%20Dance!5e0!3m2!1str!2str!4v1710775961772!5m2!1str!2str"
+                width="100%"
+                height="750px"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>       
            </div>
-           <!-- End punch navigation col -->
        </div>
-       <!-- End row for inner elements -->
     </div>
-    <!-- End container for all -->
 </nav>
+
