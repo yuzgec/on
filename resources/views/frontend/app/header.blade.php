@@ -56,26 +56,19 @@
                 </div>
             </div>
         </div>
-        <!-- End Row for cols in the nav -->
     </div>
-    <!-- End Navigation container -->
     <div class="mobile-nav-bg"></div>
  </nav>
 
 
  <nav id="punch-nav" class="punch-nav">
-    <!-- Container for all -->
     <div class="container-fluid">
-       <!-- Row for inner elements -->
        <div class="row">
-           <!-- Col for logo and close buttons -->
            <div class="col-12 absolute height-100 px-50 px-15-sm left-0 top-0 zi-5 d-flex align-items-center animate" data-animation="fadeIn" data-animation-delay="700">
                <div class="row fullwidth mx-0">
-                   <!-- Logo column -->
                    <div class="col d-flex justify-content-start align-items-center">
-                        <img src="content/seta/images/logo_01_dark.svg" alt="website logo" class="logo-white mxw-100" title="Quadra Premium Template">
+                        <img src="/logob.png" alt="ON DANCE - İZMİR KARŞIYAKA DANS STÜDYOSU" class="logo-white mxw-100" title="Quadra Premium Template">
                    </div>
-                   <!-- Close SVG button -->
                    <div class="col d-flex justify-content-end align-items-center">
                        <a href="#" class="close block">
                            <svg width="33px" height="31px" viewBox="0 0 33 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,55 +83,38 @@
                    </div>
                </div>
            </div>
-           <!-- End col for logo and close buttons -->
-           <!-- Punch navigation col - links -->
            <div class="col-lg-8 col-12 pt-100-sm punch-nav-col bg-white d-flex flex-wrap align-items-center">
-               <!-- Keeper for column content -->
                <div class="t-left">
-                   <!-- Links -->
                    <ul class="d-flex flex-wrap m-0 block-links fs-24 light black lh-md">
-                       <li><a href="index.html" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="800">Home</a></li>
-                       <li><a href="#" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="900">About</a></li>
-                       <li><a href="#" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1000">Services</a></li>
-                       <li><a href="#" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1100">Team</a></li>
-                       <li><a href="#" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1200">Articles</a></li>
-                       <li><a href="#" class="underline-hover-slide underline-slide mt-30 animate" data-animation="fadeInDown" data-animation-delay="1300">Contact</a></li>
+                       <li><a href="{{ route('home')}}" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="800">Anasayfa</a></li>
+                       <li><a href="{{ route('corporatedetail', 'hakkimizda')}}" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="900">Hakkımızda</a></li>
+                       <li><a href="{{ route('studios')}}" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1000">Stüdyolar</a></li>
+                       <li><a href="{{ route('services')}}" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1100">Eğitimler</a></li>
+                       <li><a href="{{ route('blog')}}" class="underline-hover-slide underline-slide mr-30 mt-30 animate" data-animation="fadeInDown" data-animation-delay="1200">Blog</a></li>
+                       <li><a href="{{ route('contactus')}}" class="underline-hover-slide underline-slide mt-30 animate" data-animation="fadeInDown" data-animation-delay="1300">İletişim</a></li>
                    </ul>
-                   <!-- Keeper for content -->
                    <div class="t-left animate mt-70 pb-50-sm" data-animation="fadeIn" data-animation-delay="1300">
-                       <!-- Title and mail -->
-                       <h4 class="fs-24 fs-18-sm gray7 light" >Talk to us about something.</h4>
-                       <a href="mailto:contact@yourwebsite.com" class="inline-block mt-5 light fs-36 lh-50 fs-24-sm dark3 underline-hover-slide underline-slide">contact@yourwebsite.com</a>
-                       <!-- Address boxes -->
+                       <h4 class="fs-24 fs-18-sm gray7 light" >Eğitimlerimiz hakkında bilgi alın.</h4>
+                       <a href="mailto:{{ config('settings.email1')}}" class="inline-block mt-5 light fs-36 lh-50 fs-24-sm dark3 underline-hover-slide underline-slide">{{ config('settings.email1')}}</a>
                        <div class="row pt-10 gray6 fs-22 fs-18-sm lh-35 lh-30-sm light">
                            <div class="col-lg-4 col-12 mt-30 pl-0">
-                               <h5 class="fs-16 dark3 normal mb-10">Washington</h5>
-                               <address class="m-0">3113 Massachusetts Avenue Washington DC</address>
+                               <h5 class="fs-16 dark3 normal mb-10">İzmir - Karşıyaka</h5>
+                               <address class="m-0">{{ config('settings.adres2')}}</address>
                            </div>
-                           <div class="col-lg-4 col-12 mt-30 pl-0">
-                               <h5 class="fs-16 dark3 normal mb-10">Australia</h5>
-                               <address class="m-0">PO Box 16122 Collins Street West Victoria 8007</address>
-                           </div>
-                           <div class="col-lg-4 col-12 mt-30 pl-0">
-                               <h5 class="fs-16 dark3 normal mb-10">London</h5>
-                               <address class="m-0">22 Kingswood Close, Solihull, B90 3ET UK</address>
-                           </div>
+                           
                        </div>
-                       <!-- Social buttons -->
                        <div class="mt-70">
                            <ul class="d-flex m-0">
-                               <li><a href="#" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Facebook</a></li>
-                               <li><a href="#" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Twitter</a></li>
-                               <li><a href="#" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Instagram</a></li>
+                               <li><a href="#" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Whatsapp</a></li>
+                               <li><a href="{{ config('settings.tiktok')}}" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Tiktok</a></li>
+                               <li><a href="{{ config('settings.instagram')}}" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Instagram</a></li>
+                               <li><a href="{{ config('settings.youtube')}}" target="_blank" class="underline-slide underline-gray fs-16 gray5 lh-25 mr-20 inline-block">Youtube</a></li>
                            </ul>
                        </div>
                    </div>
-                   <!-- End keeper for content -->
                </div>
-               <!-- End keeper for column content -->
            </div>
-           <!-- End punch navigation col -->
-           <!-- Punch navigation col - image -->
+
            <div class="col-lg-4 col-12 punch-nav-col bg-gradient d-flex align-items-center flex-wrap justify-content-center py-70">
                <!-- Keeper for content -->
                <div class="t-center">
