@@ -69,12 +69,12 @@ class HomeController extends Controller
 
     public function events(){
         $All = Blog::where('category', 3)->get();
-        return view('frontend.service.campaigns',compact('All'));
+        return view('frontend.event.index',compact('All'));
     }
 
     public function event($slug){
         $Detay = Blog::where('category', 3)->where('slug', $slug)->firstOrFail();
-        return view('frontend.service.campaign', compact('Detay'));
+        return view('frontend.event.detail', compact('Detay'));
     }
 
 

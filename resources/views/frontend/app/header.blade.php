@@ -32,6 +32,7 @@
                         </ul> 
                     </li>
                     <li><a href="{{ route('team')}}" class="nav-link">Eğitmenler</a></li>
+                    <li><a href="{{ route('events')}}" class="nav-link">Etkinlikler</a></li>
                     <li><a href="{{ route('contactus')}}" class="nav-link">İletişim</a></li>
                     <li class="punch-nav-trigger mt-30-sm">
                          <div class="hamburger-menu">
