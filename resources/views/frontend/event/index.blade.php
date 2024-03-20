@@ -21,7 +21,7 @@
 <section id="service-boxes-02" class="pt-90 pb-120 bg-gray2 bt-1 b-gray1">
     <div class="container">
         <div class="row t-left t-center-sm align-items-center">
-            @foreach ($Blog->where('category', 2) as $item)
+            @foreach ($Blog->where('category', 3) as $item)
             <div class="col-lg-4 col-12 mt-30 perspective-lg relative zi-hover">
                 <div class="bg-white bs-lg-hover dark2 slow c-default py-40 px-40">
                     <div class="fs-45 mt-150">

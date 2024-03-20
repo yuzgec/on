@@ -18,6 +18,8 @@ class HomeController extends Controller
         $About = Page::where('id',1)->first();
         $Gallery = Page::where('id',2)->first();
 
+        
+
         //dd($Gallery->getMedia('gallery'));
 
 
