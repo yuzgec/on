@@ -17,7 +17,7 @@
 
             <div class="card-body">
                 <x-form-inputtext label="{{ request('name')}} Adı" name="title"></x-form-inputtext>
-                @if(request('name') == 'Ekip' && request('Eğitmen'))
+                @if(request('name') == 'Ekip' && request('name') == "Eğitmen")
                     <x-form-inputtext label="Görevi" name="seo_key"/>
                 @endif
                 <x-form-textarea label="Kısa Açıklama" name="short" :ck='null'></x-form-textarea>
@@ -30,7 +30,7 @@
                 </div>
                 <x-form-inputtext label="Seo Başlık" name="seo_title"/>
                 <x-form-inputtext label="Seo Açıklama" name="seo_desc"/>
-                @if(!request('name') == 'Ekip' && !request('Eğitmen'))
+                @if(!request('name') == 'Ekip' && !request('name') == "Eğitmen")
                 <x-form-inputtext label="Seo Anahtar Kelime" name="seo_key"/>
                 @endif
             </div>

@@ -15,10 +15,10 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'                 => 'required|min:3|max:99|unique:service,title,'.$this->id,
+            'title'                 => 'required|min:3|max:99',
             'category'              => 'required',
             'image'                 => 'image|max:2048|mimes:jpg,jpeg,png,gif',
-            'gallery.*'             => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gallery.*'             => 'image|mimes:jpeg,png,jpg,gif,svg|max:6000',
         ];
     }
 
@@ -34,7 +34,7 @@ class ServiceRequest extends FormRequest
             'image.mimes'               => 'Resim formatı jpg,jpeg,png,gif olmalıdır',
             'image.image'               => 'Resim formatı uygun değildir.',
 
-            'gallery.*.max'               => 'Resim boyutu en yüksek 2048kb(2mb) olmalıdır',
+            'gallery.*.max'               => 'Resim boyutu en yüksek (6mb) olmalıdır',
             'gallery.*.mimes'             => 'Resim formatı jpg,jpeg,png,gif olmalıdır',
             'gallery.*.image'             => 'Resim formatı uygun değildir.',
 
