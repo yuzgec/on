@@ -17,8 +17,6 @@
              <a href="#" class="stay c-default opacity-7">{{ $Detay->title}}</a> </div>
        </div>
     </div>
-
-
  </section>
 
 <section id="home" class="fullwidth bg-white">

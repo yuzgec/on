@@ -65,12 +65,9 @@
 
 <section id="blog" class="blog bb-1 b-gray2 post-radius post-shadow lh-lg py-50">
     <div class="t-center">
-
-
         <div class="col t-center">
-            <h2 class="lh-45 mt-10 uppercase animate" data-animation="fadeInDown" data-animation-delay="500">Eğitimlerimiz</h2>
+            <h2 class="lh-45 mt-10 uppercase animate" data-animation="fadeInDown" data-animation-delay="500"><b>ON DANCE</b> Eğitimlerimiz</h2>
         </div>
-       
     </div>
     <div class="container mt-50">
         <div id="blog-posts" class="blog-posts grid">
@@ -80,7 +77,7 @@
                     <figcaption>
                         <div class="cbp-caption">
                             <a href="{{ route('service', $item->slug)}}" class="cbp-caption-defaultWrap">
-                                <img src="https://www.on.dance/assets/img/egitimler.jpg" alt="{{ $item->title}} - Karşıyaka Yolo Studio">
+                                <img src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}" class="img-fluid" alt="İZMİR ON DANCE - {{ $item->title}}"/>
                             </a>
                         </div>
                         <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}} - İzmir On Dance Studio">
