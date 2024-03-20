@@ -23,12 +23,11 @@
                    ON DANCE - İZMİR
                </h5>
                <h2 class="mt-15 fs--lg mxw-600 lh-sm mt-15 font-secondary uppercase t-left">
-                    Matching style and
-                    class <span class="colored1">with luxury</span>
-                    and comfort.
+                    {{ config('settings.slider1')}}<span class="colored1"> {{ config('settings.slider2')}}</span>
+                    {{ config('settings.slider3')}}
                </h2>
                <p class="mt-30 mt-15-sm fs-20 fs-14-sm lh-35 lh-25-sm light mxw-650">
-                    Bring to the table win-win survival strategies to ensure proactive domination. User generated content in real-time will have multiple touchpoints for offshoring.
+                    {{ config('settings.slider4')}}
                </p>
                <div class="mt-50 mt-15-sm">
                     <a href="{{ route('contactus')}}" class="lg-btn py-15-sm fs-12-sm b-1 b-white white dark-hover bg-transparent bg-white-hover uppercase normal fs-14">
