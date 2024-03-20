@@ -81,7 +81,6 @@
                             </a>
                         </div>
                         <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}} - İzmir On Dance Studio">
-                            <div class="d-flex justify-content-between">    
                                 <h4 class="post-title">
                                     {{ $item->title}}
                                 </h4>
@@ -89,7 +88,6 @@
                                 <span class="badge badge-success">
                                     {{ $item->short }}
                                 </p>
-                            </div>
                         </a>
                     </figcaption>
                 </div>
