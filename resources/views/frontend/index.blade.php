@@ -48,8 +48,8 @@
 <div class="container mt-40 mb-40">
     <div class="row">
         <div class="col-md-6">
-            <h6 class="colored fs-11 ls-6 uppercase  t-center">ON DANCE</h6>
-            <h1 class="lh-40 font-sedgwick mt-10  t-center">
+            <h6 class="colored fs-11 ls-6 uppercase ">ON DANCE</h6>
+            <h1 class="lh-40 font-sedgwick mt-10 ">
                 {{ $About->seo_key}}
             </h1>
             <p class="light fs-20 gray7 lh-35 mt-30">
@@ -57,8 +57,9 @@
             </p>
         </div>
 
-        <div class="col-md-6">
-           
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <iframe width="560" height="400" src="https://www.youtube.com/embed/2SFw_v6-O9c?si=ZFKe8h2VNZvha90Q" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
 </div>
@@ -66,7 +67,7 @@
 <section id="blog" class="blog bb-1 b-gray2 post-radius post-shadow lh-lg py-50">
     <div class="t-center">
         <div class="col t-center">
-            <h2 class="lh-45 mt-10 uppercase animate" data-animation="fadeInDown" data-animation-delay="500"><b>ON DANCE</b> Eğitimlerimiz</h2>
+            <h2 class="lh-45 mt-10 uppercase animate" data-animation="fadeInDown" data-animation-delay="500"> Eğitimlerimiz</h2>
         </div>
     </div>
     <div class="container mt-50">

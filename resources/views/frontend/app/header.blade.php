@@ -51,7 +51,6 @@
                         <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
                         <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
-                        {{-- <button class="sidebar-button lg-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-lg radius-no-rt"> Show Right Sidebar </button> --}}
                         <button class="sidebar-button md-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-sm" title="Buy Quadra"><span>Bilgi Al</span></button>
                     </li>
                 </ul>
@@ -68,7 +67,6 @@
     </div>
     <div class="mobile-nav-bg"></div>
  </nav>
-
 
  <nav id="punch-nav" class="punch-nav">
     <div class="container-fluid">
@@ -125,7 +123,6 @@
            </div>
 
            <div class="col-lg-4 col-12 punch-nav-col bg-black d-flex align-items-center justify-content-center">
-                 
                 <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12493.72722695332!2d27.0914394!3d38.477677!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd9e96a284e45%3A0xad66083181d61a69!2sON%20Dance!5e0!3m2!1str!2str!4v1710775961772!5m2!1str!2str"
                 width="100%"
