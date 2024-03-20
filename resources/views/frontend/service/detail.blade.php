@@ -55,7 +55,7 @@
     <div class="container ">
   
         <div id="gallery-items" class="lightbox_gallery">
-            @foreach ($Gallery->getMedia('gallery') as $item)
+            @foreach ($Detay->getMedia('gallery') as $item)
                 <a href="{{ $item->getUrl('img') }}" class="cbp-item has-overlay-hover scale-hover-container">
                     <div class="work-image">
                         <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo"/>
