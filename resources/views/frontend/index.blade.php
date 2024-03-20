@@ -72,7 +72,7 @@
     <div class="container mt-50">
         <div id="blog-posts" class="blog-posts grid">
             @foreach ($Service->where('category', 1) as $item)
-            <figure id="post_0{{ $item->id}}" class="post cbp-item"  style="width: 32%; left: 0px; top: 0px;">
+            <figure id="post_0{{ $item->id}}" class="post cbp-item"  style="width: 23%; left: 0px; top: 0px;">
                 <div class="cbp-item-wrapper">
                     <figcaption>
                         <div class="cbp-caption">

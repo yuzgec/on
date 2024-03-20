@@ -13,7 +13,7 @@
           <h1 class="mt-15 font-secondary lh-md"> {{ $Detay->title}}</h1>
           <div class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center">
              <a href="index.html"><i class="ti-home"></i></a>Anasayfa <i class="ti-angle-right fs-7 mx-15"></i> 
-             <a href="{{ route('studios')}}" class="stay c-default opacity-7">Stüdyolarımız</a> </div>
+             <a href="{{ route('studios')}}" class="stay c-default opacity-7">Etkinlikler</a> </div>
              <a href="#" class="stay c-default opacity-7">{{ $Detay->title}}</a> </div>
        </div>
     </div>
@@ -47,11 +47,12 @@
     </div>
 </section>
 
+<
 <section id="portfolio-grid" class="pb-60 pt-50 bt-1 b-gray1 b-solid lightbox_gallery">
     <div class="container ">
   
         <div id="gallery-items" class="lightbox_gallery">
-            @foreach ($Detay->getMedia('gallery') as $item)
+            @foreach ($Gallery->getMedia('gallery') as $item)
                 <a href="{{ $item->getUrl('img') }}" class="cbp-item has-overlay-hover scale-hover-container">
                     <div class="work-image">
                         <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo"/>
