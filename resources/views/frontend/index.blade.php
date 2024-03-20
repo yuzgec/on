@@ -290,7 +290,7 @@
         $('#gallery-items').cubeportfolio({
             mediaQueries: [{
                 width: 992,
-                cols: 3,
+                cols: 6,
             }, {
                 width: 640,
                 cols: 3,
