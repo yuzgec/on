@@ -2,9 +2,9 @@
 @section('content')
 
 <section id="home" class="relative white height-60vh height-60vh-sm mnh-450 align-items-center d-flex">
-    <div class="videobg bg-soft bg-soft-dark5 loaded" data-background="images/videos/video-2-poster.jpg" style="background-image: url();">
-       <video poster="images/videos/video-2-poster.jpg" playsinline="" autoplay="true" muted="" loop="true">
-          <source src="/ondance.mp4" type="video/mp4">
+    <div class="videobg bg-soft bg-soft-dark5 loaded" data-background="{{ $Detay->getFirstMediaUrl('cover') }}">
+        <video poster="{{ $Detay->getFirstMediaUrl('cover') }}" playsinline="" autoplay="true" muted="" loop="true">
+            <source src="{{ ($Detay->getFirstMediaUrl('cover')) ? $Detay->getFirstMediaUrl('cover')  : '/ondance.mp4'}}" type="video/mp4">
        </video>
     </div>
     <div class="container-md">

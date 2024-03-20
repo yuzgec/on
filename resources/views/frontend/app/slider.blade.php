@@ -19,10 +19,10 @@
      </div>
      <div class="container relative zi-5">
           <div class="t-left mt-25">
-               <h5 class="fs-16 white uppercase font-secondary">
+               <h5 class="fs-16 white uppercase y">
                    ON DANCE - İZMİR
                </h5>
-               <h2 class="mt-15 fs--lg mxw-600 lh-sm mt-15 font-secondary uppercase t-left">
+               <h2 class="mt-15 fs--lg mxw-600 lh-sm mt-15  uppercase t-left">
                     {{ config('settings.slider1')}}<span class="colored1"> {{ config('settings.slider2')}}</span>
                     {{ config('settings.slider3')}}
                </h2>
