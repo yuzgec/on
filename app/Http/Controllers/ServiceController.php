@@ -156,7 +156,7 @@ class ServiceController extends Controller
             $filenamewithextension = $request->file('upload')->getClientOriginalName();
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $extension = $request->file('upload')->getClientOriginalExtension();
-            $filenametostore = seo($filename).'_'.time().'.'.$extension;
+            $filenametostore = $filename.'_'.time().'.'.$extension;
             $request->file('upload')->storeAs('public/uploads', $filenametostore);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('storage/uploads/'.$filenametostore);
