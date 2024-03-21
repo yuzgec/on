@@ -17,6 +17,10 @@ Route::get('/egitimlerimiz', [HomeController::class, 'services'])->name('service
 Route::get('/egitim/{url}', [HomeController::class, 'service'])->name('service');
 Route::get('/yonetim', [HomeController::class, 'management'])->name('management');
 
+Route::get('/egitmenler', [HomeController::class, 'team'])->name('team');
+Route::get('/egitmen/{url}', [HomeController::class, 'dancer'])->name('dancer');
+
+
 Route::get('/studyolarimiz', [HomeController::class, 'studios'])->name('studios');
 Route::get('/studio/{url}', [HomeController::class, 'studio'])->name('studio');
 
@@ -36,7 +40,6 @@ Route::get('/sss', [HomeController::class, 'sss'])->name('sss');
 Route::get('/video-galeri', [HomeController::class, 'video'])->name('video');
 Route::get('/referanslarimiz', [HomeController::class, 'reference'])->name('reference');
 Route::get('/sss', [HomeController::class, 'faq'])->name('faq');
-Route::get('/egitmenlerimiz', [HomeController::class, 'team'])->name('team');
 Route::get('/ik', [HomeController::class, 'hr'])->name('hr');
 Route::get('/ders-programi', [HomeController::class, 'syllabus'])->name('syllabus');
 Route::get('/onkayit', [HomeController::class, 'preregistration'])->name('pre-registration');

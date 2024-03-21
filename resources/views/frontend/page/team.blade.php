@@ -22,6 +22,7 @@
     <div class="container">
        <div class="row">
         @foreach ($All as $item)
+        <a href="{{ route('dancer', $item->slug)}}">
           <figure class="col-lg-4 col-sm-6 col-12 mt-30">
              <img src="{{ $item->getFirstMediaUrl('page', 'thumb') }}" class="img-fluid" alt="ON DANCE - {{ $item->title.' - '.$item->seo_key}}"/>
              <figcaption class="pt-20">
@@ -29,6 +30,7 @@
                 <p class="gray6 fs-14 mt-5">{{$item->seo_key}}</p>
              </figcaption>
           </figure>
+         </a>
           @endforeach         
        </div>
     </div>

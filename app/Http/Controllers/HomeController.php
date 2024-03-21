@@ -85,6 +85,11 @@ class HomeController extends Controller
         return view('frontend.page.team', compact('All'));
     }
 
+    public function dancer($slug){
+        $Detay = Service::where('category', 4)->where('slug', $slug)->firstOrFail();
+        return view('frontend.page.dancer', compact('Detay'));
+    }
+
     public function management(){
         $All = Service::where('category', 8)->get();
         return view('frontend.page.management', compact('All'));
