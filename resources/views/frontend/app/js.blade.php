@@ -55,3 +55,9 @@
 <script src="/front/content/portfolio/js/plugins.js?v=3"></script>
 <script src="/front/js/components/masonry.pkgd.min.js"></script>
 <script src="/front/content/seta/js/plugins.js?v=3"></script>
+<script>
+	$(document).ready(function() {
+		$("table").addClass("table table-hover table-striped table-bordered table-responsive");
+        $("img").addClass('img-fluid');
+	})
+</script>
