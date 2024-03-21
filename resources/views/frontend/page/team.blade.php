@@ -22,15 +22,17 @@
     <div class="container">
        <div class="row">
         @foreach ($All as $item)
-        <a href="{{ route('dancer', $item->slug)}}">
+
           <figure class="col-lg-4 col-sm-6 col-12 mt-30">
+            <a href="{{ route('dancer', $item->slug)}}">
              <img src="{{ $item->getFirstMediaUrl('page', 'thumb') }}" class="img-fluid" alt="ON DANCE - {{ $item->title.' - '.$item->seo_key}}"/>
              <figcaption class="pt-20">
                 <h4 class="fs-18 dark2">{{$item->title}}</h4>
                 <p class="gray6 fs-14 mt-5">{{$item->seo_key}}</p>
              </figcaption>
+            </a>
           </figure>
-         </a>
+       
           @endforeach         
        </div>
     </div>
