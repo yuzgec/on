@@ -24,14 +24,22 @@
                                 <li><a href="{{ route('studio', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
                             @endforeach
                         </ul> 
-                    </li>                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
+                    </li>
+
+                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitimler</a>
                         <ul class="dropdown-menu to-right">
                             @foreach ($Service->where('category',1) as $item) 
                                 <li><a href="{{ route('service', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
                             @endforeach
                         </ul> 
                     </li>
-                    <li><a href="{{ route('team')}}" class="nav-link">Eğitmenler</a></li>
+                    <li class="dd-toggle"> <a href="#" class="nav-link">Eğitmenler</a>
+                        <ul class="dropdown-menu to-right">
+                            @foreach ($Service->where('category',4) as $item) 
+                                <li><a href="{{ route('dancer', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
+                            @endforeach
+                        </ul> 
+                    </li>
                     <li><a href="{{ route('events')}}" class="nav-link">Etkinlikler</a></li>
                     <li><a href="{{ route('contactus')}}" class="nav-link">İletişim</a></li>
                     <li class="punch-nav-trigger mt-30-sm">
@@ -74,7 +82,7 @@
            <div class="col-12 absolute height-100 px-50 px-15-sm left-0 top-0 zi-5 d-flex align-items-center animate" data-animation="fadeIn" data-animation-delay="700">
                <div class="row fullwidth mx-0">
                    <div class="col d-flex justify-content-start align-items-center">
-                        <img src="/logob.png" alt="ON DANCE - İZMİR KARŞIYAKA DANS STÜDYOSU" class="logo-white mxw-100" title="Quadra Premium Template">
+                        <img src="/logob.png" alt="ON DANCE - İZMİR KARŞIYAKA DANS STÜDYOSU" class="logo-white mxw-100" title="KARŞIYAKA DANS OKULU - DANS EĞİTİMİ">
                    </div>
                    <div class="col d-flex justify-content-end align-items-center">
                        <a href="#" class="close block">
