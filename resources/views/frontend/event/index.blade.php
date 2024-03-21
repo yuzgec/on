@@ -24,7 +24,7 @@
             @foreach ($Blog->where('category', 3) as $item)
             <div class="col-lg-4 col-12 mt-30 perspective-lg relative zi-hover">
                 <div class="bg-white bs-lg-hover dark2 slow c-default py-40 px-40">
-                    <div class="fs-45 mt-150">
+                    <div class="fs-45">
                         <a href="{{ route('event', $item->slug)}}" title="{{ $item->title}}">
                         <img src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}" alt="{{ $item->title}}" class="img-fluid">
                         </a>

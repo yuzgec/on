@@ -100,20 +100,21 @@
     </div>
 </section>  
 
+<section id="element-template-06" class="py-120 bt-1 b-gray1 b-solid">
+    <div class="container">
+        <div class="fs-20 fs-16-sm gray7 ls-0 lh-35 light">
+            {!! $Gallery->desc!!}
+        </div>
+    </div>
 
-<section id="portfolio-grid" class="pb-60 pt-50 bt-1 b-gray1 b-solid lightbox_gallery">
-    <div class="container-fluid bg-dark">
-  
-        <div id="gallery-items" class="lightbox_gallery">
+    <div id="image-slider-template-06" class="mt-70 container-fluid o-hidden-x px-5">
+        <div id="image-slider-06" class="custom-slider fw-slider block-img dots-circle c-grab t-center" 
+            data-slick='{"variableWidth": true, "centerMode": true, "dots": false, "speed":1000,"autoplay":true, "arrows": true, "fade": false, "draggable":true, "slidesToShow": 1, "slidesToScroll": 1,
+             "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
             @foreach ($Gallery->getMedia('gallery') as $item)
-                <a href="{{ $item->getUrl('img') }}" class="cbp-item has-overlay-hover scale-hover-container">
-                    <div class="work-image">
-                        <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo"/>
-                    </div>
-                    <div class="zi-5 overlay-hover slow bg-blur bg-soft-dark5 flex-column t-center">
-                        <i class="ti-more white fs-22"></i>
-                    </div>
-                </a>
+            <div class="px-10 relative">
+                <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo" style="max-height: 300px"/>
+            </div>
             @endforeach
         </div>
     </div>

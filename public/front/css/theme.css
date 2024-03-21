@@ -1019,7 +1019,7 @@
 	/* Links */
 	.modern-nav .nav-links li{position:relative;}
 	.modern-nav .nav-links li.logo-for-mobile-navigation{display:none!important;}
-	.modern-nav .nav-links .nav-link{font-weight:700;color:inherit;font-size:11px;pointer-events:auto!important;text-transform:uppercase;padding:0 20px;display:flex;display:-ms-flexbox;align-items:center;-ms-flex-align:center;width:auto;height:100%;opacity:1;position:relative;-webkit-transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;-moz-transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;}
+	.modern-nav .nav-links .nav-link{font-weight:500;color:inherit;font-size:12px;pointer-events:auto!important;text-transform:uppercase;padding:0 10px;display:flex;display:-ms-flexbox;align-items:center;-ms-flex-align:center;width:auto;height:100%;opacity:1;position:relative;-webkit-transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;-moz-transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;transition:all 0.2s, height 0s, line-height 0s, background 0s, padding 0s;}
 	.modern-nav .nav-links>li>.nav-link{line-height:normal;}
 	.modern-nav[class*=fs-] .nav-links .nav-link{font-size:inherit;}
 	.modern-nav.capitalize .nav-links .nav-link{text-transform:capitalize}

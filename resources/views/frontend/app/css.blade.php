@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="/front/css/plugins.css?v=4.0"/>
     <link rel="stylesheet" href="/front/css/revolutionslider/settings.css" />
-    <link rel="stylesheet" href="/front/css/theme.css?v=4.0"/>
+    <link rel="stylesheet" href="/front/css/theme.css?v=5.0"/>
     <link rel="stylesheet" href="/front/content/portfolio/css/portfolio.css?v=4.0" />
     <link rel="stylesheet" href="/front/content/seta/css/seta.css?v=4.0" />
     <link rel="stylesheet" href="/front/css/skins/skin-seta.css" />

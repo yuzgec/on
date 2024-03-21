@@ -41,6 +41,8 @@
                         </ul> 
                     </li>
                     <li><a href="{{ route('events')}}" class="nav-link">Etkinlikler</a></li>
+                    <li><a href="{{ route('events')}}" class="nav-link">Prodüksiyon</a></li>
+                    <li><a href="{{ route('events')}}" class="nav-link">Shop</a></li>
                     <li><a href="{{ route('contactus')}}" class="nav-link">İletişim</a></li>
                     <li class="punch-nav-trigger mt-30-sm">
                          <div class="hamburger-menu">
@@ -59,7 +61,7 @@
                         <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
                         <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
-                        <button class="sidebar-button md-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-sm" title="Buy Quadra"><span>Bilgi Al</span></button>
+                        <button class="sidebar-button md-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-sm" title="Bilgi Al"><span>Bilgi Al</span></button>
                     </li>
                 </ul>
             </div>
