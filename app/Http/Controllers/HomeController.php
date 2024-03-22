@@ -21,7 +21,7 @@ class HomeController extends Controller
     }
 
     public function store(){
-        return view('frontend.store.index');
+        return view('frontend.shop.index');
     }
 
     public function preregistration(){
