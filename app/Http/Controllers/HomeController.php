@@ -17,17 +17,11 @@ class HomeController extends Controller
     public function index(){
         $About = Page::where('id',1)->first();
         $Gallery = Page::where('id',2)->first();
-
-        
-
-        //dd($Gallery->getMedia('gallery'));
-
-
         return view('frontend.index',compact('About','Gallery'));
     }
 
-    public function syllabus(){
-        return view('frontend.page.syllabus');
+    public function store(){
+        return view('frontend.store.index');
     }
 
     public function preregistration(){
@@ -49,15 +43,11 @@ class HomeController extends Controller
         return view('frontend.service.index',compact('All'));
     }
 
-
     public function service($slug){
         $Detay = Service::where('category', 1)->where('slug', $slug)->firstOrFail();
-
-
         $Format = substr($Detay->getFirstMediaUrl('cover'), -3);
         return view('frontend.service.detail', compact('Detay', 'Format'));
     }
-
 
     public function studios(){
         $All = Service::where('category', 2)->get();
@@ -79,7 +69,6 @@ class HomeController extends Controller
         return view('frontend.event.detail', compact('Detay'));
     }
 
-
     public function team(){
         $All = Service::where('category', 4)->get();
         return view('frontend.page.team', compact('All'));
@@ -87,6 +76,11 @@ class HomeController extends Controller
 
     public function dancer($slug){
         $Detay = Service::where('category', 4)->where('slug', $slug)->firstOrFail();
+        return view('frontend.page.dancer', compact('Detay'));
+    }
+
+    public function production($slug){
+        $Detay = Service::where('category', 9)->where('slug', $slug)->firstOrFail();
         return view('frontend.page.dancer', compact('Detay'));
     }
 

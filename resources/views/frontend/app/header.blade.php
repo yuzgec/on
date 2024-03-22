@@ -41,8 +41,8 @@
                         </ul> 
                     </li>
                     <li><a href="{{ route('events')}}" class="nav-link">Etkinlikler</a></li>
-                    <li><a href="{{ route('events')}}" class="nav-link">Prodüksiyon</a></li>
-                    <li><a href="{{ route('events')}}" class="nav-link">Shop</a></li>
+                    <li><a href="{{ route('production', 'produksiyon')}}" class="nav-link">Prodüksiyon</a></li>
+                    <li><a href="{{ route('store')}}" class="nav-link">Store</a></li>
                     <li><a href="{{ route('contactus')}}" class="nav-link">İletişim</a></li>
                     <li class="punch-nav-trigger mt-30-sm">
                          <div class="hamburger-menu">

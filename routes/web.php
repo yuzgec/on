@@ -27,11 +27,10 @@ Route::get('/studio/{url}', [HomeController::class, 'studio'])->name('studio');
 Route::get('/etkinlikler', [HomeController::class, 'events'])->name('events');
 Route::get('/etkinlik/{url}', [HomeController::class, 'event'])->name('event');
 
-Route::get('/kampanyalarimiz', [HomeController::class, 'campaigns'])->name('campaigns');
-Route::get('/kampanya/{url}', [HomeController::class, 'campaign'])->name('campaign');
+Route::get('/production/{url}', [HomeController::class, 'production'])->name('production');
+Route::get('/store', [HomeController::class, 'store'])->name('store');
 
 //Hizmetler Route
-
 Route::get('/projelerimiz', [HomeController::class, 'project'])->name('project');
 Route::get('/proje/{url}', [HomeController::class, 'projectdetail'])->name('projectdetail');
 Route::get('/makaleler', [HomeController::class, 'blog'])->name('blog');
