@@ -71,32 +71,37 @@
         </div>
     </div>
     <div class="container mt-50">
-        <div id="blog-posts" class="blog-posts grid">
-            @foreach ($Service->where('category', 1) as $item)
-            <figure id="post_0{{ $item->id}}" class="post cbp-item"  style="width: 23%; left: 0px; top: 0px;">
-                <div class="cbp-item-wrapper">
-                    <figcaption>
-                        <div class="cbp-caption">
-                            <a href="{{ route('service', $item->slug)}}" class="cbp-caption-defaultWrap">
-                                <img src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}" class="img-fluid" alt="İZMİR ON DANCE - {{ $item->title}}"/>
-                            </a>
-                        </div>
-                        <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}} - İzmir On Dance Studio">
-                               <div class="t-center">
+        
+            <div id="blog-posts" class="blog-posts grid">
+                <div class="row">
+                @foreach ($Service->where('category', 1) as $item)
+                <figure id="post_0{{ $item->id}}" class="col-12 col-md-4">
+                    <div class="">
+                    <div class="cbp-item-wrapper">
+                        <figcaption>
+                            <div class="cbp-caption">
+                                <a href="{{ route('service', $item->slug)}}" class="cbp-caption-defaultWrap">
+                                    <img src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}" class="img-fluid" alt="İZMİR ON DANCE - {{ $item->title}}"/>
+                                </a>
+                            </div>
+                            <a href="{{ route('service', $item->slug)}}" class="post-details" alt="{{ $item->title}} - İzmir On Dance Studio">
+                                <div class="t-center">
                                 <h4 class="post-title ">
                                     {{ $item->title}}
                                 </h4>
-                            
                                 <span class="badge badge-success">
                                     {{ $item->short }}
                                 </span>
-                               </div>
+                                </div>
                         </a>
-                    </figcaption>
+                        </figcaption>
+                    </div>
                 </div>
-            </figure>
-            @endforeach
+                </figure>
+                @endforeach
+            </div>
         </div>
+       
     </div>
 </section>  
 
@@ -271,19 +276,6 @@
     })(jQuery, window, document);
 </script>
 
-
-
-<script>
-    $(".rotate-container").each(function {
-        $(body).on('touch touchmove', function{
-            $('.rotate-container').removeClass('hover');
-        })
-        $(this).on('touchstart', function(){
-            $(this).toggleClass('hover');
-        });
-    });
-    
-</script>
 
 <script>
     (function($, window, document, undefined) {
