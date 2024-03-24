@@ -4,16 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePriceCategoriesTable extends Migration
+class CreateProductCategoriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('price_categories', function (Blueprint $table) {
+        Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->nestedSet();
 
@@ -35,15 +31,9 @@ class CreatePriceCategoriesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
-        Schema::table('price_categories', function (Blueprint $table) {
-            $table->dropNestedSet();
-        });
+        Schema::dropIfExists('product_categories');
     }
 }

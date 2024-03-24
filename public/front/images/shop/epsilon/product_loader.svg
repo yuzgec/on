@@ -1,0 +1,18 @@
+
+<svg width="710px" height="846px" viewBox="0 0 710 846" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#D4CDBF" x="0" y="0" width="710" height="846"></rect>
+        <g id="loader2" transform="translate(346.000000, 414.000000)" stroke="#5C5444">
+            <circle id="Oval" stroke-opacity="0.3" cx="18" cy="18" r="18"></circle>
+            <path d="M36,18 C36,8.06 27.94,0 18,0">
+            	<animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 18 18"
+                    to="360 18 18"
+                    dur="1s"
+                    repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+</svg>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,25 +29,29 @@ Route::get('/etkinlikler', [HomeController::class, 'events'])->name('events');
 Route::get('/etkinlik/{url}', [HomeController::class, 'event'])->name('event');
 
 Route::get('/production/{url}', [HomeController::class, 'production'])->name('production');
-Route::get('/store', [HomeController::class, 'store'])->name('store');
+
+
+
 
 //Hizmetler Route
-Route::get('/projelerimiz', [HomeController::class, 'project'])->name('project');
-Route::get('/proje/{url}', [HomeController::class, 'projectdetail'])->name('projectdetail');
+
 Route::get('/makaleler', [HomeController::class, 'blog'])->name('blog');
 Route::get('/makale/{url}', [HomeController::class, 'blogdetail'])->name('blogdetail');
-Route::get('/sss', [HomeController::class, 'sss'])->name('sss');
-Route::get('/video-galeri', [HomeController::class, 'video'])->name('video');
-Route::get('/referanslarimiz', [HomeController::class, 'reference'])->name('reference');
+
 Route::get('/sss', [HomeController::class, 'faq'])->name('faq');
-Route::get('/ik', [HomeController::class, 'hr'])->name('hr');
-Route::get('/ders-programi', [HomeController::class, 'syllabus'])->name('syllabus');
 Route::get('/onkayit', [HomeController::class, 'preregistration'])->name('pre-registration');
-
-
-
-
 Route::post('/form', [HomeController::class, 'form'])->name('form');
+
+
+//Shop
+
+Route::group(["prefix"=>"store"], function(){
+    Route::get('/', [ShopController::class, 'store'])->name('store');
+    Route::get('/urun/{url}', [ShopController::class, 'product'])->name('product');
+    Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
+    Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
+});
+
 
 Route::group(["prefix"=>"go", 'middleware' => ['auth','web', 'admin']],function() {
     Route::get('/', 'DashboardController@index')->name('go');
@@ -68,10 +73,14 @@ Route::group(["prefix"=>"go", 'middleware' => ['auth','web', 'admin']],function(
     Route::auto('/video', VideoController::class);
     Route::auto('/video-categories', VideoCategoryController::class);
     Route::auto('/settings', SettingController::class);
+    Route::auto('/product', ProductController::class);
+    Route::auto('/product-categories', ProductCategoryController::class);
     Route::auto('/contact', ContactController::class);
     Route::auto('/features', FeaturesController::class);
     Route::auto('/reference', ReferenceController::class);
     Route::auto('/price', PriceController::class);
+    Route::auto('/attribute', AttributesController::class);
+    Route::auto('/attributevalue', AttributeValueController::class);
 
 });
 

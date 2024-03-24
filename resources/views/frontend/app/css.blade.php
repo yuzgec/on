@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/front/css/blog.css" />
     <link rel="stylesheet" href="/front/css/components/quadra/gold.punch.navigation.css"/>
     <link rel="stylesheet" href="/front/css/components/semantic.min.css"/>
+    <link rel="stylesheet" href="/front/css/components/quadra/shop.css?v=1.0.0"/>
 
     <style>
         .cbp-item .work-image{-webkit-transform:scale(1);transform:scale(1); -webkit-transition:transform 0.5s;transition:transform 0.5s;}

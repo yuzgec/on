@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Blog;
 use App\Models\Page;
 use App\Models\Service;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
@@ -31,11 +33,18 @@ class ViewShareProvider extends ServiceProvider
         $Pages = Page::with('getCategory')->get();
         $Service = Service::orderBy('rank', 'asc')->get();
         $Blog = Blog::all();
+        $Product = Product::with('getCategory')->get();
+
+        //dd($Product);
+        $Product_Categories = ProductCategory::get()->toFlatTree();
+
      
         View::share([
             'Pages' => $Pages,
             'Service' => $Service,
             'Blog' => $Blog,
+            'Product' => $Product,
+            'Product_Categories' => $Product_Categories
         ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Form;
 use App\Models\Page;
 use App\Models\Service;
+use App\Models\Attribute;
 use App\Models\Video;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Mail;
@@ -15,14 +16,13 @@ class HomeController extends Controller
 {
 
     public function index(){
+
         $About = Page::where('id',1)->first();
         $Gallery = Page::where('id',2)->first();
         return view('frontend.index',compact('About','Gallery'));
     }
 
-    public function store(){
-        return view('frontend.shop.index');
-    }
+
 
     public function preregistration(){
         return view('frontend.page.preregistration');

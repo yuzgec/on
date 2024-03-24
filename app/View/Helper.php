@@ -11,6 +11,37 @@
         }
     }
 
+    function renderCategoriesCreate($categories, $level = 0) {
+        foreach ($categories as $category) {
+            // Derinliğe göre tire ekleyin
+            $prefix = str_repeat('-', $level);
+    
+            echo '<option value="'.$category->id.'" >'.$prefix.' '.$category->title.'</option>';
+    
+            // Eğer alt kategoriler varsa, fonksiyonu tekrar çağır
+            if (!empty($category->children)) {
+                renderCategoriesCreate($category->children, $level + 1);
+            }
+        }
+    }
+
+    function renderCategoriesEdit($categories, $selectedCategories, $level = 0) {
+        foreach ($categories as $category) {
+            // Derinliğe göre tire ekleyin
+            $prefix = str_repeat('-', $level);
+            // Bu kategori seçili mi kontrol et
+            $selected = in_array($category->id, $selectedCategories) ? 'selected' : '';
+    
+            echo '<option value="'.$category->id.'" '.$selected.'>'.$prefix.' '.$category->title.'</option>';
+    
+            // Eğer alt kategoriler varsa, fonksiyonu tekrar çağır
+            if (!empty($category->children)) {
+                renderCategoriesEdit($category->children, $selectedCategories, $level + 1);
+            }
+        }
+    }
+
+
     // function imageupload($method, $image){
     //     if($method == 'Update'){
     //         $method->media()->where('collection_name', 'page')->delete();
