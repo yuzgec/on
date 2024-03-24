@@ -42,9 +42,9 @@ class ViewShareProvider extends ServiceProvider
         View::share([
             'Pages' => $Pages,
             'Service' => $Service,
-            'Blog' => $Blog,
-            'Product' => $Product,
-            'Product_Categories' => $Product_Categories
+            'Blog' => $Blog
+            //'Product' => $Product,
+            //'Product_Categories' => $Product_Categories
         ]);
     }
 }
