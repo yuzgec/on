@@ -29,12 +29,15 @@ class AttributeValueController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255', // Basit bir doğrulama
+            'attribute_id' => 'required|exists:attributes,id',
+            'value' => 'required|string|max:255',
         ]);
 
-        $Update = AttributeValue::find($id);
-        $Update->name = $request->name;
-        $Update->save();
+
+        $attributeValue = AttributeValue::find($id);
+        $attributeValue->attribute_id = $request->attribute_id;
+        $attributeValue->value = $request->value;
+        $attributeValue->save();
 
         toast(SWEETALERT_MESSAGE_UPDATE,'success');
         return redirect()->route('attribute.index');

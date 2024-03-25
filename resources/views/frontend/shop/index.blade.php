@@ -26,11 +26,11 @@
                     <a href="{{ route('product', $item->slug) }}" class="d-flex">
                         <div class="px-15 pt-15 pb-30 bg-transparent bg-white-hover bs-epsilon-hover slow">
                             <img src="/front/images/shop/epsilon/product_loader.svg" 
-                            data-cbp-src="/front/images/shop/epsilon/product_01.jpg"
+                            data-cbp-src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $item->getFirstMediaUrl('page', 'thumb')}}"
                              alt="Portfolio picture template">
                             <p class="fs-12 gray6 uppercase mt-30 ls-2">{{ $item->firstCategoryName}}</p>
                             <h4 class="color-brown fs-18 mt-5">{{ $item->title}}</h4>
-                            <p class="fs-14 color-brown mt-5">{{ $item->price}}₺</p>
+                            <p class="fs-14 color-brown mt-5">{{ money($item->price) }}</p>
                         </div>
                     </a>
                 </div>

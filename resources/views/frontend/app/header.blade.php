@@ -42,8 +42,16 @@
                     </li>
                     <li><a href="{{ route('events')}}" class="nav-link">Etkinlikler</a></li>
                     <li><a href="{{ route('production', 'produksiyon')}}" class="nav-link">Prodüksiyon</a></li>
-                    <li><a href="{{ route('store')}}" class="nav-link">Store</a></li>
+                    <li class="dd-toggle">
+                        <a href="{{ route('store')}}" class="nav-link">Store</a>
+                        <ul class="dropdown-menu to-right">
+                            @foreach ($Product_Categories as $item) 
+                                <li><a href="{{ route('dancer', $item->slug)}}" class="nav-link">{{ $item->title }}</a></li>
+                            @endforeach
+                        </ul> 
+                    </li>
                     <li><a href="{{ route('contactus')}}" class="nav-link">İletişim</a></li>
+                    
                     <li class="punch-nav-trigger mt-30-sm">
                          <div class="hamburger-menu">
                              <div class="top-bun"></div>

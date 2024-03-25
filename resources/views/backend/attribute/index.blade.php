@@ -26,8 +26,8 @@
                 <table class="table table-hover table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Özellik Adı</th>
+                            <th>Ekle</th>
                             <th>Özellikler</th>
                             <th class="w-1"></th>
                             <th class="w-1"></th>
@@ -36,6 +36,11 @@
                     <tbody>
                     @foreach($All as $item)
                     <tr>                    
+
+                        <td style="width: 10%">
+                            <div class="font-weight-medium">{{ $item->name }}</div>
+                        </td>
+
                         <td style="width: 10%">
                             <div class="font-weight-medium">
 
@@ -45,16 +50,50 @@
                                 </a>
                             </div>
                         </td>
-                        <td style="width: 10%">
-                            <div class="font-weight-medium">{{ $item->name }}</div>
-                        </td>
-
+                       
                         <td>
                             @foreach ($Value->where('attribute_id', $item->id) as $row)
+
                             <div class="form-selectgroup">
                                 <label class="form-selectgroup-item">
-                                  <span class="form-selectgroup-label">{{ $row->value}}</span>
+                                  <span class="form-selectgroup-label">
+                                    <a data-bs-toggle="modal" data-bs-target="#edit{{ $row->id }}" class="" >
+
+                                    {{ $row->value}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 15l8.385 -8.415a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3z" /><path d="M16 5l3 3" /><path d="M9 7.07a7.002 7.002 0 0 0 1 13.93a7.002 7.002 0 0 0 6.929 -5.999" /></svg>
+                                    </a>
+                                </span>
                                 </label>
+                            </div>
+
+
+                            <div class="modal modal-blur fade" id="edit{{ $row->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    {{Form::model($row, ["route" => ["attributevalue.update", $row->id]])}}
+                                    @csrf
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Alt Özellik Düzenle</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <x-form-inputtext label="Özellik Adı" name="value"/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                                                    İptal Et
+                                                </a>
+                                            
+                                                <input type="hidden" name="attribute_id" value="{{ $item->id}}">
+                                                <button type="submit" class="btn btn-success btn-sm ms-auto">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="7" x2="20" y2="7" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
+                                                    Kaydet
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {{Form::close()}}
+                                </div>
                             </div>
                             
     
@@ -131,6 +170,9 @@
                             </form>
                         </div>
                     </div>
+
+
+                   
                     @endforeach
 
                     </tbody>

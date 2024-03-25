@@ -68,7 +68,7 @@
     }
 
     function money($deger){
-        return number_format((float)$deger, 2, '.', '');
+        return number_format((float)$deger, 2, '.', '').'₺';
     }
 
     function cargo($toplam)

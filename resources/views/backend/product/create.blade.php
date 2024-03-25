@@ -51,6 +51,17 @@
                     </div>
                 </div>
 
+                <div class="form-group mb-3 row">
+                    <label class="form-label col-3 col-form-label">Ürün Özellikleri </label>
+
+                        <div class="col-6 col-md-2 form-selectgroup-pills">
+                            <label class="form-selectgroup-item">
+                                <input type="checkbox" name="name" value="HTML" class="form-selectgroup-input" checked="">
+                                <span class="form-selectgroup-label">HTML</span>
+                            </label>
+                        </div>
+                      
+                  </div>
 
                 <div class="form-group mb-3 row">
                     <label class="form-label col-3 col-form-label">Listele </label>
