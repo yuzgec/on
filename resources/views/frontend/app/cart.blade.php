@@ -7,45 +7,34 @@
                     </h3>
                     <div class="icon-xs relative c-default">
                         <i class="ti-shopping-cart fs-20 black"></i>
-                        <span class="fs-12 d-block medium absolute left-percent-90 top-0">2</span>
+                        <span class="fs-12 d-block medium absolute left-percent-90 top-0">{{ Cart::instance('shopping')->count()}}</span>
                     </div>
                 </div>
                 <div class="mt-30">
                     @foreach(Cart::instance('shopping')->content() as $cart)
-
-                    <div class="py-30 bb-1 b-gray1 d-flex justify-content-between flex-lg-row flex-column">
-                        <!-- Image and title -->
+                    <div class="py-10 bb-1 b-gray1 d-flex justify-content-between flex-lg-row flex-column">
                         <div class="d-flex fullwidth row-eq-height fullwidth justify-centent-between">
-                            <!-- Product image in lazy & cover background -->
-                            <div class="width-100 height-100">
+                            <div class="width-30 height-30">
                                 <img src="{{ $cart->options->image }}" alt="{{ $cart->name }}" class="img-fluid">
-
                             </div>
-                            <!-- Titles and price -->
                             <div class="py-10 pl-15 d-flex flex-column align-items-between">
-                                <!-- Titles -->
                                 <div class="mb-auto">
-                                    <!-- Product title -->
                                     <h4 class="fs-15 uppercase dark">
                                         {{ $cart->name }}
                                     </h4>
-                                    <!-- Product subtitle -->
                                     <p class="mt-3 fs-14 gray5">
-                                        Pictures
+                                        {{ $cart->options->category }}
                                     </p>
                                 </div>
-                                <!-- End titles -->
-                                <!-- Price -->
+                   
                                 <div class="mt-auto">
                                     <p class="fs-14 medium dark1">
                                         {{ money($cart->price )}}
                                     </p>
                                 </div>
                             </div>
-                            <!-- End titles and price -->
                         </div>
-                        <!-- End image and title -->
-                        <!-- Quantity -->
+
                         <div class="d-flex align-items-center justify-centent-lg-end justify-content-start ml-auto ml-0-sm mt-15-sm">
                             <div class="quantity d-flex align-items-center justify-content-center">
                                 <input type="button" value="-" class="minus b-gray1 bg-white bg-gray2-hover dark3 fs-16 slow width-40 height-40 px-0 py-0 circle">
@@ -54,7 +43,6 @@
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                 </div>
             </div>
@@ -73,14 +61,14 @@
                         Toplam 
                     </h5>
                     <p class="ml-auto fs-22 dark">
-                        $64.80
+                       {{Cart::instance('shopping')->total()}}
                     </p>
                 </div>
                 <div class="d-flex mt-40 justify-content-lg-between align-items-start flex-lg-row flex-wrap">
-                        <a href="#" class="cart-closer xl-btn d-inline-flex bg-white b-1 b-gray2 opacity-7-hover slow-sm medium fs-12 uppercase ls-1">
+                        <a href="{{ route('store')}}" class="cart-closer xl-btn d-inline-flex bg-white b-1 b-gray2 opacity-7-hover slow-sm medium fs-12 uppercase ls-1">
                            Alışverişe Devam Et
                         </a>
-                        <a href="shop-checkout.html" class="ml-auto ml-0-sm xl-btn mt-15-sm bg-colored2 bg-colored1-hover slow-sm white medium fs-12 uppercase ls-1">
+                        <a href="{{ route('checkout')}}" class="ml-auto ml-0-sm xl-btn mt-15-sm bg-colored2 bg-colored1-hover slow-sm white medium fs-12 uppercase ls-1">
                             Ödeme
                         </a>
                     </div>

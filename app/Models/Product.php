@@ -36,6 +36,12 @@ class Product extends Model implements HasMedia,Viewable
                     ->withPivot('attribute_id');
     }
 
+
+    public function categories()
+    {
+        return $this->belongsToMany(ProductCategory::class, 'product_category_pivots', 'product_id', 'category_id');
+    }
+    
     public function getCategory(){
         return $this->hasMany(ProductCategoryPivot::class, 'product_id', 'id');
     }

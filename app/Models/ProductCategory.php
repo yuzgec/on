@@ -22,9 +22,15 @@ class ProductCategory extends Model implements HasMedia
     protected $guarded = [];
     protected $table = 'product_categories';
 
+
     public function cat()
     {
         return $this->hasMany('App\Models\ProductCategoryPivot', 'category_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_category_pivots', 'category_id', 'product_id');
     }
 
     public function registerMediaConversions(Media $media = null): void

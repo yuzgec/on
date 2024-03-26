@@ -48,6 +48,7 @@ Route::post('/form', [HomeController::class, 'form'])->name('form');
 Route::group(["prefix"=>"store"], function(){
     Route::get('/', [ShopController::class, 'store'])->name('store');
     Route::get('/urun/{url}', [ShopController::class, 'product'])->name('product');
+    Route::get('/kategori/{url}', [ShopController::class, 'category'])->name('category');
     Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
     Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 
