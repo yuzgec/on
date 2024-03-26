@@ -8,7 +8,7 @@
 
             <div class="col-lg-3 col-sm-6 mt-40">
                 <h5 class="white fs-15">Sayfalar</h5>
-                <ul class="list list-lg px-0 gray5 pt-40 fs-16">
+                <ul class="list list-lg px-0 gray5 pt-20 fs-16">
                     <li>
                         <a href="{{ route('home')}}" title="Anasayfa" class="white-hover">
                            Anasayfa
@@ -26,10 +26,27 @@
                         </a>
                     </li>
                 </ul>
+
+                <h5 class="white fs-15">Store</h5>
+                <ul class="list list-lg px-0 gray5 pt-20 fs-16">
+                    <li>
+                        <a href="{{ route('cart')}}" title="Anasayfa" class="white-hover">
+                           Sepetim
+                        </a>
+                    </li>
+                    @foreach ($Pages->where('category', 3) as $item)
+                    <li>
+                        <a href="{{ route('corporatedetail', $item->slug)}}" title="{{  $item->title }}" class="white-hover">
+                           {{ $item->title}}
+                        </a>
+                    </li>
+                    @endforeach
+                 
+                </ul>
             </div>  
             <div class="col-lg-3 col-sm-6 mt-40">
                 <h5 class="white fs-15">Eğitimlerimiz</h5>
-                <ul class="list list-lg px-0 gray5 pt-40 fs-16">
+                <ul class="list list-lg px-0 gray5 pt-20 fs-16">
                     @foreach ($Service->where('category', 1) as $item)
                         <li>
                             <a href="{{ route('service', $item->slug)}}" title="{{ $item->title }}" class="white-hover">
@@ -70,10 +87,9 @@
             <div class="col-12 mt-60">
                 <div class="fullwidth bt-1 b-solid b-dark"></div>
                 <div class="py-30 row align-items-center justify-content-lg-between justify-content-center">
-                    <div class="col-lg col-12-sm gray6 fs-16 t-left t-center-sm">© {{ date('Y')}} Karşıyaka Ondance Studio Tüm Hakları Saklıdır.</div>
+                    <div class="col-lg col-12-sm gray6 fs-16 t-left t-center-sm">© {{ date('Y')}} Karşıyaka ON DANCE Tüm Hakları Saklıdır.</div>
                     <div class="col-lg col-12-sm mt-5-sm gray6 fs-16 t-right t-center-sm">
-                        <a href="#" target="_blank" class="white-hover slow">Privacy Policy</a> |
-                        <a href="#" target="_blank" class="white-hover slow">Terms and Condition</a>
+                        <img src="/iyzico.png" class="img-fluid" alt="İyzico Ödeme Logo">
                     </div>
                 </div>
             </div>

@@ -50,6 +50,10 @@ Route::group(["prefix"=>"store"], function(){
     Route::get('/urun/{url}', [ShopController::class, 'product'])->name('product');
     Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
     Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
+
+
+    Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
+
 });
 
 

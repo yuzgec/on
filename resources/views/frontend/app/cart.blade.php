@@ -11,19 +11,23 @@
                     </div>
                 </div>
                 <div class="mt-30">
-                    <!-- Product -->
+                    @foreach(Cart::instance('shopping')->content() as $cart)
+
                     <div class="py-30 bb-1 b-gray1 d-flex justify-content-between flex-lg-row flex-column">
                         <!-- Image and title -->
                         <div class="d-flex fullwidth row-eq-height fullwidth justify-centent-between">
                             <!-- Product image in lazy & cover background -->
-                            <div class="width-100 height-100" data-bg="url(images/shop/epsilon/product_05.jpg)"></div>
+                            <div class="width-100 height-100">
+                                <img src="{{ $cart->options->image }}" alt="{{ $cart->name }}" class="img-fluid">
+
+                            </div>
                             <!-- Titles and price -->
                             <div class="py-10 pl-15 d-flex flex-column align-items-between">
                                 <!-- Titles -->
                                 <div class="mb-auto">
                                     <!-- Product title -->
                                     <h4 class="fs-15 uppercase dark">
-                                        Crimson Roller bird perched
+                                        {{ $cart->name }}
                                     </h4>
                                     <!-- Product subtitle -->
                                     <p class="mt-3 fs-14 gray5">
@@ -34,7 +38,7 @@
                                 <!-- Price -->
                                 <div class="mt-auto">
                                     <p class="fs-14 medium dark1">
-                                        $32.40
+                                        {{ money($cart->price )}}
                                     </p>
                                 </div>
                             </div>
@@ -45,11 +49,13 @@
                         <div class="d-flex align-items-center justify-centent-lg-end justify-content-start ml-auto ml-0-sm mt-15-sm">
                             <div class="quantity d-flex align-items-center justify-content-center">
                                 <input type="button" value="-" class="minus b-gray1 bg-white bg-gray2-hover dark3 fs-16 slow width-40 height-40 px-0 py-0 circle">
-                                <input type="number" class="numbers width-60 height-50 px-0 py-0 t-center dark2 fs-16" step="1" min="1" max="50" name="numbers3" value="1" title="Products">
+                                <input type="number" class="numbers width-60 height-50 px-0 py-0 t-center dark2 fs-16" step="1" min="1" max="10" name="numbers3" value="{{ $cart->qty}}" title="Products">
                                 <input type="button" value="+" class="plus b-gray1 bg-white bg-gray2-hover dark3 fs-16 slow width-40 height-40 px-0 py-0 circle">
                             </div>
                         </div>
                     </div>
+
+                    @endforeach
                 </div>
             </div>
 
