@@ -188,7 +188,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
