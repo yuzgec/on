@@ -51,6 +51,8 @@ Route::group(["prefix"=>"store"], function(){
     Route::get('/kategori/{url}', [ShopController::class, 'category'])->name('category');
     Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
     Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
+    Route::post('/odeme', [ShopController::class,'pay'])->name('pay');
+    Route::post('/save', [ShopController::class,'save'])->name('save');
 
 
     Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');

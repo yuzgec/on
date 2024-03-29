@@ -23,7 +23,7 @@
                    ON DANCE - İZMİR
                </h5>
                <h2 class="mt-15 fs--lg mxw-600 lh-sm mt-15  uppercase t-left">
-                    {{ config('settings.slider1')}}<span class="colored1"> {{ config('settings.slider2')}}</span>
+                    {{ config('settings.slider1')}} <span class="colored1"> {{ config('settings.slider2')}}</span>
                     {{ config('settings.slider3')}}
                </h2>
                <p class="mt-30 mt-15-sm fs-20 fs-14-sm lh-35 lh-25-sm light mxw-650">

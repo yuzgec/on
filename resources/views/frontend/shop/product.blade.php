@@ -83,22 +83,22 @@
                 <div class="mt-25 fs-16 dark1 lh-25">
                     {!! $Detail->short !!}
                 </div>
-                
+                @if (!$Detail->firstCategoryName == 'Etkinlikler')
                 <div class="d-inline-flex width-auto align-items-center justify-content-start py-10 px-20 radius-lg" data-color="#37302E" data-bgcolor="#F2E9E4">
                     <i class="ti-package fs-12 mr-10"></i>
                     <p class="fs-13">
                         299₺ Üzeri Ücretsiz Kargo
                     </p>
                 </div>
-
+                @endif
                 <form action="{{ route('addtocart') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{ $Detail->id }}">
                     @if ($Detail->firstCategoryName == 'Etkinlikler')
-                        <input type="text" class="form-control mt-20 mb-20" name="student" placeholder="Katılımcı Adı Soyadı Giriniz" required>
+                        <input type="text" class="form-control mt-20 mb-20" name="student" placeholder="Katılımcı Adı Soyadı Giriniz" required width="80%">
                     @else
 
-                    <div class="fs-14 gray8 mt-30">
+                  {{--   <div class="fs-14 gray8 mt-30">
                         Beden Seçin:
                     </div>
 
@@ -108,7 +108,7 @@
                         <div class="mr-10">
                             <!-- Invisible input -->
                             <input id="radioSize1" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                            <!-- Label -->
+                           
                             <label for="radioSize1" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                 <!-- Uncheck view -->
                                 <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
@@ -125,7 +125,7 @@
                         <div class="mr-10">
                             <!-- Invisible input -->
                             <input id="radioSize2" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                            <!-- Label -->
+                           
                             <label for="radioSize2" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                 <!-- Uncheck view -->
                                 <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
@@ -164,7 +164,7 @@
                         <div class="mr-10">
                             <!-- Invisible input -->
                             <input id="radioSize5" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                            <!-- Label -->
+                           
                             <label for="radioSize5" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                 <!-- Uncheck view -->
                                 <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
@@ -174,22 +174,24 @@
                                 </span>
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     @endif
 
            
                     <div class="mt-35 d-flex justify-content-start align-items-center">
-                        <div class="quantity d-flex align-items-center justify-content-center" data-bgcolor="#F3F1F0">
-                            <input type="button" value="-" class="minus bg-transparent gray8 fs-20 width-70 height-55 px-0 py-0">
-                            <input type="number" class="numbers bg-transparent gray8 fs-16 width-20 height-55 px-0 py-0 t-center gray7 fs-13" step="1" min="1" max="50" name="qty" value="1" title="{{$Detail->title}}" >
-                            <input type="button" value="+" class="plus bg-transparent gray8 fs-20 width-70 height-55 px-0 py-0">
+                
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-colored white"><i class="fas fa-cart-plus"></i> SEPETE EKLE</button>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
-                            <button type="submit" id="quantity-template-button-01" name="quantity-template-button-01" 
-                            data-bgcolor="#E4DBD6" data-color="#584439" class="height-55 width-150 d-block fs-15 lh-12">SEPETE EKLE</button>
+                            <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-success white ml-10"><i class="fab fa-whatsapp"></i>  WHATSAPP BİLGİ</button>
                         </div>
+
+                    </form>
+
+                        
                     </div>
-                </form>
+              
             </div>
         </div>
     </div>

@@ -12,37 +12,51 @@
                 </div>
                 <div class="mt-30">
                     @foreach(Cart::instance('shopping')->content() as $cart)
-                    <div class="py-10 bb-1 b-gray1 d-flex justify-content-between flex-lg-row flex-column">
-                        <div class="d-flex fullwidth row-eq-height fullwidth justify-centent-between">
-                            <div class="width-30 height-30">
-                                <img src="{{ $cart->options->image }}" alt="{{ $cart->name }}" class="img-fluid">
-                            </div>
-                            <div class="py-10 pl-15 d-flex flex-column align-items-between">
-                                <div class="mb-auto">
-                                    <h4 class="fs-15 uppercase dark">
-                                        {{ $cart->name }}
-                                    </h4>
-                                    <p class="mt-3 fs-14 gray5">
-                                        {{ $cart->options->category }}
-                                    </p>
-                                </div>
-                   
-                                <div class="mt-auto">
-                                    <p class="fs-14 medium dark1">
-                                        {{ money($cart->price )}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="d-flex align-items-center justify-centent-lg-end justify-content-start ml-auto ml-0-sm mt-15-sm">
-                            <div class="quantity d-flex align-items-center justify-content-center">
-                                <input type="button" value="-" class="minus b-gray1 bg-white bg-gray2-hover dark3 fs-16 slow width-40 height-40 px-0 py-0 circle">
-                                <input type="number" class="numbers width-60 height-50 px-0 py-0 t-center dark2 fs-16" step="1" min="1" max="10" name="numbers3" value="{{ $cart->qty}}" title="Products">
-                                <input type="button" value="+" class="plus b-gray1 bg-white bg-gray2-hover dark3 fs-16 slow width-40 height-40 px-0 py-0 circle">
+                    <div class="py-20 bb-1 b-gray1 d-flex justify-content-between flex-row">
+                        <!-- Image and title -->
+                        <div class="d-flex row-eq-height justify-centent-between">
+                            <!-- Product image in lazy & cover background -->
+                            <div class="width-100 height-100" data-bg="url(images/shop/lyra/product_03.jpg)"></div>
+                            <!-- Titles and price -->
+                            <div class="py-5 pl-15 d-flex flex-column align-items-between">
+                                <!-- Titles -->
+                                <div class="mb-auto">
+                                    <!-- Product title -->
+                                    <h4 class="fs-15 uppercase dark">
+                                        Broadway Perfume
+                                    </h4>
+                                    <!-- Product subtitle -->
+                                    <p class="mt-3 fs-14 gray5">
+                                        Cosmetics
+                                    </p>
+                                </div>
+                                <!-- End titles -->
+                                <!-- Product model -->
+                                <div class="mt-auto">
+                                    <p class="fs-14 gray5">
+                                        Golden
+                                    </p>
+                                </div>
                             </div>
+                            <!-- End titles and detail -->
+                        </div>
+                        <!-- End image and title -->
+                        <!-- Close button and price -->
+                        <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
+                            <!-- Close button -->
+                            <button type="button" class="bg-transparent">
+                                <i class="ti-close fs-16 black"></i>
+                            </button>
+                            <!-- Price -->
+                            <p class="mt-auto fs-14 medium dark1">
+                                $32.40
+                            </p>
                         </div>
                     </div>
+
+                        
+                     
                     @endforeach
                 </div>
             </div>
