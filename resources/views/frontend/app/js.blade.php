@@ -42,12 +42,14 @@
  <a id="back-to-top" href="#top" class="btt b-1 b-gray1 circle width-60 width-50-sm height-60 height-50-sm bg-white gray7">
      <i class="ti-angle-up fs-18"></i>
  </a>
+ <script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
+ <script>iFrameResize({},'#paytriframe');</script>
+
 
 <script src="/front/js/jquery.min.js?v=3"></script>
 <script src="/front/js/bs.js?v=5.1.3"></script>
 <script src="/front/js/components/quadra/gold.punch.navigation.js"></script>
 <script src="/front/js/scripts.js?v=3.0"></script>
-<script src="/front/js/components/semantic.min.js"></script>
 <script src="/front/content/portfolio/js/plugins.js?v=3"></script>
 <script src="/front/js/components/masonry.pkgd.min.js"></script>
 <script src="/front/content/seta/js/plugins.js?v=3"></script>

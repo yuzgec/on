@@ -87,13 +87,13 @@ class ShopController extends Controller
         $merchant_oid = time();
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
-        $user_name = "olcay";
+        $user_name = "olcay yüzgeç";
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız adres bilgisi
-        $user_address = "izmir";
+        $user_address = "Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız adres bilgisi";
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız telefon bilgisi
-        $user_phone = "5332802852";
+        $user_phone = "05332802852";
         #
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
@@ -110,7 +110,7 @@ class ShopController extends Controller
         #
         $user_basket = base64_encode(json_encode(array(
             array("Örnek ürün 1", "33", 1), // 1. ürün (Ürün Ad - Birim Fiyat - Adet )
-            array("Örnek ürün 2", "33", 2), // 2. ürün (Ürün Ad - Birim Fiyat - Adet )
+            array("Örnek ürün 2", "33", 1), // 2. ürün (Ürün Ad - Birim Fiyat - Adet )
             array("Örnek ürün 3", "33", 1)  // 3. ürün (Ürün Ad - Birim Fiyat - Adet )
         )));
         ############################################################################################
@@ -190,6 +190,8 @@ class ShopController extends Controller
         curl_close($ch);
         
         $result=json_decode($result,1);
+
+        //dd($result);
             
         if($result['status']=='success')
             $token=$result['token'];

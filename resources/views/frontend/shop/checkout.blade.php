@@ -333,9 +333,6 @@
                                         <p class="ml-auto fs-28 dark1">$64.40</p>
                                     </div>
                                 </div>
-                                <!-- End total price -->
-
-
 
                                
                             </div>
