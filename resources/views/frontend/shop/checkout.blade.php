@@ -7,18 +7,12 @@
         
             <div class="container-md mt-30">
                 <div class="t-center">
-                    <h5 class="fs-11 ls-4 semibold white uppercase">
-                        ON DANCE STORE
-                    </h5>
-                    <h1 class="mt-15 lh-md white">
-                        Ödeme
-                    </h1>
+                    <h5 class="fs-11 ls-4 semibold white uppercase">ON DANCE STORE</h5>
+                    <h1 class="mt-15 lh-md white">Ödeme </h1>
         
-                    <div
+                    <div  
                         class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center text-white">
-                        <a href="{{ route('home')}}">
-                            <i class="ti-home"></i>
-                        </a>
+                        <a href="{{ route('home')}}"> <i class="ti-home"></i> </a>
                         <i class="ti-angle-right fs-7 mx-15"></i>
                         <a href="{{ route('home')}}" title="Anasayfa">Anasayfa</a>
                         <i class="ti-angle-right fs-7 mx-15"></i>
@@ -32,7 +26,6 @@
     <div id="checkout" class="fullwidth">
         <div class="container-fluid">
                 <div class="row row-eq-height">
-              
 
                     <div class="col-lg-8 col-12">
                         <div class="row justify-content-center">
@@ -52,7 +45,6 @@
 
                                         <div class="col-12 mt-15">
                                             <input id="offers" name="offers" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>
-                                           
                                             <label for="offers" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                                 <span class="uncheck d-flex align-items-center justify-content-center width-16 height-16 bg-white b-1 b-gray3 relative">
                                                     <span class="checked width-8 height-8 bg-dark2"></span>
@@ -61,51 +53,44 @@
                                             </label>
                                         </div>
 
-
                                         <div class="col-12 mt-70">
                                             <h4 class="fs-18 uppercase gray9">SİPARİŞ BİLGİLERİ</h4>
                                         </div>
 
-                                     
                                         <div class="col-6 pr-0 pr-15-sm mt-30">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="firstname" id="firstname"  class="input py-15 bg-gray2">
+                                                <input type="text" name="firstname" class="input py-15 bg-gray2">
                                                 <label for="firstname" class="fs-13 gray7"><span>Adınız </span></label>
                                             </div>
                                         </div>
-                                        
-
                                      
                                         <div class="col-6 mt-30">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="lastname" id="lastname"  class="input py-15 bg-gray2">
+                                                <input type="text" name="lastname" class="input py-15 bg-gray2">
                                                 <label for="lastname" class="fs-13 gray7"><span>Soyadınız</span></label>
                                             </div>
                                         </div>
                                         
                                         <div class="col-12 mt-15">
                                             <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
-                                                <textarea name="message" id="message" class="input py-20 bg-gray2 height-100"></textarea>
-                                                <label for="message" class="fs-13 gray7"><span>Açık Adresiniz</span></label>
+                                                <textarea name="address" class="input py-20 bg-gray2 height-100"></textarea>
+                                                <label for="address" class="fs-13 gray7"><span>Açık Adresiniz</span></label>
                                             </div>
                                         </div>
                                                 
                                         <div class="col-6 pr-0 pr-15-sm mt-15">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="postal" id="postal"  class="input py-15 bg-gray2">
+                                                <input type="text" name="postal" id="postal"  class="input py-15 bg-gray2" value="35000">
                                                 <label for="postal" class="fs-13 gray7"><span>Posta Kodu</span></label>
                                             </div>
                                         </div>
                                         
-
                                         <div class="col-6 mt-15">
                                             <div class="label-animation b-gray3">
                                                 <input type="text" name="city" id="city"  class="input py-15 bg-gray2">
                                                 <label for="city" class="fs-13 gray7"><span>Şehir</span></label>
                                             </div>
                                         </div>
-                                        
-
 
                                         <div class="col-12 mt-70">
                                             <h4 class="fs-18 uppercase gray9">ÖDEME TİPİ</h4>
@@ -122,9 +107,6 @@
                                                 </label>
                                             </div>
                                         </div>
-
-                                       
-
                                      
                                         <div class="col-12 mt-15">
                                             <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
@@ -132,17 +114,12 @@
                                                 <label for="message" class="fs-13 gray7"><span>Sipariş ile ilgili notunuz</span></label>
                                             </div>
                                         </div>
-                                        
-
                                     </div>
 
-
-                                     <!-- Privacy policy, terms and order button -->
                                 <div class="mt-30 pt-45 bt-1 b-gray1">
                                     <p class="fs-13 gray6 lh-20">
                                         Your personal data will be used to process your orders and for your experience on this website. For more information, you can read our <a href="pages-privacy.html" class="colored underline-hover">privacy policy.</a>
                                     </p>
-                                    <!-- Checkbox keeper -->
                                     <div class="mt-15">
                                         <!-- Invisible input -->
                                         <input id="terms" name="terms" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>

@@ -42,8 +42,6 @@
  <a id="back-to-top" href="#top" class="btt b-1 b-gray1 circle width-60 width-50-sm height-60 height-50-sm bg-white gray7">
      <i class="ti-angle-up fs-18"></i>
  </a>
- <script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
- <script>iFrameResize({},'#paytriframe');</script>
 
 
 <script src="/front/js/jquery.min.js?v=3"></script>
@@ -60,4 +58,14 @@
 		$("table").addClass("table table-hover table-striped table-bordered table-responsive");
         $("img").addClass('img-fluid');
 	})
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ config('settings.googleTagManager')}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ config("settings.googleTagManager")}}');
 </script>

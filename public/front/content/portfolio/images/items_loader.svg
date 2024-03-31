@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1260px" height="1100px" viewBox="0 0 1260 1100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>loader</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="loader">
+            <rect id="bg" fill="#EFEFEF" x="0" y="0" width="1260" height="1100"></rect>
+            <text id="Loading" font-family="Outfit-Regular, Outfit" font-size="34" font-weight="normal" fill="#8B8B8B">
+                <tspan x="568.2645" y="563">Loading</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
