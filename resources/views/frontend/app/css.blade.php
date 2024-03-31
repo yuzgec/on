@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/front/css/skins/skin-portfolio.css" />
     <link rel="stylesheet" href="/front/css/blog.css"/>
     <link rel="stylesheet" href="/front/css/components/quadra/gold.punch.navigation.css"/>
-    <link rel="stylesheet" href="/front/css/components/semantic.min.css"/>
     <link rel="stylesheet" href="/front/css/components/quadra/shop.css?v=1.0.0"/>
 
     <style>

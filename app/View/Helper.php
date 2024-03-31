@@ -3,6 +3,7 @@
     use Spatie\Image\Image;
     use Gloudemans\Shoppingcart\Facades\Cart;
 
+
     function cartControl($id, $text = null){
         foreach (Cart::instance('shopping')->content() as $c){
             if($c->id == $id){

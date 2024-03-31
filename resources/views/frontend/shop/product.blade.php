@@ -87,7 +87,7 @@
                 <div class="d-inline-flex width-auto align-items-center justify-content-start py-10 px-20 radius-lg" data-color="#37302E" data-bgcolor="#F2E9E4">
                     <i class="ti-package fs-12 mr-10"></i>
                     <p class="fs-13">
-                        299₺ Üzeri Ücretsiz Kargo
+                        {{ CARGO_LIMIT }} Üzeri Ücretsiz Kargo
                     </p>
                 </div>
                 @endif
@@ -187,10 +187,8 @@
                             <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-success white ml-10"><i class="fab fa-whatsapp"></i>  WHATSAPP BİLGİ</button>
                         </div>
 
-                    </form>
-
-                        
-                    </div>
+                </form>
+                </div>
               
             </div>
         </div>

@@ -2,7 +2,7 @@
     <div class="container nav-container">
         <div class="row nav-wrapper justify-content-end">
             <div class="col">
-                <a href="{{ route('home')}}" class="logo">
+                <a href="{{ route('home')}}" class="logo" title="Anasayfa">
                     <img src="/logo.png" alt="Karşıyaka On Dance Kursu" class="logo-white mxw-100">
                 </a>
             </div>

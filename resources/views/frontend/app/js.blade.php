@@ -1,12 +1,12 @@
-<div id="sidebar" class="ui right sidebar vertical scrollbar-styled">
+{{-- <div id="sidebar" class="ui right sidebar vertical scrollbar-styled">
     <div class="d-flex flex-column align-items-between justify-content-start t-left  fullwidth mnh-full o-hidden" style="background-color: #ececec">
         <div>
           <iframe src="https://ondance.sporakademik.com/OnKayit" width="100%" style="height:100vh" class="mt-50 mb-30"></iframe>
         </div>
     </div>
 </div>
-
-<div id="cookie__notification_10_21553" class="cookie fixed bottom-30 right-30 right-0-sm px-15-sm fullwidth t-right pointer-events-none" data-expire="15">
+ --}}
+{{-- <div id="cookie__notification_10_21553" class="cookie fixed bottom-30 right-30 right-0-sm px-15-sm fullwidth t-right pointer-events-none" data-expire="15">
     <div class="mxw-450 fullwidth bg-white bs-xl pt-50 pt-30-sm t-left d-inline-block pointer-events-all">
          <p class="fs-20 px-40 px-30-sm dark4 lh-30 light">
             Bu web sitesi size en iyi deneyimi sunmak için çerezleri kullanır.            <br>
@@ -14,7 +14,7 @@
          </p>
          <button type="button" class="close bg-colored1 bg-colored-hover d-block fullwidth white bold lh-normal px-20 py-20 fs-12 uppercase slow-sm mt-40">Kabul Et</button>
     </div>
- </div>
+ </div> --}}
  
  <div class="qcf bg-transparent radius-lg bs-xl unselectable">
      <div class="bg-colored px-30 py-40 t-left">
@@ -43,16 +43,15 @@
      <i class="ti-angle-up fs-18"></i>
  </a>
 
-
-<script src="/front/js/jquery.min.js?v=3"></script>
-<script src="/front/js/bs.js?v=5.1.3"></script>
+<script src="/front/js/jquery.min.js?v=4"></script>
+<script src="/front/js/bs.js"></script>
 <script src="/front/js/components/quadra/gold.punch.navigation.js"></script>
 <script src="/front/js/scripts.js?v=3.0"></script>
-<script src="/front/content/portfolio/js/plugins.js?v=3"></script>
+<script src="/front/content/portfolio/js/plugins.js?v=4"></script>
 <script src="/front/js/components/masonry.pkgd.min.js"></script>
-<script src="/front/content/seta/js/plugins.js?v=3"></script>
+<script src="/front/content/seta/js/plugins.js?v=4"></script>
 <script src="/front/js/components/quadra/gold.shop.js"></script>
-
+<script src="/front/js/components/semantic.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("table").addClass("table table-hover table-striped table-bordered table-responsive");
