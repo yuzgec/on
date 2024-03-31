@@ -12,51 +12,35 @@
                 </div>
                 <div class="mt-30">
                     @foreach(Cart::instance('shopping')->content() as $cart)
-
                     <div class="py-20 bb-1 b-gray1 d-flex justify-content-between flex-row">
-                        <!-- Image and title -->
                         <div class="d-flex row-eq-height justify-centent-between">
-                            <!-- Product image in lazy & cover background -->
-                            <div class="width-100 height-100" data-bg="url(images/shop/lyra/product_03.jpg)"></div>
-                            <!-- Titles and price -->
+                            <div class="width-50 height-50" data-bg="url({{$cart->options->image}})"></div>
                             <div class="py-5 pl-15 d-flex flex-column align-items-between">
-                                <!-- Titles -->
                                 <div class="mb-auto">
-                                    <!-- Product title -->
                                     <h4 class="fs-15 uppercase dark">
-                                        Broadway Perfume
+                                       {{ $cart->name}}
                                     </h4>
-                                    <!-- Product subtitle -->
                                     <p class="mt-3 fs-14 gray5">
-                                        Cosmetics
+                                        {{ $cart->options->category}}
                                     </p>
                                 </div>
-                                <!-- End titles -->
-                                <!-- Product model -->
+                    
                                 <div class="mt-auto">
                                     <p class="fs-14 gray5">
-                                        Golden
+                                        
                                     </p>
                                 </div>
-                            </div>
-                            <!-- End titles and detail -->
+                            </div> 
                         </div>
-                        <!-- End image and title -->
-                        <!-- Close button and price -->
                         <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
-                            <!-- Close button -->
                             <button type="button" class="bg-transparent">
                                 <i class="ti-close fs-16 black"></i>
                             </button>
-                            <!-- Price -->
                             <p class="mt-auto fs-14 medium dark1">
-                                $32.40
+                                {{ money($cart->price)}}
                             </p>
                         </div>
                     </div>
-
-                        
-                     
                     @endforeach
                 </div>
             </div>

@@ -26,16 +26,13 @@ class Product extends Model implements HasMedia,Viewable
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class, 'product_attribute_values')
-                    ->withPivot('attribute_value_id');
+        return $this->belongsToMany(Attribute::class, 'product_attribute_values')->withPivot('attribute_value_id');
     }
 
     public function attributeValues()
     {
-        return $this->belongsToMany(AttributeValue::class, 'product_attribute_values')
-                    ->withPivot('attribute_id');
+        return $this->belongsToMany(AttributeValue::class, 'product_attribute_values')->withPivot('attribute_id');
     }
-
 
     public function categories()
     {

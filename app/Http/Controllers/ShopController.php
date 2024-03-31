@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Basket;
+use App\Http\Requests\PayRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -72,28 +73,42 @@ class ShopController extends Controller
         return view('frontend.shop.checkout');
     }
 
-    public function pay(){
+    public function pay(PayRequest $request){
         $merchant_id 	= env('PAYTR_MERCHANT_ID');
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
         #
         ## Müşterinizin sitenizde kayıtlı veya form vasıtasıyla aldığınız eposta adresi
-        $email = "olcayy@gmail.com";
+        $email = $request->input('email');
         #
-        ## Tahsil edilecek tutar.
-        $payment_amount	= "9900"; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
+
+        $deger = Cart::instance('shopping')->total();
+
+        // Binlik ayırıcıları kaldır
+        $deger = str_replace('.', '', Cart::instance('shopping')->total());
+
+        // Ondalık kısmı at
+        $deger = strstr($deger, ',', true);
+
+        // Elde edilen değeri integer'a çevir
+     
+
+        echo $deger;
+        $payment_amount	=    $deger = (int)$deger * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
+
+   
         #
         ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
         $merchant_oid = time();
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
-        $user_name = "olcay yüzgeç";
+        $user_name = $request->input('firstname').' '.$request->input('surname');
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız adres bilgisi
-        $user_address = "Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız adres bilgisi";
+        $user_address = $request->input('address');
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız telefon bilgisi
-        $user_phone = "05332802852";
+        $user_phone = $request->input('phone');
         #
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
@@ -107,12 +122,19 @@ class ShopController extends Controller
         #
         ## Müşterinin sepet/sipariş içeriği
         $user_basket = "";
+
+        foreach (Cart::instance('shopping')->content() as $item) {
+            $b[] = [$item->name, $item->price, $item->qty];
+        }
         #
-        $user_basket = base64_encode(json_encode(array(
+        $user_basket = base64_encode(json_encode([$b]));
+
+
+     /*    $user_basket = base64_encode(json_encode(array(
             array("Örnek ürün 1", "33", 1), // 1. ürün (Ürün Ad - Birim Fiyat - Adet )
             array("Örnek ürün 2", "33", 1), // 2. ürün (Ürün Ad - Birim Fiyat - Adet )
             array("Örnek ürün 3", "33", 1)  // 3. ürün (Ürün Ad - Birim Fiyat - Adet )
-        )));
+        ))); */
         ############################################################################################
     
         ## Kullanıcının IP adresi

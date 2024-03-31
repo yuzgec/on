@@ -1,19 +1,19 @@
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
     <link rel="icon" type="image/png" href="/fav.png" />
     <link rel="stylesheet" href="/front/css/revolutionslider/settings.css" />
 
-    <link rel="stylesheet" href="/front/css/plugins.css?v=4.0"/>
+    <link rel="stylesheet" href="/front/css/plugins.css"/>
     <link rel="stylesheet" href="/front/css/revolutionslider/settings.css" />
-    <link rel="stylesheet" href="/front/css/theme.css?v=5.0"/>
-    <link rel="stylesheet" href="/front/content/portfolio/css/portfolio.css?v=4.0" />
-    <link rel="stylesheet" href="/front/content/seta/css/seta.css?v=4.0" />
+    <link rel="stylesheet" href="/front/css/theme.css"/>
+    <link rel="stylesheet" href="/front/content/portfolio/css/portfolio.css" />
+    <link rel="stylesheet" href="/front/content/seta/css/seta.css" />
     <link rel="stylesheet" href="/front/css/skins/skin-seta.css" />
     <link rel="stylesheet" href="/front/css/skins/skin-portfolio.css" />
     <link rel="stylesheet" href="/front/css/blog.css"/>
     <link rel="stylesheet" href="/front/css/components/quadra/gold.punch.navigation.css"/>
-    <link rel="stylesheet" href="/front/css/components/quadra/shop.css?v=1.0.0"/>
+    <link rel="stylesheet" href="/front/css/components/quadra/shop.css"/>
 
     <style>
         .cbp-item .work-image{-webkit-transform:scale(1);transform:scale(1); -webkit-transition:transform 0.5s;transition:transform 0.5s;}

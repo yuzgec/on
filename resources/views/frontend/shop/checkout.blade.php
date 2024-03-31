@@ -36,26 +36,6 @@
                                         <div class="col-12">
                                             <h4 class="fs-18 uppercase gray9">İLETİŞİM BİLGİLERİ</h4>
                                         </div>
-                                        <div class="col-12 mt-30">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="q-email" id="q-email"  class="input py-15 bg-gray2">
-                                                <label for="q-email" class="fs-13 gray7"><span>E-Mail Adresiniz</span></label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 mt-15">
-                                            <input id="offers" name="offers" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>
-                                            <label for="offers" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                                <span class="uncheck d-flex align-items-center justify-content-center width-16 height-16 bg-white b-1 b-gray3 relative">
-                                                    <span class="checked width-8 height-8 bg-dark2"></span>
-                                                </span>
-                                                <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">Keep me up to date on news and exclusive offers</span>
-                                            </label>
-                                        </div>
-
-                                        <div class="col-12 mt-70">
-                                            <h4 class="fs-18 uppercase gray9">SİPARİŞ BİLGİLERİ</h4>
-                                        </div>
 
                                         <div class="col-6 pr-0 pr-15-sm mt-30">
                                             <div class="label-animation b-gray3">
@@ -70,6 +50,25 @@
                                                 <label for="lastname" class="fs-13 gray7"><span>Soyadınız</span></label>
                                             </div>
                                         </div>
+
+                                        <div class="col-6 mt-30">
+                                            <div class="label-animation b-gray3">
+                                                <input type="text" name="email" id="q-email"  class="input py-15 bg-gray2">
+                                                <label for="q-email" class="fs-13 gray7"><span>E-Mail Adresiniz</span></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt-30">
+                                            <div class="label-animation b-gray3">
+                                                <input type="text" name="phone" class="input py-15 bg-gray2">
+                                                <label for="phone" class="fs-13 gray7"><span>Telefon</span></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-30">
+                                            <div class="label-animation b-gray3">
+                                             
+                                            </div>
+                                        </div>
                                         
                                         <div class="col-12 mt-15">
                                             <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
@@ -81,14 +80,14 @@
                                         <div class="col-6 pr-0 pr-15-sm mt-15">
                                             <div class="label-animation b-gray3">
                                                 <input type="text" name="postal" id="postal"  class="input py-15 bg-gray2" value="35000">
-                                                <label for="postal" class="fs-13 gray7"><span>Posta Kodu</span></label>
+                                                <label for="postal" class="fs-13 gray7"><span>İl</span></label>
                                             </div>
                                         </div>
                                         
                                         <div class="col-6 mt-15">
                                             <div class="label-animation b-gray3">
                                                 <input type="text" name="city" id="city"  class="input py-15 bg-gray2">
-                                                <label for="city" class="fs-13 gray7"><span>Şehir</span></label>
+                                                <label for="city" class="fs-13 gray7"><span>İlçe</span></label>
                                             </div>
                                         </div>
 
@@ -167,98 +166,42 @@
                             <div class="col-10 pt-70">
                                 
                                 <!-- Title -->
-                                <h4 class="fs-15 uppercase gray9">sepetim</h4>
+                                <h4 class="fs-15 uppercase gray9">Sepetim</h4>
 
                                 <!-- Products -->
                                 <div class="mt-20">
 
-                                    <!-- Product -->
+                                    @foreach(Cart::instance('shopping')->content() as $cart)
                                     <div class="py-20 bb-1 b-gray1 d-flex justify-content-between flex-row">
-                                        <!-- Image and title -->
                                         <div class="d-flex row-eq-height justify-centent-between">
-                                            <!-- Product image in lazy & cover background -->
-                                            <div class="width-100 height-100" data-bg="url(images/shop/lyra/product_03.jpg)"></div>
-                                            <!-- Titles and price -->
+                                            <div class="width-50 height-50" data-bg="url({{$cart->options->image}})"></div>
                                             <div class="py-5 pl-15 d-flex flex-column align-items-between">
-                                                <!-- Titles -->
                                                 <div class="mb-auto">
-                                                    <!-- Product title -->
                                                     <h4 class="fs-15 uppercase dark">
-                                                        Broadway Perfume
+                                                       {{ $cart->name}}
                                                     </h4>
-                                                    <!-- Product subtitle -->
                                                     <p class="mt-3 fs-14 gray5">
-                                                        Cosmetics
+                                                        {{ $cart->options->category}}
                                                     </p>
                                                 </div>
-                                                <!-- End titles -->
-                                                <!-- Product model -->
+                                    
                                                 <div class="mt-auto">
                                                     <p class="fs-14 gray5">
-                                                        Golden
+                                                        
                                                     </p>
                                                 </div>
-                                            </div>
-                                            <!-- End titles and detail -->
+                                            </div> 
                                         </div>
-                                        <!-- End image and title -->
-                                        <!-- Close button and price -->
                                         <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
-                                            <!-- Close button -->
                                             <button type="button" class="bg-transparent">
                                                 <i class="ti-close fs-16 black"></i>
                                             </button>
-                                            <!-- Price -->
                                             <p class="mt-auto fs-14 medium dark1">
-                                                $32.40
+                                                {{ money($cart->price)}}
                                             </p>
                                         </div>
                                     </div>
-                                    <!-- End product -->
-
-                                    <!-- Product -->
-                                    <div class="py-20 d-flex justify-content-between flex-row">
-                                        <!-- Image and title -->
-                                        <div class="d-flex fullwidth row-eq-height justify-centent-between">
-                                            <!-- Product image in lazy & cover background -->
-                                            <div class="width-100 height-100" data-bg="url(images/shop/lyra/product_05.jpg)"></div>
-                                            <!-- Titles and price -->
-                                            <div class="py-5 pl-15 d-flex flex-column align-items-between">
-                                                <!-- Titles -->
-                                                <div class="mb-auto">
-                                                    <!-- Product title -->
-                                                    <h4 class="fs-15 uppercase dark">
-                                                        Orlando Perfume
-                                                    </h4>
-                                                    <!-- Product subtitle -->
-                                                    <p class="mt-3 fs-14 gray5">
-                                                        Cosmetics
-                                                    </p>
-                                                </div>
-                                                <!-- End titles -->
-                                                <!-- Product model -->
-                                                <div class="mt-auto">
-                                                    <p class="fs-14 gray5">
-                                                        Strawberry
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <!-- End titles and detail -->
-                                        </div>
-                                        <!-- End image and title -->
-                                        <!-- Close button and price -->
-                                        <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
-                                            <!-- Close button -->
-                                            <button type="button" class="bg-transparent">
-                                                <i class="ti-close fs-16 black"></i>
-                                            </button>
-                                            <!-- Price -->
-                                            <p class="mt-auto fs-14 medium dark1">
-                                                $32.40
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- End product -->
+                                    @endforeach
 
                                 </div>
                                 <!-- End products -->

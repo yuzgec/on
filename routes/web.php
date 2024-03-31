@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
 Route::get('/iletisim', [HomeController::class, 'contact'])->name('contactus');
 Route::get('/kurumsal', [HomeController::class, 'corporate'])->name('corporate');
 Route::get('/sayfa/{url}', [HomeController::class, 'corporatedetail'])->name('corporatedetail');
@@ -30,9 +29,6 @@ Route::get('/etkinlik/{url}', [HomeController::class, 'event'])->name('event');
 
 Route::get('/production/{url}', [HomeController::class, 'production'])->name('production');
 
-
-
-
 //Hizmetler Route
 
 Route::get('/makaleler', [HomeController::class, 'blog'])->name('blog');
@@ -53,8 +49,6 @@ Route::group(["prefix"=>"store"], function(){
     Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
     Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
     Route::post('/save', [ShopController::class,'save'])->name('save');
-
-
     Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
 
 });
