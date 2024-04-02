@@ -294,12 +294,14 @@ class ShopController extends Controller
        
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
 
-            $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
-            $Update->basket_status = 'Ödendi';
-            $Update->basket_total = $data['total_amount'];
-            $Update->save(); 
+            $update = ShopCart::where('cart_id', request('merchant_oid'))->first();
+
+            if ($update !== null) {
+                $update->basket_status = 'Ödendi';
+                $update->basket_total = $data['total_amount'];
+                $update->save();
        
-             
+            }
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
@@ -311,12 +313,12 @@ class ShopController extends Controller
 
         } else { ## Ödemeye Onay Verilmedi
 
-            $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
-            if($Update){
-                $Update->basket_status = 'Ödenmedi';
-                $Update->save(); 
+            $update = ShopCart::where('cart_id', request('merchant_oid'))->first();
+            if ($update !== null) {
+                $update->basket_status = 'Ödenmedi';
+                $update->basket_total = $data['total_amount'];
+                $update->save();
             }
-
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi iptal edin.
             ## 2) Eğer ödemenin onaylanmama sebebini kayıt edecekseniz aşağıdaki değerleri kullanabilirsiniz.
@@ -333,7 +335,7 @@ class ShopController extends Controller
 
     public function success(){
 
-        if(!request('merchant_oid')){
+        if(!request('merchant_oid') && request('merchant_oid') == null ){
             return redirect()->route('home');
         }
 
