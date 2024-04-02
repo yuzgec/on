@@ -269,6 +269,16 @@ class ShopController extends Controller
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
 
+
+        $update = ShopCart::where('cart_id', request('merchant_oid'))->first();
+
+        if ($update !== null) {
+            $update->basket_status = 'Ödendi';
+            $update->basket_total = $data['total_amount'];
+            $update->save();
+   
+        }
+
         ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
         
         ## POST değerleri ile hash oluştur.
