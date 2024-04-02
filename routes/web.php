@@ -47,7 +47,7 @@ Route::get('/kategori/{url}', [ShopController::class, 'category'])->name('catego
 Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
 Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
-Route::match(['get', 'post'],'/sonuc',[ShopController::class,'save'])->name('save');
+Route::post('/sonuc',[ShopController::class,'save'])->name('save');
 Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
 
 
