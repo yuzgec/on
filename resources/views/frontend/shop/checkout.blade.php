@@ -46,8 +46,8 @@
                                      
                                         <div class="col-6 mt-30">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="lastname" class="input py-15 bg-gray2">
-                                                <label for="lastname" class="fs-13 gray7"><span>Soyadınız</span></label>
+                                                <input type="text" name="surname" class="input py-15 bg-gray2">
+                                                <label for="surname" class="fs-13 gray7"><span>Soyadınız</span></label>
                                             </div>
                                         </div>
 
@@ -193,9 +193,7 @@
                                             </div> 
                                         </div>
                                         <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
-                                            <button type="button" class="bg-transparent">
-                                                <i class="ti-close fs-16 black"></i>
-                                            </button>
+                                       
                                             <p class="mt-auto fs-14 medium dark1">
                                                 {{ money($cart->price)}}
                                             </p>
@@ -206,7 +204,7 @@
                                 </div>
                                 <!-- End products -->
 
-
+{{-- 
                                 <!-- Title -->
                                 <h4 class="mt-50 fs-15 uppercase gray9">Gift Card / Discount Code</h4>
 
@@ -225,7 +223,7 @@
                                     <!-- End input and button -->
 
                                 </form>
-                                <!-- End discount form Form -->
+                                <!-- End discount form Form --> --}}
 
 
 
@@ -233,13 +231,13 @@
                                 <div class="mt-65">
                                     <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
-                                        <h4 class="fs-15 uppercase gray9">Subtotal</h4>
-                                        <p class="ml-auto fs-14 gray5">$64.40</p>
+                                        <h4 class="fs-15 uppercase gray9">Ara Toplam</h4>
+                                        <p class="ml-auto fs-14 gray5">{{ money(Cart::instance('shopping')->subtotal())}}</p>
                                     </div>
                                     <!-- Shipping -->
                                     <div class="d-flex fullwidth mt-30 justify-content-between align-items-start">
-                                        <h4 class="fs-15 uppercase gray9">Shipping</h4>
-                                        <p class="ml-auto fs-14 gray5">Free</p>
+                                        <h4 class="fs-15 uppercase gray9">Kargo</h4>
+                                        <p class="ml-auto fs-14 gray5">Ücretsiz</p>
                                     </div>
                                 </div>
                                 <!-- End subtotal and shipping notes -->
@@ -249,8 +247,8 @@
                                 <div class="mt-45 pt-45 bt-1 b-gray1">
                                     <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
-                                        <h4 class="fs-15 uppercase gray9">Total</h4>
-                                        <p class="ml-auto fs-28 dark1">$64.40</p>
+                                        <h4 class="fs-15 uppercase gray9">Toplam</h4>
+                                        <p class="ml-auto fs-28 dark1">{{ money(Cart::instance('shopping')->total())}}</p>
                                     </div>
                                 </div>
 

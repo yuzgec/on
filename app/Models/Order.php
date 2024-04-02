@@ -11,7 +11,6 @@ class Order extends Model
 
     protected $guarded = [];
     protected $table = 'orders';
-    protected $connection = "kiblegah";
 
     public function shopcart(){
         return $this->hasOne(ShopCart::class, 'cart_id');

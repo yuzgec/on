@@ -11,13 +11,8 @@ class ShopCart extends Model
 
     protected $guarded = [];
     protected $table = 'shop_carts';
-    protected $connection = "kiblegah";
 
     public function getOrder(){
         return $this->hasMany(Order::class, 'cart_id', 'cart_id');
     }
-
-
-
-
 }

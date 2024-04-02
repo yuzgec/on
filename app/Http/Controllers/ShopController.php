@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ShopCart;
+use App\Models\Order;
 use App\Models\ProductCategory;
 use App\Models\Basket;
 use App\Http\Requests\PayRequest;
@@ -74,29 +76,20 @@ class ShopController extends Controller
     }
 
     public function pay(PayRequest $request){
+
+
+
         $merchant_id 	= env('PAYTR_MERCHANT_ID');
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
         #
         ## Müşterinizin sitenizde kayıtlı veya form vasıtasıyla aldığınız eposta adresi
         $email = $request->input('email');
-        #
 
-        $deger = Cart::instance('shopping')->total();
-
-        // Binlik ayırıcıları kaldır
         $deger = str_replace('.', '', Cart::instance('shopping')->total());
-
-        // Ondalık kısmı at
         $deger = strstr($deger, ',', true);
+        $payment_amount	=  $deger = (int)$deger * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
 
-        // Elde edilen değeri integer'a çevir
-     
-
-        echo $deger;
-        $payment_amount	=    $deger = (int)$deger * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
-
-   
         #
         ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
         $merchant_oid = time();
@@ -113,7 +106,7 @@ class ShopController extends Controller
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_ok_url = route('save');
+        $merchant_ok_url = route('save', ['merchant_oid' => $merchant_oid, 'total_amount' => $payment_amount, 'status' => 'Pending']);
         #
         ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
@@ -129,14 +122,6 @@ class ShopController extends Controller
         #
         $user_basket = base64_encode(json_encode([$b]));
 
-
-     /*    $user_basket = base64_encode(json_encode(array(
-            array("Örnek ürün 1", "33", 1), // 1. ürün (Ürün Ad - Birim Fiyat - Adet )
-            array("Örnek ürün 2", "33", 1), // 2. ürün (Ürün Ad - Birim Fiyat - Adet )
-            array("Örnek ürün 3", "33", 1)  // 3. ürün (Ürün Ad - Birim Fiyat - Adet )
-        ))); */
-        ############################################################################################
-    
         ## Kullanıcının IP adresi
         if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
             $ip = $_SERVER["HTTP_CLIENT_IP"];
@@ -202,7 +187,7 @@ class ShopController extends Controller
         
             // XXX: DİKKAT: lokal makinanızda "SSL certificate problem: unable to get local issuer certificate" uyarısı alırsanız eğer
             // aşağıdaki kodu açıp deneyebilirsiniz. ANCAK, güvenlik nedeniyle sunucunuzda (gerçek ortamınızda) bu kodun kapalı kalması çok önemlidir!
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+            //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
             
         $result = @curl_exec($ch);
     
@@ -212,32 +197,61 @@ class ShopController extends Controller
         curl_close($ch);
         
         $result=json_decode($result,1);
-
-        //dd($result);
             
-        if($result['status']=='success')
-            $token=$result['token'];
-        else
-            die("PAYTR IFRAME failed. reason:".$result['reason']);                    
+        if($result['status']=='success'){
+            $New = new ShopCart;
+            $New->cart_id =  $merchant_oid;
+            $New->user_id =  1;
+            $New->basket_total =  Cart::instance('shopping')->total();
+            $New->name =  $request->input('firstname');
+            $New->surname =  $request->input('surname');
+            $New->email =  $request->input('email');
+            $New->phone =  $request->input('phone');
+            $New->address =  $request->input('address');
+            $New->province =  $request->input('province');
+            $New->city =  $request->input('city');
+            $New->note =  $request->input('note');
+            $New->basket_status =  'Pending';
+            $New->save();
 
-        return view('frontend.shop.pay',compact('token'));
+
+            foreach (Cart::instance('shopping')->content() as $item) { 
+                $Order = new Order;
+                $Order->cart_id =  $merchant_oid;
+                $Order->product_id =  $item->id;
+                $Order->name =  $item->name;
+                $Order->qty =  $item->qty;
+                $Order->price =  $item->price;
+                $Order->save();
+            } 
+
+            $token=$result['token'];
+
+        }  else{
+            die("PAYTR IFRAME failed. reason:".$result['reason']);
+
+        }      
+      
+        return view('frontend.shop.pay',compact('token'));   
+
     }
 
 
-    public function save(){
-        $data = request()->all();
+    public function save(Request $request){
+
+        dd($request->all(), request()->all(), $_POST);
+
+        $data = $_POST;
         ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
         ## API Entegrasyon Bilgileri - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
 
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
 
-        ###########################################################################
-
         ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
-        #
+        
         ## POST değerleri ile hash oluştur.
-        $hash = base64_encode( hash_hmac('sha256', $data['merchant_oid'].$merchant_salt.$data['status'].$data['total_amount'], $merchant_key, true) );
+        $hash = base64_encode( hash_hmac('sha256', request('merchant_oid').$merchant_salt.request('status').request('total_amount'),$merchant_key, true) );
         #
         ## Oluşturulan hash'i, paytr'dan gelen post içindeki hash ile karşılaştır (isteğin paytr'dan geldiğine ve değişmediğine emin olmak için)
         ## Bu işlemi yapmazsanız maddi zarara uğramanız olasıdır.
@@ -256,14 +270,24 @@ class ShopController extends Controller
                 exit;
             }
          */
-
+       
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
+
+            $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
+            $update->status = 'Ödendi';
+            $Update->save();
+
+
+            return redirect->route('home');
+     
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
             ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
             ## 3) 1. ADIM'da gönderilen payment_amount sipariş tutarı taksitli alışveriş yapılması durumunda
             ## değişebilir. Güncel tutarı $data['total_amount'] değerinden alarak muhasebe işlemlerinizde kullanabilirsiniz.
+
+
 
         } else { ## Ödemeye Onay Verilmedi
 

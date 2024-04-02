@@ -63,13 +63,13 @@
                     </p>
                 </div>
                 <div class="d-flex mt-40 justify-content-lg-between align-items-start flex-lg-row flex-wrap">
-                        <a href="{{ route('store')}}" class="cart-closer xl-btn d-inline-flex bg-white b-1 b-gray2 opacity-7-hover slow-sm medium fs-12 uppercase ls-1">
-                           Alışverişe Devam Et
-                        </a>
-                        <a href="{{ route('checkout')}}" class="ml-auto ml-0-sm xl-btn mt-15-sm bg-colored2 bg-colored1-hover slow-sm white medium fs-12 uppercase ls-1">
-                            Ödeme
-                        </a>
-                    </div>
+                    <a href="{{ route('store')}}" class="cart-closer xl-btn d-inline-flex bg-white b-1 b-gray2 opacity-7-hover slow-sm medium fs-12 uppercase ls-1">
+                        Alışverişe Devam Et
+                    </a>
+                    <a href="{{ route('checkout')}}" class="ml-auto ml-0-sm xl-btn mt-15-sm bg-colored2 bg-colored1-hover slow-sm white medium fs-12 uppercase ls-1">
+                        Ödeme
+                    </a>
+                </div>
             </div>
         </div>
     </div>
