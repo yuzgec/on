@@ -77,8 +77,6 @@ class ShopController extends Controller
 
     public function pay(PayRequest $request){
 
-
-
         $merchant_id 	= env('PAYTR_MERCHANT_ID');
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
@@ -106,12 +104,12 @@ class ShopController extends Controller
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_ok_url = route('success');
+        $merchant_ok_url = route('success',['merchant_oid', $merchant_oid]);
         #
         ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi iptal edeceğiniz sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_fail_url = route('failed');
+        $merchant_fail_url = route('failed',['merchant_oid', $merchant_oid]);
         #
         ## Müşterinin sepet/sipariş içeriği
         $user_basket = "";
@@ -202,7 +200,7 @@ class ShopController extends Controller
             $New = new ShopCart;
             $New->cart_id =  $merchant_oid;
             $New->user_id =  1;
-            $New->basket_total =  $payment_amount / 100;
+            $New->basket_total =  $payment_amount;
             $New->name =  $request->input('firstname');
             $New->surname =  $request->input('surname');
             $New->email =  $request->input('email');
@@ -239,9 +237,10 @@ class ShopController extends Controller
 
     public function save(Request $request){
 
-        dd($request->all(), request()->all(), $_POST);
+        //dd($request->all(), request()->all(), $_POST);
 
-        $data = $_POST;
+        $post = $_POST;
+
         ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
         ## API Entegrasyon Bilgileri - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
 
@@ -251,11 +250,11 @@ class ShopController extends Controller
         ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
         
         ## POST değerleri ile hash oluştur.
-        $hash = base64_encode( hash_hmac('sha256', request('merchant_oid').$merchant_salt.request('status').request('total_amount'),$merchant_key, true) );
+        $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], $merchant_key, true) );
         #
         ## Oluşturulan hash'i, paytr'dan gelen post içindeki hash ile karşılaştır (isteğin paytr'dan geldiğine ve değişmediğine emin olmak için)
         ## Bu işlemi yapmazsanız maddi zarara uğramanız olasıdır.
-        if( $hash != $data['hash'] )
+        if( $hash != $post['hash'] )
             die('PAYTR notification failed: bad hash');
         ###########################################################################
 
@@ -270,16 +269,21 @@ class ShopController extends Controller
                 exit;
             }
          */
+
+         $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
+         if($Update){
+             $Update->basket_status = 'Ödendi';
+             $Update->save(); 
+         }
        
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
 
             $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
-            $update->status = 'Ödendi';
-            $Update->save();
-
-
-            return redirect()->route('home');
-     
+            if($Update){
+                $Update->basket_status = 'Ödendi';
+                $Update->save(); 
+            }
+             
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
@@ -303,6 +307,14 @@ class ShopController extends Controller
         echo "OK";
         exit;
 
+    }
+
+    public function success(){
+        echo 'Ödeme Aldındı';
+    }
+
+    public function failed(){
+        echo 'Ödeme Alınamadı';
     }
 
 }

@@ -45,12 +45,14 @@ Route::get('/store', [ShopController::class, 'store'])->name('store');
 Route::get('/urun/{url}', [ShopController::class, 'product'])->name('product');
 Route::get('/kategori/{url}', [ShopController::class, 'category'])->name('category');
 Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
+Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
+
 Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
 Route::post('/sonuc',[ShopController::class,'save'])->name('save');
+
 Route::get('/odeme-alindi',[ShopController::class,'success'])->name('success');
 Route::get('/odeme-hata',[ShopController::class,'success'])->name('failed');
-Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
 
 
 Route::group(["prefix"=>"go", 'middleware' => ['auth','web', 'admin']],function() {
