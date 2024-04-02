@@ -237,7 +237,7 @@ class ShopController extends Controller
 
     public function save(Request $request){
 
-        //dd($request->all(), request()->all(), $_POST);
+        dd($request->all(), request()->all(), $_POST);
 
         $post = $_POST;
 
