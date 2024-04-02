@@ -295,11 +295,10 @@ class ShopController extends Controller
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
 
             $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
-            if($Update){
-                $Update->basket_status = 'Ödendi';
-                $Update->basket_total = $data['total_amount'];
-                $Update->save(); 
-            }
+            $Update->basket_status = 'Ödendi';
+            $Update->basket_total = $data['total_amount'];
+            $Update->save(); 
+       
              
 
             ## BURADA YAPILMASI GEREKENLER

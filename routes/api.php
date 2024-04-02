@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/sonuc',[ShopController::class,'save'])->name('save'); 
+Route::any('/sonuc',[ShopController::class,'save'])->name('save'); 
 
 
 
