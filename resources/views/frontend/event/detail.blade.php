@@ -1,4 +1,6 @@
 @extends('frontend.app.master')
+
+
 @section('content')
 
 <section id="home" class="relative white height-60vh height-60vh-sm mnh-450 align-items-center d-flex">
