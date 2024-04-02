@@ -48,6 +48,8 @@ Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
 Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
 Route::post('/sonuc',[ShopController::class,'save'])->name('save');
+Route::get('/odeme-alindi',[ShopController::class,'success'])->name('success');
+Route::get('/odeme-hata',[ShopController::class,'success'])->name('failed');
 Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
 
 

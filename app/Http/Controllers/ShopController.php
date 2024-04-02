@@ -106,12 +106,12 @@ class ShopController extends Controller
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_ok_url = route('save');
+        $merchant_ok_url = route('success');
         #
         ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi iptal edeceğiniz sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_fail_url = route('save');
+        $merchant_fail_url = route('failed');
         #
         ## Müşterinin sepet/sipariş içeriği
         $user_basket = "";
@@ -278,7 +278,7 @@ class ShopController extends Controller
             $Update->save();
 
 
-            return redirect->route('home');
+            return redirect()->route('home');
      
 
             ## BURADA YAPILMASI GEREKENLER
