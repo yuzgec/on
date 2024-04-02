@@ -38,6 +38,13 @@ class ShopController extends Controller
             $response = curl_exec($curl);
             curl_close($curl); */
 
+
+          /*   foreach (Cart::instance('shopping')->content() as $item) {
+                $b[] = [$item->name, $item->price, $item->qty];
+            }
+
+            dd($b); */
+
         return view('frontend.shop.index');
     }
 
@@ -141,7 +148,7 @@ class ShopController extends Controller
             $b[] = [$item->name, $item->price, $item->qty];
         }
         #
-        $user_basket = base64_encode(json_encode([$b]));
+        $user_basket = base64_encode(json_encode($b));
 
         ## Kullanıcının IP adresi
         if( isset( $_SERVER["HTTP_CLIENT_IP"] ) ) {
