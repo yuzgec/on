@@ -202,7 +202,7 @@ class ShopController extends Controller
             $New = new ShopCart;
             $New->cart_id =  $merchant_oid;
             $New->user_id =  1;
-            $New->basket_total =  Cart::instance('shopping')->total();
+            $New->basket_total =  $payment_amount / 100;
             $New->name =  $request->input('firstname');
             $New->surname =  $request->input('surname');
             $New->email =  $request->input('email');
