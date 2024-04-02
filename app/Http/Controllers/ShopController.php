@@ -15,6 +15,29 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class ShopController extends Controller
 {
     public function store(){
+            // MutluCell API URL
+           /*  $curl = curl_init();
+            curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
+                                                <smspack ka="OnPefrmarts" pwd="dance3624." org="ondance">
+                                                    <mesaj>
+                                                            <metin>iyi bayramlar..</metin>
+                                                            <nums>5332802852</nums>
+                                                    </mesaj>
+                                                </smspack>',
+                    CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
+            ));
+            $response = curl_exec($curl);
+            curl_close($curl); */
+
         return view('frontend.shop.index');
     }
 
@@ -237,9 +260,8 @@ class ShopController extends Controller
 
     public function save(Request $request){
 
-        dd($request->all(), request()->all(), $_POST);
+        $data = request()->all();
 
-        $post = $_POST;
 
         ####################### DÜZENLEMESİ ZORUNLU ALANLAR #######################
         ## API Entegrasyon Bilgileri - Mağaza paneline giriş yaparak BİLGİ sayfasından alabilirsiniz.
@@ -250,11 +272,11 @@ class ShopController extends Controller
         ####### Bu kısımda herhangi bir değişiklik yapmanıza gerek yoktur. #######
         
         ## POST değerleri ile hash oluştur.
-        $hash = base64_encode( hash_hmac('sha256', $post['merchant_oid'].$merchant_salt.$post['status'].$post['total_amount'], $merchant_key, true) );
+        $hash = base64_encode( hash_hmac('sha256', $data['merchant_oid'].$merchant_salt.$data['status'].$data['total_amount'], $merchant_key, true) );
         #
         ## Oluşturulan hash'i, paytr'dan gelen post içindeki hash ile karşılaştır (isteğin paytr'dan geldiğine ve değişmediğine emin olmak için)
         ## Bu işlemi yapmazsanız maddi zarara uğramanız olasıdır.
-        if( $hash != $post['hash'] )
+        if( $hash != $data['hash'] )
             die('PAYTR notification failed: bad hash');
         ###########################################################################
 
@@ -269,18 +291,13 @@ class ShopController extends Controller
                 exit;
             }
          */
-
-         $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
-         if($Update){
-             $Update->basket_status = 'Ödendi';
-             $Update->save(); 
-         }
        
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
 
             $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
             if($Update){
                 $Update->basket_status = 'Ödendi';
+                $Update->basket_total = $data['total_amount'];
                 $Update->save(); 
             }
              
@@ -294,6 +311,12 @@ class ShopController extends Controller
 
 
         } else { ## Ödemeye Onay Verilmedi
+
+            $Update = ShopCart::where('cart_id', request('merchant_oid') )->first();
+            if($Update){
+                $Update->basket_status = 'Ödenmedi';
+                $Update->save(); 
+            }
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi iptal edin.
