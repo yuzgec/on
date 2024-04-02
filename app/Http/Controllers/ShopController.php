@@ -104,12 +104,12 @@ class ShopController extends Controller
         ## Başarılı ödeme sonrası müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi onaylayacağınız sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi onaylayacağız sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_ok_url = route('success',['merchant_oid', $merchant_oid]);
+        $merchant_ok_url = route('success',['merchant_oid' => $merchant_oid]);
         #
         ## Ödeme sürecinde beklenmedik bir hata oluşması durumunda müşterinizin yönlendirileceği sayfa
         ## !!! Bu sayfa siparişi iptal edeceğiniz sayfa değildir! Yalnızca müşterinizi bilgilendireceğiniz sayfadır!
         ## !!! Siparişi iptal edeceğiniz sayfa "Bildirim URL" sayfasıdır (Bakınız: 2.ADIM Klasörü).
-        $merchant_fail_url = route('failed',['merchant_oid', $merchant_oid]);
+        $merchant_fail_url = route('failed',['merchant_oid' => $merchant_oid]);
         #
         ## Müşterinin sepet/sipariş içeriği
         $user_basket = "";
@@ -310,7 +310,16 @@ class ShopController extends Controller
     }
 
     public function success(){
-        echo 'Ödeme Aldındı';
+
+        if(!request('merchant_oid')){
+            return redirect()->route('home');
+        }
+
+        $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
+        $Order = Order::where('cart_id', request('merchant_oid'))->get();
+
+        dd($Shop, $Order);
+        return view('frontend.shop.success', compact('Shop', 'Order'));
     }
 
     public function failed(){
