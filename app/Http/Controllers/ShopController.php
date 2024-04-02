@@ -341,7 +341,7 @@ class ShopController extends Controller
         $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
         $Order = Order::where('cart_id', request('merchant_oid'))->get();
 
-        dd($Shop, $Order);
+        //dd($Shop, $Order);
         return view('frontend.shop.success', compact('Shop', 'Order'));
     }
 
