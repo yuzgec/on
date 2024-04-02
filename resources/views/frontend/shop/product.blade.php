@@ -40,8 +40,17 @@
                             <div class="pb-5">
                                 <img src="/front/images/shop/lyra/product_loader.svg" 
                                 data-lazy="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'thumb')}}" 
-                                alt="Project image example" class="active-me b-1 b-colored">
+                                alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
                             </div>
+
+                            @foreach($Detail->getMedia('gallery') as $item)
+                    
+                            <div class="pb-5">
+                                <img src="/front/images/shop/lyra/product_loader.svg" 
+                                data-lazy="{{ $item->getUrl('img', 'thumb') }}" 
+                                alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
+                            </div>
+                            @endforeach
                         </div>
                     </div>
 
@@ -49,8 +58,17 @@
                         <div id="image-slider" class="custom-slider block-img arrows-mosaic controls-mouseover lightbox_gallery" 
                             data-slick='{ "asNavFor": ".nav-to-custom-slider", "dots": false, "fade": true, "speed":600, "lazyLoad": "progressive", "arrows": false, "draggable":false, "slidesToShow": 1, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
                             <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" class="zoom c-point">
-                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" alt="Project image example" >
-                            </a>                           
+                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" 
+                                alt="{{ $Detail->title}} - Karşıyaka On Dance" >
+                            </a>  
+                            @foreach($Detail->getMedia('gallery') as $item)
+
+                            <a href="{{ $item->getUrl('img') }}" class="zoom c-point">
+                                <img src="{{ $item->getUrl('img') }}" 
+                                alt="{{ $Detail->title}} - Karşıyaka On Dance" >
+                            </a>  
+
+                           @endforeach
                         </div>
                     </div>
                 </div>
@@ -93,89 +111,91 @@
                 @endif
                 <form action="{{ route('addtocart') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $Detail->id }}">
-                    @if ($Detail->firstCategoryName == 'Etkinlikler')
-                        <input type="text" class="form-control mt-20 mb-20" name="student" placeholder="Katılımcı Adı Soyadı Giriniz" required width="80%">
-                    @else
+                    <div class="col-md-7 col-12">
+                        <input type="hidden" name="id" value="{{ $Detail->id }}">
+                        @if ($Detail->firstCategoryName == 'Etkinlikler')
+                            <input type="text" class="form-control mt-20 mb-20" name="student" placeholder="Katılımcı Adı Soyadı Giriniz" required width="80%">
+                        @else
 
-                  {{--   <div class="fs-14 gray8 mt-30">
-                        Beden Seçin:
+                    {{--   <div class="fs-14 gray8 mt-30">
+                            Beden Seçin:
+                        </div>
+
+                        <div class="mt-20 d-flex justify-content-start align-items-center">
+
+                            <!-- Radio keeper -->
+                            <div class="mr-10">
+                                <!-- Invisible input -->
+                                <input id="radioSize1" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
+                            
+                                <label for="radioSize1" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
+                                    <!-- Uncheck view -->
+                                    <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
+                                        <!-- Checked view -->
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="text absolute zi-2 fs-12  lh-12gray7">XS</span>
+                                    </span>
+                                </label>
+                                <!-- End label -->
+                            </div>
+                            <!-- End radio keeper -->
+
+                            <!-- Radio keeper -->
+                            <div class="mr-10">
+                                <!-- Invisible input -->
+                                <input id="radioSize2" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
+                            
+                                <label for="radioSize2" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
+                                    <!-- Uncheck view -->
+                                    <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
+                                        <!-- Checked view -->
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="text absolute zi-2 fs-12 lh-12 gray7">S</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="mr-10">
+                                <input id="radioSize3" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
+                                <label for="radioSize3" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
+                                    <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="text absolute zi-2 fs-12 lh-12 gray7">M</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="mr-10">
+                                <input id="radioSize4" name="radioSize" type="radio" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>
+                                <label for="radioSize4" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
+                                    <!-- Uncheck view -->
+                                    <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
+                                        <!-- Checked view -->
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="text absolute zi-2 fs-12 lh-12 gray7">L</span>
+                                    </span>
+                                </label>
+                                <!-- End label -->
+                            </div>
+                            <!-- End radio keeper -->
+
+                            <!-- Radio keeper -->
+                            <div class="mr-10">
+                                <!-- Invisible input -->
+                                <input id="radioSize5" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
+                            
+                                <label for="radioSize5" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
+                                    <!-- Uncheck view -->
+                                    <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
+                                        <!-- Checked view -->
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="text absolute zi-2 fs-12  lh-12gray7">XL</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div> --}}
+                        @endif
                     </div>
-
-                    <div class="mt-20 d-flex justify-content-start align-items-center">
-
-                        <!-- Radio keeper -->
-                        <div class="mr-10">
-                            <!-- Invisible input -->
-                            <input id="radioSize1" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                           
-                            <label for="radioSize1" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                <!-- Uncheck view -->
-                                <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                    <!-- Checked view -->
-                                    <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
-                                    <span class="text absolute zi-2 fs-12  lh-12gray7">XS</span>
-                                </span>
-                            </label>
-                            <!-- End label -->
-                        </div>
-                        <!-- End radio keeper -->
-
-                        <!-- Radio keeper -->
-                        <div class="mr-10">
-                            <!-- Invisible input -->
-                            <input id="radioSize2" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                           
-                            <label for="radioSize2" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                <!-- Uncheck view -->
-                                <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                    <!-- Checked view -->
-                                    <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
-                                    <span class="text absolute zi-2 fs-12 lh-12 gray7">S</span>
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="mr-10">
-                            <input id="radioSize3" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                            <label for="radioSize3" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                    <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
-                                    <span class="text absolute zi-2 fs-12 lh-12 gray7">M</span>
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="mr-10">
-                            <input id="radioSize4" name="radioSize" type="radio" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>
-                            <label for="radioSize4" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                <!-- Uncheck view -->
-                                <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                    <!-- Checked view -->
-                                    <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
-                                    <span class="text absolute zi-2 fs-12 lh-12 gray7">L</span>
-                                </span>
-                            </label>
-                            <!-- End label -->
-                        </div>
-                        <!-- End radio keeper -->
-
-                        <!-- Radio keeper -->
-                        <div class="mr-10">
-                            <!-- Invisible input -->
-                            <input id="radioSize5" name="radioSize" type="radio" class="check width-0 height-0 opacity-0 p-0"/>
-                           
-                            <label for="radioSize5" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                <!-- Uncheck view -->
-                                <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                    <!-- Checked view -->
-                                    <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
-                                    <span class="text absolute zi-2 fs-12  lh-12gray7">XL</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div> --}}
-                    @endif
 
            
                     <div class="mt-35 d-flex justify-content-start align-items-center">
