@@ -64,12 +64,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12 mt-30">
-                                            <div class="label-animation b-gray3">
-                                             
-                                            </div>
-                                        </div>
-                                        
+                                 
                                         <div class="col-12 mt-15">
                                             <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
                                                 <textarea name="address" class="input py-20 bg-gray2 height-100"></textarea>
@@ -79,15 +74,21 @@
                                                 
                                         <div class="col-6 pr-0 pr-15-sm mt-15">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="postal" id="postal"  class="input py-15 bg-gray2" value="35000">
-                                                <label for="postal" class="fs-13 gray7"><span>İl</span></label>
+                                                <label for="address" class="fs-13 gray7"><span>İl Seçiniz</span></label>
+
+                                                <select name="province" required="" class="input c-pointer slow-sm gray7 bg-gray1 bg-gray2-hover">
+                                                    <option value="">İl Seçiniz</option>
+                                                    <option value="İzmir">İzmir</option>
+                                                    <option value="İstanbul">İstanbul</option>
+                                                </select>
+                                                
                                             </div>
                                         </div>
                                         
                                         <div class="col-6 mt-15">
                                             <div class="label-animation b-gray3">
-                                                <input type="text" name="city" id="city"  class="input py-15 bg-gray2">
-                                                <label for="city" class="fs-13 gray7"><span>İlçe</span></label>
+                                                <input type="text" name="city" class="input py-15 bg-gray2">
+                                                <label for="phone" class="fs-13 gray7"><span>İlçe</span></label>
                                             </div>
                                         </div>
 

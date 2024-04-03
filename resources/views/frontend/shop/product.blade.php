@@ -29,9 +29,25 @@
         </div>
     </div>
 </section>
-<section id="product-092385" class="mt-90 mt-50-sm pb-120">
-    <div class="container-md">
+<section id="product-092385" class="mt-30 pb-120">
+    <div class="container">
         <div class="row">
+            <div class="col-12">
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        <div class="d-flex" style="justify-content: space-between;">
+                            <div> {{ session('success') }}</div>
+                            <div style="text-align: right"> 
+                                <a href="{{ route('checkout')}}" class="btn btn-dark rounded">
+                                    Ödeme Yap
+                                </a>
+                            </div>  
+                        </div>
+                       
+                    </div>
+                @endif
+           </div>
             <div class="col-lg-6 col-12">
                 <div class="row row-eq-height">
                     <div class="col-2 pr-0">

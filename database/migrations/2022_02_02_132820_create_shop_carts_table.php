@@ -32,7 +32,7 @@ class CreateShopCartsTable extends Migration
 
             $table->double('order_cargo',10,2)->nullable();
 
-            $table->string('basket_status')->default('Hazırlanıyor');
+            $table->string('basket_status')->default('Ödeme Bekliyor');
             $table->timestamps();
 
         });

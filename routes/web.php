@@ -82,6 +82,7 @@ Route::group(["prefix"=>"go", 'middleware' => ['auth','web', 'admin']],function(
     Route::auto('/price', PriceController::class);
     Route::auto('/attribute', AttributesController::class);
     Route::auto('/attributevalue', AttributeValueController::class);
+    Route::auto('/order', OrderController::class);
 
 });
 

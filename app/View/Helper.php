@@ -12,6 +12,14 @@
         }
     }
 
+    function shopPayBadge($text){
+        if($text == 'Ödendi'){
+            return 'green';
+        }else {
+            return 'red';
+        }
+    }
+
     function renderCategoriesCreate($categories, $level = 0) {
         foreach ($categories as $category) {
             // Derinliğe göre tire ekleyin

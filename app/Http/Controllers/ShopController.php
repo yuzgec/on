@@ -93,11 +93,10 @@ class ShopController extends Controller
                     'student' => $request->student
                 ]
             ]);
-        alert()->success($p->title.' sepetinize eklendi', 'Başarıyla '.SWEETALERT_MESSAGE_CREATE);
         //alert()->image('Image Title!','Image Description','Image URL','Image Width','Image Height','Image Alt');
         session()->flash('msg', 'Successfully done the operation.');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', $p->title.' sepetinize başarıyla eklenmiştir.');
     }
 
     public function checkout(){
@@ -239,7 +238,7 @@ class ShopController extends Controller
             $New->province =  $request->input('province');
             $New->city =  $request->input('city');
             $New->note =  $request->input('note');
-            $New->basket_status =  'Pending';
+            $New->basket_status =  'Ödeme Bekliyor';
             $New->save();
 
 
