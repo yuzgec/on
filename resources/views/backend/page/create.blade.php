@@ -17,7 +17,6 @@
                 <x-form-inputtext label="Başlık Adı Giriniz" name="title"/>
                 <x-form-select label="Kategori" name="category" :list="$Kategori"/>
                 <x-form-textarea label="Kısa Açıklama" name="short"/>
-
                 <x-form-textarea label="Açıklama" name="desc" />
                 <div class="card-header mb-2">
                     <h4 class="card-title">
@@ -42,7 +41,6 @@
                     Sayfa Kapak Resim
                 </h4>
             </div>
-
             <div class="p-2">
                 <x-form-file label="" name="image"></x-form-file>
             </div>
@@ -62,7 +60,6 @@
                 @endif
             </div>
         </div>
-
     </div>
     {{Form::close()}}
 @endsection
