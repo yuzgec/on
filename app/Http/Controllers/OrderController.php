@@ -12,4 +12,12 @@ class OrderController extends Controller
         //dd($All);
         return view('backend.order.index', compact('All'));
     }
+
+    public function show($id){
+
+        //dd($id);
+        $Detail = ShopCart::with('getOrder')->where('cart_id',$id)->withCount('getOrder')->first();
+
+        return view('backend.order.show', compact('Detail'));
+    }
 }

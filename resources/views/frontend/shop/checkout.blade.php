@@ -233,7 +233,7 @@
                                     <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Ara Toplam</h4>
-                                        <p class="ml-auto fs-14 gray5">{{ money(Cart::instance('shopping')->subtotal())}}</p>
+                                        <p class="ml-auto fs-14 gray5">{{ Cart::instance('shopping')->subtotal()}}</p>
                                     </div>
                                     <!-- Shipping -->
                                     <div class="d-flex fullwidth mt-30 justify-content-between align-items-start">
@@ -249,7 +249,7 @@
                                     <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Toplam</h4>
-                                        <p class="ml-auto fs-28 dark1">{{ money(Cart::instance('shopping')->total())}}</p>
+                                        <p class="ml-auto fs-28 dark1">{{ Cart::instance('shopping')->total()}}</p>
                                     </div>
                                 </div>
 

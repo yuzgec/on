@@ -9,18 +9,34 @@
                     Sipariş Listesi [{{ $All->count() }}]
                 </h4>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex">
                 <a class="btn btn-primary btn-sm rounded" href="{{  url()->previous() }}" title="Geri">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
                     Geri
                 </a> 
+
+                <div class="input-icon mb-2">
+                    <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="{{ Carbon\Carbon::yesterday()->toDateString()}}">
+                    <span class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M4 11h16"></path><path d="M11 15h1"></path><path d="M12 15v3"></path></svg>
+                    </span>
+                  </div>
+
+
+                  <div class="input-icon mb-2">
+                    <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="{{ Carbon\Carbon::now()->toDateString() }}">
+                    <span class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path><path d="M16 3v4"></path><path d="M8 3v4"></path><path d="M4 11h16"></path><path d="M11 15h1"></path><path d="M12 15v3"></path></svg>
+                    </span>
+                  </div>
+
                 <input type="date" class="form-control m-1" name="date" value="{{ Carbon\Carbon::yesterday()->toDateString()}}">
                 <input type="date" class="form-control m-1" name="date" value="{{ Carbon\Carbon::now()->toDateString() }}">
 
-               <select name="orderby" class="form-control m-1" >
+                <select name="orderby" class="form-control form-select m-1" >
                     <option value="odendi">Ödendi</option>
                     <option value="odenmedi">Ödenmedi</option>
-            </select>
+                </select>
             </div>
         </div>
 
@@ -28,7 +44,7 @@
             <table class="table table-hover table-striped table-bordered table-responsive">
                 <thead>
                     <tr>
-                        <th>Sip No.</th>
+                        <th>Sipariş No.</th>
                         <th>Ad Soyad</th>
                         <th>Telefon</th>
                         <th>Email</th>
@@ -40,7 +56,11 @@
                 <tbody >
                 @foreach($All as $item)
                 <tr>
-                    <td>{{$item->cart_id}} <span class="badge bg-green"> ({{ $item->get_order_count}})</span></td>
+                    <td width="10%">
+                        <a href="{{ route('order.show', $item->cart_id )}}" class="btn">{{$item->cart_id}} 
+                            <span class="badge bg-green text-green-fg ms-2"> ({{ $item->get_order_count}})</span></a>
+                        </a>
+                    </td>
                     <td>{{$item->name.' '.$item->surname}}</td>
                     <td>{{$item->phone}}</td>
                     <td>{{$item->email}}</td>

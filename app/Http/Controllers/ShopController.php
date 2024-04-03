@@ -99,8 +99,8 @@ class ShopController extends Controller
         return redirect()->back()->with('success', $p->title.' sepetinize başarıyla eklenmiştir.');
     }
 
-    public function checkout(){
-
+    public function checkout()
+    {
         return view('frontend.shop.checkout');
     }
 
@@ -113,10 +113,10 @@ class ShopController extends Controller
         ## Müşterinizin sitenizde kayıtlı veya form vasıtasıyla aldığınız eposta adresi
         $email = $request->input('email');
 
-        $deger = str_replace('.', '', Cart::instance('shopping')->total());
-        $deger = strstr($deger, ',', true);
-        $payment_amount	=  $deger = (int)$deger * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
-
+    
+       
+        $payment_amount	=  Cart::instance('shopping')->total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
+        dd($payment_amount);
         #
         ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
         $merchant_oid = time();
