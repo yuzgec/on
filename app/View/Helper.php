@@ -11,6 +11,7 @@
             }
         }
     }
+    
 
     function shopPayBadge($text){
         if($text == 'Ödendi'){

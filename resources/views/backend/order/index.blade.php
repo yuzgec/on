@@ -10,11 +10,17 @@
                 </h4>
             </div>
             <div class="d-flex justify-content-between">
-                <a class="btn btn-primary btn-sm me-1" href="{{  url()->previous() }}" title="Geri">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
+                <a class="btn btn-primary btn-sm rounded" href="{{  url()->previous() }}" title="Geri">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
                     Geri
-                </a>
-               
+                </a> 
+                <input type="date" class="form-control m-1" name="date" value="{{ Carbon\Carbon::yesterday()->toDateString()}}">
+                <input type="date" class="form-control m-1" name="date" value="{{ Carbon\Carbon::now()->toDateString() }}">
+
+               <select name="orderby" class="form-control m-1" >
+                    <option value="odendi">Ödendi</option>
+                    <option value="odenmedi">Ödenmedi</option>
+            </select>
             </div>
         </div>
 
@@ -28,23 +34,19 @@
                         <th>Email</th>
                         <th>Başlık</th>
                         <th>Durum</th>
-                        <th class="d-none d-lg-table-cell">Kategori</th>
-                        <th class="d-none d-lg-table-cell">Oluşturma Tarihi</th>
-                        <th class="w-1"></th>
+                        <th class="d-none d-lg-table-cell">Tarihi</th>
                     </tr>
                 </thead>
                 <tbody >
                 @foreach($All as $item)
                 <tr>
-                    <td>{{$item->cart_id}}({{ $item->get_order_count}})</td>
+                    <td>{{$item->cart_id}} <span class="badge bg-green"> ({{ $item->get_order_count}})</span></td>
                     <td>{{$item->name.' '.$item->surname}}</td>
                     <td>{{$item->phone}}</td>
                     <td>{{$item->email}}</td>
                     <td>{{money($item->basket_total)}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->phone}}</td>
+            
                     <td><span class="badge bg-{{shopPayBadge($item->basket_status)}} me-1"></span> {{$item->basket_status}}</td>
-                    <td>{{$item->get_order_count}}</td>
                     <td class="d-none d-lg-table-cell">
                         {{ $item->created_at->diffForHumans() }}
                     </td>
@@ -84,4 +86,16 @@
 
     </div>
 </div>
+@endsection
+
+@section('customJS')
+    <script>
+        function getDate(){
+    var today = new Date();
+
+document.getElementById("date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+
+
+}
+</script>
 @endsection
