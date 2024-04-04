@@ -16,7 +16,7 @@ class ShopController extends Controller
 {
     public function store(){
             // MutluCell API URL
-           /*  $curl = curl_init();
+            $curl = curl_init();
             curl_setopt_array($curl, array(
                     CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
                     CURLOPT_RETURNTRANSFER => true,
@@ -29,14 +29,15 @@ class ShopController extends Controller
                     CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
                                                 <smspack ka="OnPefrmarts" pwd="dance3624." org="ondance">
                                                     <mesaj>
-                                                            <metin>iyi bayramlar..</metin>
+                                                            <metin>DENEME SMS..</metin>
                                                             <nums>5332802852</nums>
                                                     </mesaj>
                                                 </smspack>',
                     CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
             ));
             $response = curl_exec($curl);
-            curl_close($curl); */
+
+            curl_close($curl); 
 
 
           /*   foreach (Cart::instance('shopping')->content() as $item) {
@@ -114,9 +115,8 @@ class ShopController extends Controller
         $email = $request->input('email');
 
     
-       
-        $payment_amount	=  Cart::instance('shopping')->total() * 100; //9.99 için 9.99 * 100 = 999 gönderilmelidir.
-        dd($payment_amount);
+        $payment_amount	=  str_replace(array('.', ','), '', Cart::instance('shopping')->total() ); //9.99 için 9.99 * 100 = 999 gönderilmelidir.
+        //dd($payment_amount);
         #
         ## Sipariş numarası: Her işlemde benzersiz olmalıdır!! Bu bilgi bildirim sayfanıza yapılacak bildirimde geri gönderilir.
         $merchant_oid = time();
@@ -309,6 +309,7 @@ class ShopController extends Controller
        
             }
 
+
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
             ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
@@ -332,6 +333,8 @@ class ShopController extends Controller
             ## $data['failed_reason_msg'] - başarısız hata mesajı
 
         }
+
+        Cart::instance('shopping')->destroy();
 
         ## Bildirimin alındığını PayTR sistemine bildir.
         echo "OK";
