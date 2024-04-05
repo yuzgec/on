@@ -10,6 +10,9 @@ use App\Models\ProductCategory;
 use App\Models\Basket;
 use App\Http\Requests\PayRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
+use App\Models\City;
+
 
 use Mlevent\Fatura\Enums\Currency;
 use Mlevent\Fatura\Enums\InvoiceType;
@@ -25,7 +28,7 @@ class ShopController extends Controller
 
 
             // MutluCell API URL
-/*             $curl = curl_init();
+            $curl = curl_init();
             curl_setopt_array($curl, array(
                     CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
                     CURLOPT_RETURNTRANSFER => true,
@@ -46,7 +49,7 @@ class ShopController extends Controller
             ));
             $response = curl_exec($curl);
 
-            curl_close($curl);  */
+            curl_close($curl);
 
 
           /*   foreach (Cart::instance('shopping')->content() as $item) {
@@ -55,7 +58,6 @@ class ShopController extends Controller
 
             dd($b); */
 
-       
 
         return view('frontend.shop.index');
     }
@@ -113,7 +115,8 @@ class ShopController extends Controller
 
     public function checkout()
     {
-        return view('frontend.shop.checkout');
+        $Province = DB::table('sehir')->get();
+        return view('frontend.shop.checkout',compact('Province'));
     }
 
     public function pay(PayRequest $request){
@@ -121,6 +124,9 @@ class ShopController extends Controller
         $merchant_id 	= env('PAYTR_MERCHANT_ID');
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
+
+        //dd($request->all());
+
         #
         ## Müşterinizin sitenizde kayıtlı veya form vasıtasıyla aldığınız eposta adresi
         $email = $request->input('email');
@@ -235,21 +241,26 @@ class ShopController extends Controller
         curl_close($ch);
         
         $result=json_decode($result,1);
-            
+
+        $province = DB::table('sehir')->where('id', $request->province)->first();
+
+        //dd($province);
+
         if($result['status']=='success'){
             $New = new ShopCart;
             $New->cart_id =  $merchant_oid;
             $New->user_id =  1;
-            $New->basket_total =  $payment_amount;
+            $New->basket_total =  $payment_amount / 100;
             $New->name =  $request->input('firstname');
             $New->surname =  $request->input('surname');
             $New->email =  $request->input('email');
+            $New->tckn =  $request->input('tckn');
             $New->phone =  $request->input('phone');
             $New->address =  $request->input('address');
-            $New->province =  $request->input('province');
+            $New->province = $province->sehir_title;
             $New->city =  $request->input('city');
             $New->note =  $request->input('note');
-            $New->basket_status =  'Ödeme Bekliyor';
+            $New->basket_status =  'Ödenmedi';
             $New->save();
 
 
@@ -260,6 +271,9 @@ class ShopController extends Controller
                 $Order->name =  $item->name;
                 $Order->qty =  $item->qty;
                 $Order->price =  $item->price;
+                $Order->color =  $item->options->color;
+                $Order->size =  $item->options->size;
+                $Order->ticket_name =  $item->options->student;
                 $Order->save();
             } 
 
@@ -311,31 +325,28 @@ class ShopController extends Controller
        
         if( $data['status'] == 'success' ) { ## Ödeme Onaylandı
 
-            $update = ShopCart::where('cart_id', request('merchant_oid'))->first();
+            $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
 
-            if ($update !== null) {
-                $update->basket_status = 'Ödendi';
-                $update->basket_total = $data['total_amount'];
-                $update->save();
-       
-            }
+            $Shop->basket_status = 'Ödendi';
+            $Shop->basket_total = $data['total_amount'] / 100;
+
 
             $gib = (new Gib)->setTestCredentials()->login();
             $invoice = new InvoiceModel(
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
-                saat             : '23:50:48',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
+                saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
                 paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
                 dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
-                vknTckn          : '11111111111',      // ✴️ Zorunlu   @string
+                vknTckn          : $Shop->tckn,      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
-                aliciUnvan       : '',                 // ✅ Opsiyonel @string
-                aliciAdi         : $update->name,             // ✴️ Zorunlu   @string
-                aliciSoyadi      : $update->surname,           // ✴️ Zorunlu   @string
-                mahalleSemtIlce  : $update->city,          // ✴️ Zorunlu   @string
-                sehir            : $update->province,            // ✴️ Zorunlu   @string
+                aliciUnvan       : $Shop->name.' '.Shop->surname,                 // ✅ Opsiyonel @string
+                aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
+                aliciSoyadi      : $Shop->surname,           // ✴️ Zorunlu   @string
+                mahalleSemtIlce  : $Shop->city,          // ✴️ Zorunlu   @string
+                sehir            : $Shop->province,            // ✴️ Zorunlu   @string
                 ulke             : 'Türkiye',          // ✴️ Zorunlu   @string
-                adres            : $update->address,   // ✅ Opsiyonel @string
+                adres            : $Shop->address,   // ✅ Opsiyonel @string
                 siparisNumarasi  : '',                 // ✅ Opsiyonel @string
                 siparisTarihi    : '',                 // ✅ Opsiyonel @string
                 irsaliyeNumarasi : '',                 // ✅ Opsiyonel @string
@@ -351,29 +362,41 @@ class ShopController extends Controller
                 kapiNo           : '',                 // ✅ Opsiyonel @string
                 kasabaKoy        : '',                 // ✅ Opsiyonel @string
                 postaKodu        : '',                 // ✅ Opsiyonel @string
-                tel              : $update->phone,     // ✅ Opsiyonel @string
+                tel              : $Shop->phone,     // ✅ Opsiyonel @string
                 fax              : '',                 // ✅ Opsiyonel @string
-                eposta           : $update->email,     // ✅ Opsiyonel @string
-                not              : '',                 // ✅ Opsiyonel @string
+                eposta           : $Shop->email,     // ✅ Opsiyonel @string
+                not              : $Shop->note                // ✅ Opsiyonel @string
             );
             
+            
             // Ürün/Hizmetler
-            foreach (Cart::instance('shopping')->content() as $item) {
-       
-                $invoice->addItem(
-                    new InvoiceItemModel(
-                        malHizmet     : $item->name,  // ✴️ Zorunlu   @string
-                        miktar        : $item->qty,         // ✴️ Zorunlu   @float
-                        birim         : Unit::Adet,   // ☑️ Opsiyonel @Unit @default=Unit::Adet
-                        birimFiyat    : $item->pice,       // ✴️ Zorunlu   @float
-                        kdvOrani      : 20,         // ✴️ Zorunlu   @float
-                        iskontoOrani  : 0,         // ✅ Opsiyonel @float
-                        iskontoTipi   : '', // ☑️ Opsiyonel @string @default=İskonto
-                        iskontoNedeni : '',         // ✅ Opsiyonel @string
-                    )
+            $cartItems = Cart::instance('shopping')->content();
+
+            // Sepet içeriklerini dönüştürüp faturaya ekle
+            foreach ($cartItems as $cartItem) {
+                // Her bir cart item için bir InvoiceItemModel nesnesi oluştur
+                $invoiceItem = new InvoiceItemModel(
+                    malHizmet: $cartItem->name, // Sepet öğesinin adı
+                    miktar: $cartItem->qty, // Miktar
+                    birim: Unit::Adet, // Bu örnekte her zaman 'Adet' olarak kabul edilmiştir
+                    birimFiyat: $cartItem->price, // Birim fiyatı
+                    kdvOrani: 20, // KDV oranı, varsayılan bir değer
+                    iskontoOrani: 0, // İskonto oranı, eğer varsa bu bilgiyi de sepet öğesinden alabilirsiniz
+                    iskontoTipi: 'İskonto', // İskonto tipi, varsayılan bir değer
+                    iskontoNedeni: '' // İskonto nedeni, eğer varsa bu bilgiyi de sepet öğesinden alabilirsiniz
                 );
+            
+                // Oluşturulan InvoiceItemModel nesnesini faturaya ekle
+                $invoice->addItem($invoiceItem);
             }
 
+
+            if ($gib->createDraft($invoice)) {
+                $invoice->getUuid(); // 04e17398-468d-11ed-b3cb-4ccc6ae28384
+            }
+
+            $Shop->invoice_id = $$invoice->getUuid();
+            $Shop->save();
             $gib->logout();
 
 
@@ -391,6 +414,8 @@ class ShopController extends Controller
             if ($update !== null) {
                 $update->basket_status = 'Ödenmedi';
                 $update->basket_total = $data['total_amount'];
+                $update->error_code = $data['failed_reason_code'];
+                $update->error_msg = $$data['failed_reason_msg'];
                 $update->save();
             }
             ## BURADA YAPILMASI GEREKENLER
@@ -417,13 +442,19 @@ class ShopController extends Controller
 
         $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
         $Order = Order::where('cart_id', request('merchant_oid'))->get();
+        $gib = (new Gib)->setTestCredentials()->login();
 
-        //dd($Shop, $Order);
-        return view('frontend.shop.success', compact('Shop', 'Order'));
+        return view('frontend.shop.success', compact('Shop', 'Order','gib'));
     }
 
     public function failed(){
         echo 'Ödeme Alınamadı';
+    }
+
+
+    public function getDistricts(City $city)
+    {
+        return response()->json($city->districts);
     }
 
 }

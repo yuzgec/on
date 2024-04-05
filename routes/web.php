@@ -53,6 +53,9 @@ Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
 Route::get('/odeme-alindi',[ShopController::class,'success'])->name('success');
 Route::get('/odeme-hata',[ShopController::class,'success'])->name('failed');
 
+Route::get('/districts/{city}', [ShopController::class,'getDistricts']);
+
+
 
 Route::group(["prefix"=>"go", 'middleware' => ['auth','web', 'admin']],function() {
     Route::get('/', 'DashboardController@index')->name('go');

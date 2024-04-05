@@ -43,5 +43,4 @@ class Page extends Model implements HasMedia,Viewable
         $this->addMediaConversion('small')->width(150)->nonOptimized();
     }
 
-
 }

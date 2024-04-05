@@ -105,14 +105,14 @@
     </div>
 </section>  
 
-<section id="element-template-06" class="py-120 bt-1 b-gray1 b-solid">
+<section id="element-template-06" class="py-30 bt-1 b-gray1 b-solid">
     <div class="container">
         <div class="fs-20 fs-16-sm gray7 ls-0 lh-35 light">
             {!! $Gallery->desc!!}
         </div>
     </div>
 
-    <div id="image-slider-template-06" class="mt-70 container-fluid o-hidden-x px-5">
+    <div id="image-slider-template-06" class="mt-20 container-fluid o-hidden-x px-5">
         <div id="image-slider-06" class="custom-slider fw-slider block-img dots-circle c-grab t-center" 
             data-slick='{"variableWidth": true, "centerMode": true, "dots": false, "speed":1000,"autoplay":true, "arrows": true, "fade": false, "draggable":true, "slidesToShow": 1, "slidesToScroll": 1,
              "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >

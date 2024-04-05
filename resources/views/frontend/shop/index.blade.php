@@ -12,7 +12,6 @@
     </section>
 
     <section id="products" class="epsilon-products pt-100 pb-120" data-bg="url(/front/images/shop/epsilon/background_gradient.svg)">
-       
         <div class="container mt-30">
             <div id="product-items" class="product-items t-center">
                 @foreach ($Product as $item)

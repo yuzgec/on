@@ -38,58 +38,76 @@
                                         </div>
 
                                         <div class="col-6 pr-0 pr-15-sm mt-30">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="firstname" class="input py-15 bg-gray2">
-                                                <label for="firstname" class="fs-13 gray7"><span>Adınız </span></label>
-                                            </div>
-                                        </div>
-                                     
-                                        <div class="col-6 mt-30">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="surname" class="input py-15 bg-gray2">
-                                                <label for="surname" class="fs-13 gray7"><span>Soyadınız</span></label>
-                                            </div>
+                                            <input type="text" value="{{ old('firstname')}}" name="firstname"  placeholder="Adınız" class="bg-gray1  {{ ($errors->has('firstname')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('firstname'))
+                                                <span style="color:red">{{$errors->first('firstname')}}</span>
+                                            @endif
                                         </div>
 
-                                        <div class="col-6 mt-30">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="email" id="q-email"  class="input py-15 bg-gray2">
-                                                <label for="q-email" class="fs-13 gray7"><span>E-Mail Adresiniz</span></label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 mt-30">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="phone" class="input py-15 bg-gray2">
-                                                <label for="phone" class="fs-13 gray7"><span>Telefon</span></label>
-                                            </div>
+                                        <div class="col-6 pr-0 pr-15-sm mt-30">
+                                            <input type="text" value="{{ old('surname')}}" name="surname"  placeholder="Soyadınız" class="bg-gray1  {{ ($errors->has('surname')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('surname'))
+                                                <span style="color:red">{{$errors->first('surname')}}</span>
+                                            @endif
                                         </div>
 
+                                        <div class="col-12 pr-0 pr-15-sm mt-30">
+                                            <input type="text" value="{{ old('tckn')}}" name="tckn"  placeholder="T.C Kimlik No" class="bg-gray1  {{ ($errors->has('tckn')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('tckn'))
+                                                <span style="color:red">{{$errors->first('tckn')}}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col-6 pr-0 pr-15-sm mt-30">
+                                            <input type="text" value="{{ old('email')}}" name="email"  placeholder="Email Adresiniz" class="bg-gray1  {{ ($errors->has('email')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('email'))
+                                                <span style="color:red">{{$errors->first('email')}}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col-6 pr-0 pr-15-sm mt-30">
+                                            <input type="text" value="{{ old('phone')}}" name="phone"  placeholder="Telefon Numaranız" class="bg-gray1  {{ ($errors->has('phone')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('phone'))
+                                                <span style="color:red">{{$errors->first('phone')}}</span>
+                                            @endif
+                                        </div>
                                  
                                         <div class="col-12 mt-15">
-                                            <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
-                                                <textarea name="address" class="input py-20 bg-gray2 height-100"></textarea>
-                                                <label for="address" class="fs-13 gray7"><span>Açık Adresiniz</span></label>
-                                            </div>
+                                            <textarea type="text" name="address"  placeholder="Telefon Numaranız"  
+                                            class="input bg-gray1  {{ ($errors->has('address')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                                {{ old('address')}}
+                                            </textarea>
+                                            @if($errors->has('address'))
+                                                <span style="color:red">{{$errors->first('address')}}</span>
+                                            @endif
                                         </div>
-                                                
-                                        <div class="col-6 pr-0 pr-15-sm mt-15">
-                                            <div class="label-animation b-gray3">
-                                                <label for="address" class="fs-13 gray7"><span>İl Seçiniz</span></label>
 
-                                                <select name="province" required="" class="input c-pointer slow-sm gray7 bg-gray1 bg-gray2-hover">
-                                                    <option value="">İl Seçiniz</option>
-                                                    <option value="İzmir">İzmir</option>
-                                                    <option value="İstanbul">İstanbul</option>
-                                                </select>
-                                                
-                                            </div>
+                                        <div class="col-md-6 mb-3 mt-10">
+                                            <label class="form-label"> İl <span class="text-danger">*</span></label>
+                                            <select class="input c-pointer slow-sm gray7 bg-gray1 bg-gray2-hover @if($errors->has('province')) is-invalid @endif" id="city-select" name="province">
+                                                <option value="">İl Seçiniz</option>
+                                                @foreach($Province as $item)
+                                                    <option value="{{ $item->id }}" 
+                                                        {{ (old('province') == $item->id) ? 'selected' : null }}>
+                                                        {{ $item->sehir_title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('province'))
+                                                <div class="invalid-feedback valid">{{$errors->first('province')}}</div>
+                                            @endif
                                         </div>
-                                        
-                                        <div class="col-6 mt-15">
-                                            <div class="label-animation b-gray3">
-                                                <input type="text" name="city" class="input py-15 bg-gray2">
-                                                <label for="phone" class="fs-13 gray7"><span>İlçe</span></label>
-                                            </div>
+
+                                        <div class="col-md-6 mb-3 mt-10">
+
+                                            <label class="form-label">İlçe <span class="text-danger">*</span></label>
+                                                <select id="district-select" class="input c-pointer slow-sm gray7 bg-gray1 bg-gray2-hover  @if($errors->has('city')) is-invalid @endif" name="city" >
+                                            </select>
+
+                                            @if($errors->has('city'))
+                                                <div class="invalid-feedback valid">{{$errors->first('city')}}</div>
+                                            @endif
+
                                         </div>
 
                                         <div class="col-12 mt-70">
@@ -110,7 +128,7 @@
                                      
                                         <div class="col-12 mt-15">
                                             <div class="label-animation b-gray2 textarea-wrapper" data-animation="fadeInUp" data-animation-delay="200">
-                                                <textarea name="message" id="message" class="input py-20 bg-gray2 height-100"></textarea>
+                                                <textarea name="note" id="message" class="input py-20 bg-gray2 height-100"></textarea>
                                                 <label for="message" class="fs-13 gray7"><span>Sipariş ile ilgili notunuz</span></label>
                                             </div>
                                         </div>
@@ -121,19 +139,13 @@
                                         Your personal data will be used to process your orders and for your experience on this website. For more information, you can read our <a href="pages-privacy.html" class="colored underline-hover">privacy policy.</a>
                                     </p>
                                     <div class="mt-15">
-                                        <!-- Invisible input -->
-                                        <input id="terms" name="terms" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>
-                                       
+                                        <input id="terms" name="terms" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>                                       
                                         <label for="terms" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
-                                            <!-- Uncheck view -->
                                             <span class="uncheck d-flex align-items-center justify-content-center width-16 height-16 bg-white b-1 b-gray3 relative">
-                                                <!-- Checked view -->
                                                 <span class="checked width-8 height-8 bg-dark2"></span>
                                             </span>
-                                            <!-- Label text -->
                                             <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">I have read and accept the <a href="pages-terms.html" class="colored underline-hover">terms and conditions</a> on this website.</span>
                                         </label>
-                                        <!-- End label -->
                                     </div>
 
                                     <div class="mt-50">
@@ -142,36 +154,16 @@
                                         </button>
                                     </div>
                                 </div>
-                                   <!-- End row for cols -->
                                 </form>
-                                <!-- End all form -->
-
                             </div>
-                            <!-- End centered column for form -->
-
                         </div>
-                        <!-- End row for centered form -->
                     </div>
-                    <!-- End column for forms -->
 
-
-
-
-                    <!-- Order summary -->
                     <div class="col-lg-4 col-12 bl-1 bl-0-sm b-gray1">
-
-                        <!-- Row for summary column -->
                         <div class="row justify-content-center">
-
-                            <!-- Summary column -->
                             <div class="col-10 pt-70">
-                                
-                                <!-- Title -->
                                 <h4 class="fs-15 uppercase gray9">Sepetim</h4>
-
-                                <!-- Products -->
                                 <div class="mt-20">
-
                                     @foreach(Cart::instance('shopping')->content() as $cart)
                                     <div class="py-20 bb-1 b-gray1 d-flex justify-content-between flex-row">
                                         <div class="d-flex row-eq-height justify-centent-between">
@@ -228,32 +220,24 @@
 
 
 
-                                <!-- Subtotal price and shipping notes -->
                                 <div class="mt-65">
-                                    <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Ara Toplam</h4>
                                         <p class="ml-auto fs-14 gray5">{{ Cart::instance('shopping')->subtotal()}}</p>
                                     </div>
-                                    <!-- Shipping -->
                                     <div class="d-flex fullwidth mt-30 justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Kargo</h4>
                                         <p class="ml-auto fs-14 gray5">Ücretsiz</p>
                                     </div>
                                 </div>
-                                <!-- End subtotal and shipping notes -->
 
-
-                                <!-- Total price -->
                                 <div class="mt-45 pt-45 bt-1 b-gray1">
-                                    <!-- Subtotal -->
                                     <div class="d-flex fullwidth justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Toplam</h4>
                                         <p class="ml-auto fs-28 dark1">{{ Cart::instance('shopping')->total()}}</p>
                                     </div>
                                 </div>
 
-                               
                             </div>
                         </div>
                     </div>
@@ -261,3 +245,40 @@
             </div>
         </div>
 @endsection
+
+
+@section('customJS')
+
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        
+        $(document).ready(function() {
+            $('#city-select').on('change', function() {
+                var cityId = $(this).val();
+                $.ajax({
+                    url: '/districts/' + cityId,
+                    type: 'GET',
+                    success: function(districts) {
+                        var districtSelect = $('#district-select');
+                        districtSelect.empty();
+
+                        $.each(districts, function(key, district) {
+                            districtSelect.append($('<option></option>').attr('value', district.ilce_title).text(district.ilce_title));
+                        });
+                    },
+                    error: function(request, status, error) {
+                        console.error('AJAX Error:', error);
+                    }
+                });
+            });
+        });
+
+    </script>
+@endsection
+
