@@ -187,7 +187,7 @@ class ShopController extends Controller
         $debug_on = 1;
     
         ## Mağaza canlı modda iken test işlem yapmak için 1 olarak gönderilebilir.
-        $test_mode = 1;
+        $test_mode = 0;
     
         $no_installment	= 0; // Taksit yapılmasını istemiyorsanız, sadece tek çekim sunacaksanız 1 yapın
     
