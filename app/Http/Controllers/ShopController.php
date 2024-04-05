@@ -11,12 +11,21 @@ use App\Models\Basket;
 use App\Http\Requests\PayRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+use Mlevent\Fatura\Enums\Currency;
+use Mlevent\Fatura\Enums\InvoiceType;
+use Mlevent\Fatura\Enums\Unit;
+use Mlevent\Fatura\Gib;
+use Mlevent\Fatura\Models\InvoiceModel;
+use Mlevent\Fatura\Models\InvoiceItemModel;
+
 
 class ShopController extends Controller
 {
     public function store(){
+
+
             // MutluCell API URL
-            $curl = curl_init();
+/*             $curl = curl_init();
             curl_setopt_array($curl, array(
                     CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
                     CURLOPT_RETURNTRANSFER => true,
@@ -37,7 +46,7 @@ class ShopController extends Controller
             ));
             $response = curl_exec($curl);
 
-            curl_close($curl); 
+            curl_close($curl);  */
 
 
           /*   foreach (Cart::instance('shopping')->content() as $item) {
@@ -45,6 +54,8 @@ class ShopController extends Controller
             }
 
             dd($b); */
+
+       
 
         return view('frontend.shop.index');
     }
@@ -170,7 +181,7 @@ class ShopController extends Controller
         $debug_on = 1;
     
         ## Mağaza canlı modda iken test işlem yapmak için 1 olarak gönderilebilir.
-        $test_mode = 0;
+        $test_mode = 1;
     
         $no_installment	= 0; // Taksit yapılmasını istemiyorsanız, sadece tek çekim sunacaksanız 1 yapın
     
@@ -308,6 +319,62 @@ class ShopController extends Controller
                 $update->save();
        
             }
+
+            $gib = (new Gib)->setTestCredentials()->login();
+            $invoice = new InvoiceModel(
+                tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
+                saat             : '23:50:48',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
+                paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
+                dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
+                faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
+                vknTckn          : '11111111111',      // ✴️ Zorunlu   @string
+                vergiDairesi     : '',                 // ✅ Opsiyonel @string
+                aliciUnvan       : '',                 // ✅ Opsiyonel @string
+                aliciAdi         : $update->name,             // ✴️ Zorunlu   @string
+                aliciSoyadi      : $update->surname,           // ✴️ Zorunlu   @string
+                mahalleSemtIlce  : $update->city,          // ✴️ Zorunlu   @string
+                sehir            : $update->province,            // ✴️ Zorunlu   @string
+                ulke             : 'Türkiye',          // ✴️ Zorunlu   @string
+                adres            : $update->address,   // ✅ Opsiyonel @string
+                siparisNumarasi  : '',                 // ✅ Opsiyonel @string
+                siparisTarihi    : '',                 // ✅ Opsiyonel @string
+                irsaliyeNumarasi : '',                 // ✅ Opsiyonel @string
+                irsaliyeTarihi   : '',                 // ✅ Opsiyonel @string
+                fisNo            : '',                 // ✅ Opsiyonel @string
+                fisTarihi        : '',                 // ✅ Opsiyonel @string
+                fisSaati         : '',                 // ✅ Opsiyonel @string
+                fisTipi          : '',                 // ✅ Opsiyonel @string
+                zRaporNo         : '',                 // ✅ Opsiyonel @string
+                okcSeriNo        : '',                 // ✅ Opsiyonel @string
+                binaAdi          : '',                 // ✅ Opsiyonel @string
+                binaNo           : '',                 // ✅ Opsiyonel @string
+                kapiNo           : '',                 // ✅ Opsiyonel @string
+                kasabaKoy        : '',                 // ✅ Opsiyonel @string
+                postaKodu        : '',                 // ✅ Opsiyonel @string
+                tel              : $update->phone,     // ✅ Opsiyonel @string
+                fax              : '',                 // ✅ Opsiyonel @string
+                eposta           : $update->email,     // ✅ Opsiyonel @string
+                not              : '',                 // ✅ Opsiyonel @string
+            );
+            
+            // Ürün/Hizmetler
+            foreach (Cart::instance('shopping')->content() as $item) {
+       
+                $invoice->addItem(
+                    new InvoiceItemModel(
+                        malHizmet     : $item->name,  // ✴️ Zorunlu   @string
+                        miktar        : $item->qty,         // ✴️ Zorunlu   @float
+                        birim         : Unit::Adet,   // ☑️ Opsiyonel @Unit @default=Unit::Adet
+                        birimFiyat    : $item->pice,       // ✴️ Zorunlu   @float
+                        kdvOrani      : 20,         // ✴️ Zorunlu   @float
+                        iskontoOrani  : 0,         // ✅ Opsiyonel @float
+                        iskontoTipi   : '', // ☑️ Opsiyonel @string @default=İskonto
+                        iskontoNedeni : '',         // ✅ Opsiyonel @string
+                    )
+                );
+            }
+
+            $gib->logout();
 
 
             ## BURADA YAPILMASI GEREKENLER
