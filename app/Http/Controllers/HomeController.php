@@ -11,6 +11,7 @@ use App\Models\Attribute;
 use App\Models\Video;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Mail;
+use CyrildeWit\EloquentViewable\Support\Period;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,8 @@ class HomeController extends Controller
 
     public function corporatedetail($slug){
         $Detay = Page::where('slug', $slug)->firstOrFail();
+        views($Detay)->cooldown(60)->record();
+
         return view('frontend.page.index', compact('Detay'));
 
     }
@@ -45,6 +48,8 @@ class HomeController extends Controller
 
     public function service($slug){
         $Detay = Service::where('category', 1)->where('slug', $slug)->firstOrFail();
+        views($Detay)->cooldown(60)->record();
+
         $Format = substr($Detay->getFirstMediaUrl('cover'), -3);
         return view('frontend.service.detail', compact('Detay', 'Format'));
     }
@@ -56,6 +61,8 @@ class HomeController extends Controller
 
     public function studio($slug){
         $Detay = Service::where('category', 2)->where('slug', $slug)->firstOrFail();
+        views($Detay)->cooldown(60)->record();
+
         return view('frontend.studio.detail', compact('Detay'));
     }
 
@@ -66,6 +73,8 @@ class HomeController extends Controller
 
     public function event($slug){
         $Detay = Blog::where('category', 3)->where('slug', $slug)->firstOrFail();
+        views($Detay)->cooldown(60)->record();
+
         return view('frontend.event.detail', compact('Detay'));
     }
 

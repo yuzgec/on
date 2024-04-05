@@ -31,7 +31,6 @@
     <div class="row">
         <div class="col-12">
             
-            <a href="{{$gib->getDownloadURL($Shop->invoice_id)}}" download>İndir</a>
 
         </div>
     </div>

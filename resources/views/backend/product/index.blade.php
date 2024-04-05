@@ -26,8 +26,9 @@
                 <table class="table table-hover table-striped table-bordered ">
                     <thead>
                     <tr>
+                        <th>Hit</th>
                         <th>Resim</th>
-                        <th>DCS</th>
+                        <th>SKU</th>
                         <th>Başlık</th>
                         <th>Durum</th>
                         <th class="d-none d-lg-table-cell">Fiyat</th>
@@ -38,6 +39,9 @@
                     <tbody id="orders">
                     @foreach($All as $item)
                         <tr id="page_{{$item->id}}">
+                            <td class="d-none d-lg-table-cell">
+                                {{ views($item)->count() }}
+                            </td>
                             <td>
                                 <div class="avatar-list avatar-list-stacked">
                                     <img class="avatar avatar-sm " src="{{ (!$item->getFirstMediaUrl('page')) ? '/resimyok.jpg': $item->getFirstMediaUrl('page', 'small')}}">

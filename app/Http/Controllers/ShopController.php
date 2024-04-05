@@ -64,6 +64,8 @@ class ShopController extends Controller
 
     public function product($slug){
         $Detail = Product::where('slug', $slug)->firstOrFail();
+        views($Detail)->cooldown(60)->record();
+
         return view('frontend.shop.product',compact('Detail'));
     }
 
@@ -340,7 +342,7 @@ class ShopController extends Controller
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
                 vknTckn          : $Shop->tckn,      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
-                aliciUnvan       : $Shop->name.' '.Shop->surname,                 // ✅ Opsiyonel @string
+                aliciUnvan       : $Shop->name.' '.$Shop->surname,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
                 aliciSoyadi      : $Shop->surname,           // ✴️ Zorunlu   @string
                 mahalleSemtIlce  : $Shop->city,          // ✴️ Zorunlu   @string
@@ -395,7 +397,7 @@ class ShopController extends Controller
                 $invoice->getUuid(); // 04e17398-468d-11ed-b3cb-4ccc6ae28384
             }
 
-            $Shop->invoice_id = $$invoice->getUuid();
+            $Shop->invoice_id = $invoice->getUuid();
             $Shop->save();
             $gib->logout();
 
@@ -415,7 +417,7 @@ class ShopController extends Controller
                 $update->basket_status = 'Ödenmedi';
                 $update->basket_total = $data['total_amount'];
                 $update->error_code = $data['failed_reason_code'];
-                $update->error_msg = $$data['failed_reason_msg'];
+                $update->error_message = $data['failed_reason_msg'];
                 $update->save();
             }
             ## BURADA YAPILMASI GEREKENLER
@@ -426,10 +428,10 @@ class ShopController extends Controller
 
         }
 
-        Cart::instance('shopping')->destroy();
 
         ## Bildirimin alındığını PayTR sistemine bildir.
         echo "OK";
+        Cart::instance('shopping')->destroy();
         exit;
 
     }
@@ -442,9 +444,8 @@ class ShopController extends Controller
 
         $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
         $Order = Order::where('cart_id', request('merchant_oid'))->get();
-        $gib = (new Gib)->setTestCredentials()->login();
 
-        return view('frontend.shop.success', compact('Shop', 'Order','gib'));
+        return view('frontend.shop.success', compact('Shop', 'Order'));
     }
 
     public function failed(){
