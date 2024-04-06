@@ -54,13 +54,13 @@ curl_setopt_array($curl, array(
 
          CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
 
-                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="ONDANCE">
+                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="On Dance">
 
                                                     <mesaj>
 
                                                             <metin>iyi bayramlar..</metin>
 
-                                                            <nums>5361234567</nums>
+                                                            <nums>5332802852</nums>
 
                                                     </mesaj>
 
@@ -70,7 +70,7 @@ curl_setopt_array($curl, array(
 
                                                             <metin>Merhaba. Bu bir deneme mesajidir.</metin>
 
-                                                            <nums>5411234567</nums>
+                                                            <nums>5545839688</nums>
 
                                                     </mesaj>
 
