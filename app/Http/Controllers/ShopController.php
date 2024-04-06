@@ -406,6 +406,10 @@ class ShopController extends Controller
             $Shop->save();
             $gib->logout();
 
+
+            Cart::instance('shopping')->destroy();
+
+
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
             ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
@@ -446,7 +450,6 @@ class ShopController extends Controller
             return redirect()->route('home');
         }
 
-        Cart::instance('shopping')->destroy();
 
         $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
         $Order = Order::where('cart_id', request('merchant_oid'))->get();
