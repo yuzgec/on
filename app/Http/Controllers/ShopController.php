@@ -54,7 +54,7 @@ curl_setopt_array($curl, array(
 
          CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
 
-                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="On Dance">
+                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="On Studio">
 
                                                     <mesaj>
 
