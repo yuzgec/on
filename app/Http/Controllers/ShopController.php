@@ -333,7 +333,7 @@ class ShopController extends Controller
             $Shop->basket_total = $data['total_amount'] / 100;
 
 
-            $gib = (new Gib)->setTestCredentials()->login();
+            $gib = (new Gib)->setTestCredentials('3333333344', 1)->login();
             $invoice = new InvoiceModel(
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
                 saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
