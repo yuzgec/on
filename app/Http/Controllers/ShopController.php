@@ -347,8 +347,8 @@ class ShopController extends Controller
                 aliciUnvan       : $Shop->name,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
                 aliciSoyadi      : $Shop->surname,           // ✴️ Zorunlu   @string
-                mahalleSemtIlce  : 'Konak',          // ✴️ Zorunlu   @string
-                sehir            : 'İzmir',            // ✴️ Zorunlu   @string
+                mahalleSemtIlce  : $Shop->city,         // ✴️ Zorunlu   @string
+                sehir            : $Shop->province,            // ✴️ Zorunlu   @string
                 ulke             : 'Türkiye',          // ✴️ Zorunlu   @string
                 adres            : '',   // ✅ Opsiyonel @string
                 siparisNumarasi  : '',                 // ✅ Opsiyonel @string
@@ -366,10 +366,10 @@ class ShopController extends Controller
                 kapiNo           : '',                 // ✅ Opsiyonel @string
                 kasabaKoy        : '',                 // ✅ Opsiyonel @string
                 postaKodu        : '',                 // ✅ Opsiyonel @string
-                tel              : '',     // ✅ Opsiyonel @string
+                tel              : $Shop->phone,     // ✅ Opsiyonel @string
                 fax              : '',                 // ✅ Opsiyonel @string
-                eposta           : '',     // ✅ Opsiyonel @string
-                not              : '',              // ✅ Opsiyonel @string
+                eposta           : $Shop->email,     // ✅ Opsiyonel @string
+                not              : $Shop->note,               // ✅ Opsiyonel @string
             );
             
             
@@ -402,7 +402,7 @@ class ShopController extends Controller
             $Shop->invoice_id = $invoice->getUuid();
             $Shop->save();
             $gib->logout();
-
+            Cart::instance('shopping')->destroy();
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
@@ -433,7 +433,7 @@ class ShopController extends Controller
 
         ## Bildirimin alındığını PayTR sistemine bildir.
         echo "OK";
-        Cart::instance('shopping')->destroy();
+   
         exit;
 
     }
