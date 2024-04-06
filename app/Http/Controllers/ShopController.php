@@ -347,10 +347,10 @@ class ShopController extends Controller
                 aliciUnvan       : $Shop->name,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
                 aliciSoyadi      : $Shop->surname,           // ✴️ Zorunlu   @string
-                mahalleSemtIlce  : $Shop->city,          // ✴️ Zorunlu   @string
-                sehir            : $Shop->province,            // ✴️ Zorunlu   @string
+                mahalleSemtIlce  : 'Konak',          // ✴️ Zorunlu   @string
+                sehir            : 'İzmir',            // ✴️ Zorunlu   @string
                 ulke             : 'Türkiye',          // ✴️ Zorunlu   @string
-                adres            : $Shop->address,   // ✅ Opsiyonel @string
+                adres            : '',   // ✅ Opsiyonel @string
                 siparisNumarasi  : '',                 // ✅ Opsiyonel @string
                 siparisTarihi    : '',                 // ✅ Opsiyonel @string
                 irsaliyeNumarasi : '',                 // ✅ Opsiyonel @string
@@ -366,10 +366,10 @@ class ShopController extends Controller
                 kapiNo           : '',                 // ✅ Opsiyonel @string
                 kasabaKoy        : '',                 // ✅ Opsiyonel @string
                 postaKodu        : '',                 // ✅ Opsiyonel @string
-                tel              : $Shop->phone,     // ✅ Opsiyonel @string
+                tel              : '',     // ✅ Opsiyonel @string
                 fax              : '',                 // ✅ Opsiyonel @string
-                eposta           : $Shop->email,     // ✅ Opsiyonel @string
-                not              : $Shop->note                // ✅ Opsiyonel @string
+                eposta           : '',     // ✅ Opsiyonel @string
+                not              : '',              // ✅ Opsiyonel @string
             );
             
             
