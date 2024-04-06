@@ -89,7 +89,7 @@
                 <div class="py-30 row align-items-center justify-content-lg-between justify-content-center">
                     <div class="col-lg col-12-sm gray6 fs-16 t-left t-center-sm">© {{ date('Y')}} Karşıyaka ON DANCE Tüm Hakları Saklıdır.</div>
                     <div class="col-lg col-12-sm mt-5-sm gray6 fs-16 t-right t-center-sm">
-                        <img src="/iyzico.png" class="img-fluid" alt="İyzico Ödeme Logo">
+                        
                     </div>
                 </div>
             </div>

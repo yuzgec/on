@@ -66,5 +66,5 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', {{ config("settings.googleTagManager")}});
+  gtag('config', '{{ config("settings.googleTagManager")}}');
 </script>

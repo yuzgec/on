@@ -30,65 +30,65 @@ class ShopController extends Controller
             // MutluCell API URL
 
 
-            $curl = curl_init();
+ /*            $curl = curl_init();
 
  
 
-curl_setopt_array($curl, array(
+                curl_setopt_array($curl, array(
 
-         CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
+                        CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
 
-         CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_RETURNTRANSFER => true,
 
-         CURLOPT_ENCODING => '',
+                        CURLOPT_ENCODING => '',
 
-         CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_MAXREDIRS => 10,
 
-         CURLOPT_TIMEOUT => 0,
+                        CURLOPT_TIMEOUT => 0,
 
-         CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_FOLLOWLOCATION => true,
 
-         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 
-         CURLOPT_CUSTOMREQUEST => 'POST',
+                        CURLOPT_CUSTOMREQUEST => 'POST',
 
-         CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
+                        CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
 
-                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="On Studyo">
+                            <smspack ka="' . config('settings.sms_kullanici') . '" pwd="' . config('settings.sms_pass') . '" org="'. config('settings.sms_org').'">
 
-                                                    <mesaj>
+                                                                    <mesaj>
 
-                                                            <metin>iyi bayramlar..</metin>
+                                                                            <metin>iyi bayramlar..</metin>
 
-                                                            <nums>5332802852</nums>
+                                                                            <nums>5332802852</nums>
 
-                                                    </mesaj>
+                                                                    </mesaj>
 
-                                                     
+                                                                    
 
-                                                    <mesaj>
+                                                                    <mesaj>
 
-                                                            <metin>Merhaba. Bu bir deneme mesajidir.</metin>
+                                                                            <metin>Merhaba. Bu bir deneme mesajidir.</metin>
 
-                                                            <nums>5545839688</nums>
+                                                                            <nums>5545839688</nums>
 
-                                                    </mesaj>
+                                                                    </mesaj>
 
-                                                    </smspack>',
+                                                                    </smspack>',
 
-         CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
+                        CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
 
-));
-
- 
-
-$response = curl_exec($curl);
+                ));
 
  
 
-curl_close($curl);
+            $response = curl_exec($curl);
 
-echo $response;
+            
+
+            curl_close($curl);
+
+            echo $response; */
 
 
         return view('frontend.shop.index');
@@ -366,7 +366,7 @@ echo $response;
 
          /*    $gib = (new Gib)->setTestCredentials()
             ->login(); */
-            $gib = (new Gib)->setCredentials('64207395', '362425')->login();
+            $gib = (new Gib)->setCredentials(config('settings.earsiv_portal_user'), config('settings.earsiv_portal_pass'))->login();
             $invoice = new InvoiceModel(
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
                 saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
