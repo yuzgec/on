@@ -41,8 +41,12 @@ class ShopController extends Controller
                     CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
                                                 <smspack ka="OnPefrmarts" pwd="dance3624." org="ONDANCE">
                                                     <mesaj>
-                                                            <metin>DENEME SMS..</metin>
+                                                            <metin>Sipariş Tamamlandı</metin>
                                                             <nums>05332802852</nums>
+                                                    </mesaj>
+                                                    <mesaj>
+                                                    <metin>Sipariş Tamamlandı.</metin>
+                                                            <nums>5332802852</nums>
                                                     </mesaj>
                                                 </smspack>',
                     CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
@@ -334,8 +338,7 @@ class ShopController extends Controller
 
          /*    $gib = (new Gib)->setTestCredentials()
             ->login(); */
-            $gib = (new Gib)->setCredentials('64207395', '362425')
-            ->login();
+            $gib = (new Gib)->setCredentials('64207395', '362425')->login();
             $invoice = new InvoiceModel(
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
                 saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
@@ -374,7 +377,7 @@ class ShopController extends Controller
             
             
             // Ürün/Hizmetler
-            $cartItems = Cart::instance('shopping')->content();
+            $cartItems = Order::where('cart_id', request('merchant_oid'))->get();;
 
             // Sepet içeriklerini dönüştürüp faturaya ekle
             foreach ($cartItems as $cartItem) {
@@ -402,7 +405,6 @@ class ShopController extends Controller
             $Shop->invoice_id = $invoice->getUuid();
             $Shop->save();
             $gib->logout();
-            Cart::instance('shopping')->destroy();
 
             ## BURADA YAPILMASI GEREKENLER
             ## 1) Siparişi onaylayın.
@@ -443,6 +445,8 @@ class ShopController extends Controller
         if(!request('merchant_oid') && request('merchant_oid') == null ){
             return redirect()->route('home');
         }
+
+        Cart::instance('shopping')->destroy();
 
         $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
         $Order = Order::where('cart_id', request('merchant_oid'))->get();
