@@ -92,9 +92,6 @@ class ProductController extends Controller
                     ProductCategoryPivot::updateOrCreate(['category_id' => $pc, 'product_id' => $New->id]);
                 }
             }
-
-        
-
         });
         toast(SWEETALERT_MESSAGE_CREATE,'success');
         return redirect()->route('product.index');
@@ -167,8 +164,6 @@ class ProductController extends Controller
                     $Update->addMedia($item)->toMediaCollection('gallery');
                 }
             }
-
-       
 
             if ($request->input('category')) {
                 foreach ($request->input('category') as $pc) {
