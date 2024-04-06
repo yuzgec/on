@@ -332,18 +332,19 @@ class ShopController extends Controller
             $Shop->basket_status = 'Ödendi';
             $Shop->basket_total = $data['total_amount'] / 100;
 
-
-            $gib = (new Gib)->setCredentials('64207395', '362425')
+            $gib = (new Gib)->setTestCredentials()
             ->login();
+           /*  $gib = (new Gib)->setCredentials('64207395', '362425')
+            ->login(); */
             $invoice = new InvoiceModel(
-                tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
-                saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
+                tarih            : '',       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
+                saat             : '',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
                 paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
                 dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
-                vknTckn          : $Shop->tckn,      // ✴️ Zorunlu   @string
+                vknTckn          : '11111111111',      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
-                aliciUnvan       : $Shop->name.' '.$Shop->surname,                 // ✅ Opsiyonel @string
+                aliciUnvan       : $Shop->name,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
                 aliciSoyadi      : $Shop->surname,           // ✴️ Zorunlu   @string
                 mahalleSemtIlce  : $Shop->city,          // ✴️ Zorunlu   @string
