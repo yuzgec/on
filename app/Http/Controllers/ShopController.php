@@ -337,12 +337,12 @@ class ShopController extends Controller
            /*  $gib = (new Gib)->setCredentials('64207395', '362425')
             ->login(); */
             $invoice = new InvoiceModel(
-                tarih            : '20/10/2022',       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
-                saat             : '23:50:48',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
+                tarih            : '06/04/2024',       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
+                saat             : '18:50:48',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
                 paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
                 dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
-                vknTckn          : '11111111111',      // ✴️ Zorunlu   @string
+                vknTckn          : '54514367814',      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
                 aliciUnvan       : $Shop->name,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string
