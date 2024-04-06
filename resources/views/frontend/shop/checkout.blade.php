@@ -73,7 +73,7 @@
                                         </div>
                                  
                                         <div class="col-12 mt-15">
-                                            <textarea type="text" name="address"  placeholder="Telefon Numaranız"  
+                                            <textarea type="text" name="address"  placeholder="Açık Adresiniz  
                                             class="input bg-gray1  {{ ($errors->has('address')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}"></textarea>
                                             @if($errors->has('address'))
                                                 <span style="color:red">{{$errors->first('address')}}</span>
