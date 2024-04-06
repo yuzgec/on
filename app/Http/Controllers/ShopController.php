@@ -372,7 +372,7 @@ class ShopController extends Controller
                 tel              : $Shop->phone,     // ✅ Opsiyonel @string
                 fax              : '',                 // ✅ Opsiyonel @string
                 eposta           : $Shop->email,     // ✅ Opsiyonel @string
-                not              : $Shop->note,               // ✅ Opsiyonel @string
+                not              : '',               // ✅ Opsiyonel @string
             );
             
             
