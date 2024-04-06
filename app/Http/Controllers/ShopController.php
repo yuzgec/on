@@ -26,7 +26,7 @@ class ShopController extends Controller
 {
     public function store(){
 
-
+            //dd(date('d/m/Y'));
             // MutluCell API URL
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -337,12 +337,12 @@ class ShopController extends Controller
            /*  $gib = (new Gib)->setCredentials('64207395', '362425')
             ->login(); */
             $invoice = new InvoiceModel(
-                tarih            : '06/04/2024',       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
-                saat             : '18:50:48',         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
+                tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
+                saat             : date('H/i/s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
                 paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
                 dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
-                vknTckn          : '54514367814',      // ✴️ Zorunlu   @string
+                vknTckn          : $Shop->tckn,      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
                 aliciUnvan       : $Shop->name,                 // ✅ Opsiyonel @string
                 aliciAdi         : $Shop->name,             // ✴️ Zorunlu   @string

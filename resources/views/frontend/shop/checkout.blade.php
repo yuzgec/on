@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="col-12 pr-0 pr-15-sm mt-30">
-                                            <input type="text" value="{{ old('tckn')}}" name="tckn"  placeholder="T.C Kimlik No" class="bg-gray1  {{ ($errors->has('tckn')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            <input type="number" value="{{ old('tckn')}}" name="tckn"  placeholder="T.C Kimlik No" class="bg-gray1  {{ ($errors->has('tckn')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
                                             @if($errors->has('tckn'))
                                                 <span style="color:red">{{$errors->first('tckn')}}</span>
                                             @endif
@@ -74,9 +74,7 @@
                                  
                                         <div class="col-12 mt-15">
                                             <textarea type="text" name="address"  placeholder="Telefon Numaranız"  
-                                            class="input bg-gray1  {{ ($errors->has('address')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
-                                                {{ old('address')}}
-                                            </textarea>
+                                            class="input bg-gray1  {{ ($errors->has('address')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}"></textarea>
                                             @if($errors->has('address'))
                                                 <span style="color:red">{{$errors->first('address')}}</span>
                                             @endif
