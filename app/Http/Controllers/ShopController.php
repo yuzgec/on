@@ -39,10 +39,10 @@ class ShopController extends Controller
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
-                                                <smspack ka="OnPefrmarts" pwd="dance3624." org="ondance">
+                                                <smspack ka="OnPefrmarts" pwd="dance3624." org="ONDANCE">
                                                     <mesaj>
                                                             <metin>DENEME SMS..</metin>
-                                                            <nums>5332802852</nums>
+                                                            <nums>05332802852</nums>
                                                     </mesaj>
                                                 </smspack>',
                     CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
