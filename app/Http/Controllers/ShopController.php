@@ -28,39 +28,67 @@ class ShopController extends Controller
 
             //dd(date('d/m/Y'));
             // MutluCell API URL
+
+
             $curl = curl_init();
-            curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => '',
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
-                    CURLOPT_FOLLOWLOCATION => true,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
-                                                <smspack ka="OnPefrmarts" pwd="dance3624." org="ONDANCE">
+
+ 
+
+curl_setopt_array($curl, array(
+
+         CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
+
+         CURLOPT_RETURNTRANSFER => true,
+
+         CURLOPT_ENCODING => '',
+
+         CURLOPT_MAXREDIRS => 10,
+
+         CURLOPT_TIMEOUT => 0,
+
+         CURLOPT_FOLLOWLOCATION => true,
+
+         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+         CURLOPT_CUSTOMREQUEST => 'POST',
+
+         CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
+
+                                    <smspack ka="OnPefrmarts" pwd="dance3624." org="ONDANCE">
+
                                                     <mesaj>
-                                                            <metin>Sipariş Tamamlandı</metin>
-                                                            <nums>05332802852</nums>
+
+                                                            <metin>iyi bayramlar..</metin>
+
+                                                            <nums>5361234567</nums>
+
                                                     </mesaj>
+
+                                                     
+
                                                     <mesaj>
-                                                    <metin>Sipariş Tamamlandı.</metin>
-                                                            <nums>5332802852</nums>
+
+                                                            <metin>Merhaba. Bu bir deneme mesajidir.</metin>
+
+                                                            <nums>5411234567</nums>
+
                                                     </mesaj>
-                                                </smspack>',
-                    CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
-            ));
-            $response = curl_exec($curl);
 
-            curl_close($curl);
+                                                    </smspack>',
 
+         CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
 
-          /*   foreach (Cart::instance('shopping')->content() as $item) {
-                $b[] = [$item->name, $item->price, $item->qty];
-            }
+));
 
-            dd($b); */
+ 
+
+$response = curl_exec($curl);
+
+ 
+
+curl_close($curl);
+
+echo $response;
 
 
         return view('frontend.shop.index');
