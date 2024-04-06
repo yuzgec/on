@@ -1,19 +1,4 @@
 
-/* --------------------------------------------------------------------------
-    -SIDE NAVIGATION SCRIPTS-
-
-    Name: gold.side.navigation.js
-    Project: Quadra
-    Written By: Goldeyes Themes - https://themeforest.net/user/goldeyes
-    Version: 1.0.0
-
-    Side navigation for Quadra Multi Concept HTML5 Theme
-    Special for Quadra users.
--------------------------------------------------------------------------- */    
-    
-    //Side nav scripts start
-
-    //Side nav class name
     var sideNav = $(".side-nav");
 
     //Side nav is ready

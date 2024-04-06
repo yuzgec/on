@@ -62,7 +62,6 @@
             $("body input").focus(function(){punch.addClass("input-typing");});
             $("body input").focusout(function(){punch.removeClass("input-typing");});
             //Open-Close punch nav with "N" and "ESC" keys
-            $(document).keyup(function(e) {if (e.keyCode === 78) { if (!$(punch).hasClass('active') && !$(punch).hasClass("input-typing")) { $(punch).showPunchNavigation(); } } });
             $(document).keyup(function(e) {if (e.keyCode === 27) { if ($(punch).hasClass('active')) { $(punch).hidePunchNavigation(); } } });
             //Close the Punch navigation before change the page.
             $(punch).find('a:not([target]):not([href="#"])').on('click', function(){

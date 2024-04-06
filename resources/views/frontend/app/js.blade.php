@@ -45,7 +45,7 @@
 
 <script src="/front/js/jquery.min.js?v=4"></script>
 <script src="/front/js/bs.js"></script>
-<script src="/front/js/components/quadra/gold.punch.navigation.js"></script>
+<script src="/front/js/components/quadra/gold.punch.navigation.js?ver=2"></script>
 <script src="/front/js/scripts.js?v=3.0"></script>
 <script src="/front/content/portfolio/js/plugins.js?v=4"></script>
 <script src="/front/js/components/masonry.pkgd.min.js"></script>
