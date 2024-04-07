@@ -341,19 +341,6 @@ class ShopController extends Controller
                 $invoice->addItem($invoiceItem);
             }
 
-
-            if ($gib->createDraft($invoice)) {
-                $invoice->getUuid(); // 04e17398-468d-11ed-b3cb-4ccc6ae28384
-            }
-
-            $Shop->invoice_id = $invoice->getUuid();
-            $Shop->save();
-            $gib->logout();
-
-
-            Cart::instance('shopping')->destroy();
-
-
             $curl = curl_init();
             curl_setopt_array($curl, array(
 
@@ -371,7 +358,7 @@ class ShopController extends Controller
                                 <metin>"Syn. '.$Shop->name.' '.$Shop->surname.' '.request('merchant_oid').' nolu siparişiniz başarıyla bize ulaşmıştır."</metin>
                                     <nums>"'.$Shop->phone.'"</nums>
                                 </mesaj>
-                                <metin>"'.request('merchant_oid').' nolu sipariş başarıyla bize ulaşmıştır."</metin>
+                                <metin>"'.$Shop->cart_id.' nolu sipariş başarıyla bize ulaşmıştır."</metin>
                                     <nums>05545839688</nums>
                                 </mesaj>
                         </smspack>',
@@ -380,6 +367,21 @@ class ShopController extends Controller
             $response = curl_exec($curl);
             curl_close($curl);
             echo $response;
+
+            if ($gib->createDraft($invoice)) {
+                $invoice->getUuid(); // 04e17398-468d-11ed-b3cb-4ccc6ae28384
+            }
+
+            $Shop->invoice_id = $invoice->getUuid();
+
+            $Shop->save();
+            $gib->logout();
+
+
+            Cart::instance('shopping')->destroy();
+
+
+      
 
 
             ## BURADA YAPILMASI GEREKENLER
