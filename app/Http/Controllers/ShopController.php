@@ -26,37 +26,6 @@ class ShopController extends Controller
 {
     public function store(){
 
-            //dd(date('d/m/Y'));
-            // MutluCell API URL
-
-
-            $curl = curl_init();
-                curl_setopt_array($curl, array(
-
-                        CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_ENCODING => '',
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_TIMEOUT => 0,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                        CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
-                            <smspack ka="' . config('settings.sms_kullanici') . '" pwd="' . config('settings.sms_pass') . '" org="'. config('settings.sms_org').'">
-                                <mesaj>
-                                    <metin>iyi bayramlar..</metin>
-                                        <nums>5332802852</nums>
-                                    </mesaj>
-                                <mesaj>
-                                    <metin>Merhaba. Bu bir deneme mesajidir.</metin>
-                                    <nums>5545839688</nums>
-                                </mesaj>
-                            </smspack>',
-                        CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
-                ));
-            $response = curl_exec($curl);
-            curl_close($curl);
-            echo $response;
         return view('frontend.shop.index');
     }
 
@@ -139,7 +108,7 @@ class ShopController extends Controller
         $merchant_oid = time();
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız ad ve soyad bilgisi
-        $user_name = $request->input('firstname').' '.$request->input('surname');
+        $user_name = $request->input('name').' '.$request->input('surname');
         #
         ## Müşterinizin sitenizde kayıtlı veya form aracılığıyla aldığınız adres bilgisi
         $user_address = $request->input('address');
@@ -251,7 +220,7 @@ class ShopController extends Controller
             $New->cart_id =  $merchant_oid;
             $New->user_id =  1;
             $New->basket_total =  $payment_amount / 100;
-            $New->name =  $request->input('firstname');
+            $New->name =  $request->input('name');
             $New->surname =  $request->input('surname');
             $New->email =  $request->input('email');
             $New->tckn =  $request->input('tckn');
@@ -402,6 +371,34 @@ class ShopController extends Controller
 
 
             Cart::instance('shopping')->destroy();
+
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+
+                    CURLOPT_URL => 'https://smsgw.mutlucell.com/smsgw-ws/sndblkex',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
+                        <smspack ka="' . config('settings.sms_kullanici') . '" pwd="' . config('settings.sms_pass') . '" org="'. config('settings.sms_org').'">
+                            <mesaj>
+                                <metin>"Syn. '.$Shop->name.' '.$Shop->surname.' '.request('merchant_oid').' nolu siparişiniz başarıyla bize ulaşmıştır."</metin>
+                                    <nums>"'.$Shop->phone.'"</nums>
+                                </mesaj>
+                                <metin>"'.request('merchant_oid').' nolu sipariş başarıyla bize ulaşmıştır."</metin>
+                                    <nums>05545839688</nums>
+                                </mesaj>
+                        </smspack>',
+                    CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
+            ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
 
 
             ## BURADA YAPILMASI GEREKENLER
