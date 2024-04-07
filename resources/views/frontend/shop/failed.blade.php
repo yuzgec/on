@@ -1,17 +1,7 @@
 @extends('frontend.app.master')
 @section('customCSS')
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{ config('settings.facebookPixel') }}');
-        fbq('track', 'PageView');
-    </script>
+
+    <meta name="robots" content="noindex"> 
 
     <style>
 
@@ -61,9 +51,7 @@
   
     @endsection
 @section('content')
-<noscript><img height="1" width="1" style="display:none"  src="https://www.facebook.com/tr?id={{ config('settings.facebookPixel') }}&ev=PageView&noscript=1"/></noscript>
 
-<script>fbq('track', 'Purchase', {value: 1, currency: 'TRY'});</script>
 <section id="home" class="relative bg-danger height-25vh mnh-250 align-items-center d-flex">
     <div class="container-md">
         <div class="t-center">

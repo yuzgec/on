@@ -71,7 +71,7 @@
                         <a href="https://www.instagram.com/{{ config('settings.instagram')}}" target="_blank" class="nav-link" title="Instagram"><i class="ti-instagram"></i></a>
                         <a href="https://www.youtube.com/{{ config('settings.youtube')}}" target="_blank" class="nav-link" title="youtube"><i class="ti-youtube"></i></a>
                         <a href="https://www.tiktok.com/{{ config('settings.tiktok')}}" target="_blank" class="nav-link" title="tiktok"><img src="/tiktok.svg"/></a>
-                        <a href="#" class="nav-link cart-trigger mr-10"> <i class="ti-bag fs-13 relative"> <span class="circle width-10 height-10 bg-colored absolute left-percent-90 bottom-percent-90"></span> </i> </a>
+                        <a href="#" class="nav-link {{ (Cart::instance('shopping')->count() > 0 ) ? 'cart-trigger' : null }} mr-10"> <i class="ti-bag fs-13 relative"> <span class="circle width-10 height-10 bg-colored absolute left-percent-90 bottom-percent-90"></span> </i> </a>
                         <a href="{{route('contactus')}}" class="sidebar-button md-btn bg-colored bg-colored1-hover white fs-11 bold uppercase slow-sm radius-sm" title="Bilgi Al"><span>Bilgi Al</span></a>
                     </li>
                 </ul>

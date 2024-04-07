@@ -9,13 +9,13 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Ondance Studio ", // set false to total remove
+            'title'       => 'ON DANCE #burasıizmir', // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'İş Kazası Avukatı  - Dashboard'
-            'description'  => 'Ondance Studio ', // set false to total remove
+            'description'  => 'ON DANCE Studio ', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => null, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots'       => 'all', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'robots'       => 'none', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
@@ -37,8 +37,8 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Ondance Studio ', // set false to total remove
-            'description' => 'Ondance Studio ', // set false to total remove
+            'title'       => 'ON DANCE #burasıizmir', // set false to total remove
+            'description' => 'ON DANCE Studio ', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
@@ -59,8 +59,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Ondance Studio ', // set false to total remove
-            'description' => 'Ondance Studio ', // set false to total remove
+            'title'       => 'ON DANCE #burasıizmir', // set false to total remove
+            'description' => 'ON DANCE Studio ', // set false to total remove
             'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],

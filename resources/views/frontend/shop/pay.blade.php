@@ -1,4 +1,7 @@
 @extends('frontend.app.master')
+@section('customCSS')
+    <meta name="robots" content="noindex"> 
+@endsection
 @section('content')
 
 <section id="home" class="relative bg-dark height-25vh mnh-250 align-items-center d-flex">

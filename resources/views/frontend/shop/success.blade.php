@@ -12,6 +12,7 @@
         fbq('init', '{{ config('settings.facebookPixel') }}');
         fbq('track', 'PageView');
     </script>
+    <meta name="robots" content="noindex"> 
 
     <style>
 
