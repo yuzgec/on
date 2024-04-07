@@ -353,7 +353,7 @@ class ShopController extends Controller
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
-                    <smspack ka="'.config('settings.sms_kullanici').'" pwd="'.config('settings.sms_pass').'" org="'.config('settings.sms_org').'">
+                    <smspack ka="'.config('settings.sms_kullanici').'" pwd="'.config('settings.sms_pass').'" org="'.config('settings.sms_org').'" charset="turkish" >
                         <mesaj>
                             <metin>Syn. '.$Shop->name.' '.$Shop->surname.' '.request('merchant_oid').' nolu siparişiniz başarıyla bize ulaşmıştır.</metin>
                             <nums>'.$Shop->phone.'</nums>
@@ -367,7 +367,7 @@ class ShopController extends Controller
             ));
             $response = curl_exec($curl);
             curl_close($curl);
-            echo $response;
+            //echo $response;
 
             if ($gib->createDraft($invoice)) {
                 $invoice->getUuid(); // 04e17398-468d-11ed-b3cb-4ccc6ae28384
