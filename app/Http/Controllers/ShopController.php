@@ -420,14 +420,23 @@ class ShopController extends Controller
         }
 
 
-        $Shop = ShopCart::where('cart_id', request('merchant_oid'))->first();
-        $Order = Order::where('cart_id', request('merchant_oid'))->get();
+        $Detail = ShopCart::where('cart_id', request('merchant_oid'))->first();
 
-        return view('frontend.shop.success', compact('Shop', 'Order'));
+        //dd($Detail);
+
+        return view('frontend.shop.success', compact('Detail'));
     }
 
     public function failed(){
-        echo 'Ödeme Alınamadı';
+
+        if(!request('merchant_oid') && request('merchant_oid') == null ){
+            return redirect()->route('home');
+        }
+
+
+        $Detail = ShopCart::where('cart_id', request('merchant_oid'))->first();
+
+        return view('frontend.shop.failed', compact('Detail'));
     }
 
 

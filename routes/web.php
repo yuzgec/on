@@ -51,7 +51,7 @@ Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
 
 Route::get('/odeme-alindi',[ShopController::class,'success'])->name('success');
-Route::get('/odeme-hata',[ShopController::class,'success'])->name('failed');
+Route::get('/odeme-hata',[ShopController::class,'failed'])->name('failed');
 
 Route::get('/districts/{city}', [ShopController::class,'getDistricts']);
 

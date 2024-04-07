@@ -51,7 +51,7 @@
         <tbody>
           <tr>
             <td>Adı Soyadı</td>
-            <td>{{ $Detail->firstname.' '.$Detail->surname}}</td>
+            <td>{{ $Detail->name.' '.$Detail->surname}}</td>
           </tr>
           <tr>
             <td>Email</td>
