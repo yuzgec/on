@@ -38,9 +38,9 @@
                                         </div>
 
                                         <div class="col-6 pr-0 pr-15-sm mt-30">
-                                            <input type="text" value="{{ old('firstname')}}" name="firstname"  placeholder="Adınız" class="bg-gray1  {{ ($errors->has('firstname')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
-                                            @if($errors->has('firstname'))
-                                                <span style="color:red">{{$errors->first('firstname')}}</span>
+                                            <input type="text" value="{{ old('name')}}" name="name"  placeholder="Adınız" class="bg-gray1  {{ ($errors->has('name')) ? 'b-danger b-2' : 'b-1 b-solid b-gray2' }}">
+                                            @if($errors->has('name'))
+                                                <span style="color:red">{{$errors->first('name')}}</span>
                                             @endif
                                         </div>
 
@@ -134,15 +134,14 @@
 
                                 <div class="mt-30 pt-45 bt-1 b-gray1">
                                     <p class="fs-13 gray6 lh-20">
-                                        Your personal data will be used to process your orders and for your experience on this website. For more information, you can read our <a href="pages-privacy.html" class="colored underline-hover">privacy policy.</a>
-                                    </p>
+                                        Kişisel verileriniz, siparişlerinizi işleme koymak ve bu web sitesindeki deneyiminiz için kullanılacaktır. Daha fazla bilgi için <a href="{{ route('corporatedetail', 'gizlilik-politikasi')}}" class="coloured underline-hover">gizlilik politikamızı okuyabilirsiniz. </a>                                   </p>
                                     <div class="mt-15">
                                         <input id="terms" name="terms" type="checkbox" checked="checked" class="check width-0 height-0 opacity-0 p-0"/>                                       
                                         <label for="terms" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                             <span class="uncheck d-flex align-items-center justify-content-center width-16 height-16 bg-white b-1 b-gray3 relative">
                                                 <span class="checked width-8 height-8 bg-dark2"></span>
                                             </span>
-                                            <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">I have read and accept the <a href="pages-terms.html" class="colored underline-hover">terms and conditions</a> on this website.</span>
+                                            <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">Bu web sitesindeki şartları <a href="{{ route('home')}}" target="_blank" class="colored underline-hover"> okudum ve kabul ediyorum.terms and conditions</a> </span>
                                         </label>
                                     </div>
 
