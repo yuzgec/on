@@ -398,7 +398,7 @@ class ShopController extends Controller
             ));
         $response = curl_exec($curl);
         curl_close($curl);
-        echo $response;
+        //echo $response;
 
 
             ## BURADA YAPILMASI GEREKENLER
