@@ -306,7 +306,6 @@ class ShopController extends Controller
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
                 saat             : date('H:i:s'),         // ☑️ Opsiyonel @string      @default=(hh/mm/ss)
                 paraBirimi       : Currency::TRY,      // ☑️ Opsiyonel @Currency    @default=Currency::TRY
-                dovizKuru        : 0,              // ☑️ Opsiyonel @float       @default=0
                 faturaTipi       : InvoiceType::Satis, // ☑️ Opsiyonel @InvoiceType @default=InvoiceType::Satis
                 vknTckn          : $Shop->tckn,      // ✴️ Zorunlu   @string
                 vergiDairesi     : '',                 // ✅ Opsiyonel @string
@@ -316,24 +315,9 @@ class ShopController extends Controller
                 mahalleSemtIlce  : $Shop->city,         // ✴️ Zorunlu   @string
                 sehir            : $Shop->province,            // ✴️ Zorunlu   @string
                 ulke             : 'Türkiye',          // ✴️ Zorunlu   @string
-                adres            : '',   // ✅ Opsiyonel @string
-                siparisNumarasi  : '',                 // ✅ Opsiyonel @string
-                siparisTarihi    : '',                 // ✅ Opsiyonel @string
-                irsaliyeNumarasi : '',                 // ✅ Opsiyonel @string
-                irsaliyeTarihi   : '',                 // ✅ Opsiyonel @string
-                fisNo            : '',                 // ✅ Opsiyonel @string
-                fisTarihi        : '',                 // ✅ Opsiyonel @string
-                fisSaati         : '',                 // ✅ Opsiyonel @string
-                fisTipi          : '',                 // ✅ Opsiyonel @string
-                zRaporNo         : '',                 // ✅ Opsiyonel @string
-                okcSeriNo        : '',                 // ✅ Opsiyonel @string
-                binaAdi          : '',                 // ✅ Opsiyonel @string
-                binaNo           : '',                 // ✅ Opsiyonel @string
-                kapiNo           : '',                 // ✅ Opsiyonel @string
-                kasabaKoy        : '',                 // ✅ Opsiyonel @string
-                postaKodu        : '',                 // ✅ Opsiyonel @string
+                adres            : $Shop->address,   // ✅ Opsiyonel @string
+                siparisNumarasi  : strval($Shop->cart_id),                 // ✅ Opsiyonel @string
                 tel              : $Shop->phone,     // ✅ Opsiyonel @string
-                fax              : '',                 // ✅ Opsiyonel @string
                 eposta           : $Shop->email,     // ✅ Opsiyonel @string
                 not              : '',               // ✅ Opsiyonel @string
             );
@@ -351,9 +335,6 @@ class ShopController extends Controller
                     birim: Unit::Adet, // Bu örnekte her zaman 'Adet' olarak kabul edilmiştir
                     birimFiyat: $cartItem->price, // Birim fiyatı
                     kdvOrani: 20, // KDV oranı, varsayılan bir değer
-                    iskontoOrani: 0, // İskonto oranı, eğer varsa bu bilgiyi de sepet öğesinden alabilirsiniz
-                    iskontoTipi: 'İskonto', // İskonto tipi, varsayılan bir değer
-                    iskontoNedeni: '' // İskonto nedeni, eğer varsa bu bilgiyi de sepet öğesinden alabilirsiniz
                 );
             
                 // Oluşturulan InvoiceItemModel nesnesini faturaya ekle
@@ -385,7 +366,7 @@ class ShopController extends Controller
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => '<?xml version="1.0" encoding="UTF-8"?>
-                        <smspack ka="' . config('settings.sms_kullanici') . '" pwd="' . config('settings.sms_pass') . '" org="'. config('settings.sms_org').'">
+                        <smspack ka="'.config('settings.sms_kullanici').'" pwd="'.config('settings.sms_pass').'" org="'.config('settings.sms_org').'">
                             <mesaj>
                                 <metin>"Syn. '.$Shop->name.' '.$Shop->surname.' '.request('merchant_oid').' nolu siparişiniz başarıyla bize ulaşmıştır."</metin>
                                     <nums>"'.$Shop->phone.'"</nums>
@@ -396,9 +377,9 @@ class ShopController extends Controller
                         </smspack>',
                     CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
             ));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        //echo $response;
+            $response = curl_exec($curl);
+            curl_close($curl);
+            echo $response;
 
 
             ## BURADA YAPILMASI GEREKENLER
