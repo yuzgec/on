@@ -13,8 +13,9 @@
           <h1 class="mt-15 font-secondary lh-md"> {{ $Detay->title}}</h1>
           <div class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center">
              <a href="{{ route('home')}}"><i class="ti-home"></i></a>Anasayfa <i class="ti-angle-right fs-7 mx-15"></i> 
-             <a href="{{ route('team')}}" class="stay c-default opacity-7">Eğitmenler</a> </div>
-             <a href="#" class="stay c-default opacity-7">{{ $Detay->title}}</a> </div>
+             <a href="{{ route('team')}}" class="stay c-default opacity-7">Eğitmenler</a>
+             <a href="#" class="stay c-default opacity-7">{{ $Detay->title}}</a>
+          </div>
        </div>
     </div>
  </section>
