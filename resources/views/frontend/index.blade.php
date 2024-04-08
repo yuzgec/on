@@ -116,7 +116,7 @@
         <div id="image-slider-06" class="custom-slider fw-slider block-img dots-circle c-grab t-center" 
             data-slick='{"variableWidth": true, "centerMode": true, "dots": false, "speed":1000,"autoplay":true, "arrows": true, "fade": false, "draggable":true, "slidesToShow": 1, "slidesToScroll": 1,
              "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
-            @foreach ($Gallery->getMedia('gallery') as $item)
+            @foreach ($Gallery->getMedia('gallery')->take(8) as $item)
             <div class="px-10 relative">
                 <img src="{{ $item->getUrl('thumb') }}" class="img-fluid" alt="İzmir Karşıyaka - ON DANCE Studyo" style="max-height: 300px"/>
             </div>
