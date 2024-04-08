@@ -56,7 +56,7 @@
                             @foreach($Detail->getMedia('gallery') as $item)
                                 <div class="pb-5">
                                     <img src="/front/images/shop/lyra/product_loader.svg" 
-                                    data-lazy="{{ $item->getUrl('img', 'thumbpng') }}" 
+                                    data-lazy="{{ $item->getUrl('thumbpng') }}" 
                                     alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
                                 </div>
                             @endforeach
