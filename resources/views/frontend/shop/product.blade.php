@@ -57,7 +57,7 @@
                             data-slick='{"speed":600, "vertical": true, "verticalSwiping": true, "lazyLoad": "progressive", "draggable":true, "slidesToShow": 4, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 3}},{"breakpoint": 768,"settings":{"slidesToShow": 3}}]}' >
                             <div class="pb-5">
                                 <img src="/front/images/shop/lyra/product_loader.svg" 
-                                data-lazy="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'thumb')}}" 
+                                data-lazy="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'thumbpng')}}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
                             </div>
 
@@ -65,7 +65,7 @@
                     
                             <div class="pb-5">
                                 <img src="/front/images/shop/lyra/product_loader.svg" 
-                                data-lazy="{{ $item->getUrl('img', 'thumb') }}" 
+                                data-lazy="{{ $item->getUrl('img', 'thumbpng') }}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
                             </div>
                             @endforeach
@@ -75,7 +75,7 @@
                     <div class="col-10 pr-0 pr-15-sm">
                         <div id="image-slider" class="custom-slider block-img arrows-mosaic controls-mouseover lightbox_gallery" 
                             data-slick='{ "asNavFor": ".nav-to-custom-slider", "dots": false, "fade": true, "speed":600, "lazyLoad": "progressive", "arrows": false, "draggable":false, "slidesToShow": 1, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
-                            <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'img')}}" class="zoom c-point">
+                            <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" class="zoom c-point">
                                 <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" >
                             </a>  
@@ -227,10 +227,8 @@
                                 <i class="fab fa-whatsapp"></i>  
                              WHATSAPP BİLGİ</a>
                         </div>
-
                 </form>
                 </div>
-              
             </div>
         </div>
     </div>
