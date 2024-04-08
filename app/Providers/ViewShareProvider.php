@@ -32,13 +32,10 @@ class ViewShareProvider extends ServiceProvider
 
         $Pages = Page::with('getCategory')->get();
         $Service = Service::orderBy('rank', 'asc')->get();
-        $Blog = Blog::all();
-        $Product = Product::with('getCategory')->get();
+        $Blog = Blog::orderBy('rank', 'asc')->get();
+        $Product = Product::with('getCategory')->orderBy('rank', 'asc')->get();
 
-        //dd($Product);
         $Product_Categories = ProductCategory::get()->toFlatTree();
-
-     
         View::share([
             'Pages' => $Pages,
             'Service' => $Service,
