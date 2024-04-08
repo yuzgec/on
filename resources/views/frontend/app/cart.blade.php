@@ -33,9 +33,14 @@
                             </div> 
                         </div>
                         <div class="d-flex flex-column align-items-end justify-centent-end ml-auto py-5 t-right">
-                            <button type="button" class="bg-transparent">
-                                <i class="ti-close fs-16 black"></i>
-                            </button>
+                            <form id="form" method="post" action="{{route('cartdelete',$cart->rowId )}}">
+                                @csrf
+                                <a href="javascript:{}" onclick="document.getElementById('form').submit()" class="bg-transparent" aria-label="button">
+                                    <i class="ti-close fs-16 black"></i>
+                                </a>
+                            </form>
+                         
+
                             <p class="mt-auto fs-14 medium dark1">
                                 {{ money($cart->price)}}
                             </p>

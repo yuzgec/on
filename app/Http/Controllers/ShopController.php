@@ -82,6 +82,11 @@ class ShopController extends Controller
         return redirect()->back()->with('success', $p->title.' sepetinize başarıyla eklenmiştir.');
     }
 
+    public function cartdelete($rowId){
+        Cart::instance('shopping')->remove($rowId);
+        return redirect()->back()->with('success', 'Ürün sepetten çıkarıldı.');
+    }
+
     public function checkout()
     {
         $Province = DB::table('sehir')->get();

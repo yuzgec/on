@@ -39,9 +39,11 @@
                         <div class="d-flex" style="justify-content: space-between;">
                             <div> {{ session('success') }}</div>
                             <div style="text-align: right"> 
-                                <a href="{{ route('checkout')}}" class="btn btn-dark rounded">
-                                    Ödeme Yap
-                                </a>
+                                @if(Cart::instance('shopping')->count() > 0)
+                                    <a href="{{ route('checkout')}}" class="btn btn-dark rounded">
+                                        Ödeme Yap
+                                    </a>
+                                @endif
                             </div>  
                         </div>
                        
@@ -74,7 +76,7 @@
                         <div id="image-slider" class="custom-slider block-img arrows-mosaic controls-mouseover lightbox_gallery" 
                             data-slick='{ "asNavFor": ".nav-to-custom-slider", "dots": false, "fade": true, "speed":600, "lazyLoad": "progressive", "arrows": false, "draggable":false, "slidesToShow": 1, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
                             <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'img')}}" class="zoom c-point">
-                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" 
+                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'img')}}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" >
                             </a>  
                             @foreach($Detail->getMedia('gallery') as $item)
@@ -220,7 +222,10 @@
                             <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-colored white"><i class="fas fa-cart-plus"></i> SEPETE EKLE</button>
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
-                            <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-success white ml-10"><i class="fab fa-whatsapp"></i>  WHATSAPP BİLGİ</button>
+                            <a href="https://api.whatsapp.com/send?phone={{config('settings.telefon2')}}&text=Merhaba {{ $Detail->title}} hakkında bilgi almak istiyorum."
+                                class="height-55 width-150 d-block fs-15 lh-12 bg-success white ml-10">
+                                <i class="fab fa-whatsapp"></i>  
+                             WHATSAPP BİLGİ</a>
                         </div>
 
                 </form>

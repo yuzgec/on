@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/iletisim', [HomeController::class, 'contact'])->name('contactus');
@@ -43,6 +44,7 @@ Route::get('/urun/{url}', [ShopController::class, 'product'])->name('product');
 Route::get('/kategori/{url}', [ShopController::class, 'category'])->name('category');
 Route::get('/sepet', [ShopController::class,'cart'])->name('cart');
 Route::post('/addtocart', [ShopController::class,'addtocart'])->name('addtocart');
+Route::post('/cartdelete/{rowId}', [ShopController::class,'cartdelete'])->name('cartdelete');
 
 Route::get('/odeme', [ShopController::class,'checkout'])->name('checkout');
 Route::post('/odeme-paytr', [ShopController::class,'pay'])->name('pay');
