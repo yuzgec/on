@@ -223,7 +223,7 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-center">
                             <a href="https://api.whatsapp.com/send?phone={{config('settings.telefon2')}}&text=Merhaba {{ $Detail->title}} hakkında bilgi almak istiyorum."
-                                class="height-55 width-150 d-block fs-15 lh-12 bg-success white ml-10">
+                                class="btn height-55 width-200 white bg-success d-flex align-items-center ml-20">
                                 <i class="fab fa-whatsapp"></i>  
                              WHATSAPP BİLGİ</a>
                         </div>
