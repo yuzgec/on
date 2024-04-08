@@ -1,4 +1,7 @@
 <footer id="footer" class="pt-60 bg-dark5 relative">
+
+    <div class="section-waves waves-top visible-lg" data-bg="url(/front/images/shop/epsilon/epsilon_wave_top.svg)"></div>
+
     <div class="container">
         <div class="row row-eq-height">
 

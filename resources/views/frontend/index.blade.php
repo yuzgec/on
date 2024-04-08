@@ -70,6 +70,8 @@
             <h2 class="lh-45 mt-10 uppercase animate" data-animation="fadeInDown" data-animation-delay="500"> Eğitimlerimiz</h2>
         </div>
     </div>
+
+    
     <div class="container mt-50">
         
             <div id="blog-posts" class="blog-posts grid">

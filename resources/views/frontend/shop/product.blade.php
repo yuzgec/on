@@ -2,27 +2,19 @@
 @section('content')
 
 <section id="home" class="relative bg-dark height-25vh mnh-250 align-items-center d-flex">
-    <div class="container-md">
+    <div class="container">
         <div class="t-center">
-        
-            <div class="container-md mt-30">
+            <div class="container mt-30">
                 <div class="t-center">
-                    <h5 class="fs-11 ls-4 semibold white uppercase">
-                        ON DANCE STORE
-                    </h5>
-                    <h1 class="mt-15 lh-md white">
-                        {{ $Detail->title }}
-                    </h1>
-        
+                    <h5 class="fs-11 ls-4 semibold white uppercase">ON DANCE STORE</h5>
+                    <h1 class="mt-15 lh-md white">{{ $Detail->title }}</h1>
                     <div
                         class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center text-white">
-                        <a href="{{ route('home')}}">
-                            <i class="ti-home"></i>
-                        </a>
+                        <a href="{{ route('home')}}"><i class="ti-home"></i></a>
                         <i class="ti-angle-right fs-7 mx-15"></i>
                         <a href="{{ route('home')}}" title="Anasayfa">Anasayfa</a>
                         <i class="ti-angle-right fs-7 mx-15"></i>
-                        <a href="{{ route('store')}}" title="Store"  class="stay c-default opacity-7">Store</a>
+                        <a href="{{ route('store')}}" title="Store" class="stay c-default opacity-7">Store</a>
                     </div>
                 </div>
             </div>
@@ -62,12 +54,11 @@
                             </div>
 
                             @foreach($Detail->getMedia('gallery') as $item)
-                    
-                            <div class="pb-5">
-                                <img src="/front/images/shop/lyra/product_loader.svg" 
-                                data-lazy="{{ $item->getUrl('img', 'thumbpng') }}" 
-                                alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
-                            </div>
+                                <div class="pb-5">
+                                    <img src="/front/images/shop/lyra/product_loader.svg" 
+                                    data-lazy="{{ $item->getUrl('img', 'thumbpng') }}" 
+                                    alt="{{ $Detail->title}} - Karşıyaka On Dance" class="active-me b-1 b-colored">
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -75,17 +66,17 @@
                     <div class="col-10 pr-0 pr-15-sm">
                         <div id="image-slider" class="custom-slider block-img arrows-mosaic controls-mouseover lightbox_gallery" 
                             data-slick='{ "asNavFor": ".nav-to-custom-slider", "dots": false, "fade": true, "speed":600, "lazyLoad": "progressive", "arrows": false, "draggable":false, "slidesToShow": 1, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
+                            
                             <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" class="zoom c-point">
                                 <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" >
                             </a>  
+
                             @foreach($Detail->getMedia('gallery') as $item)
-
-                            <a href="{{ $item->getUrl('imgpng') }}" class="zoom c-point">
-                                <img src="{{ $item->getUrl('imgpng') }}" 
-                                alt="{{ $Detail->title}} - Karşıyaka On Dance" >
-                            </a>  
-
+                                <a href="{{ $item->getUrl('imgpng') }}" class="zoom c-point">
+                                    <img src="{{ $item->getUrl('imgpng') }}" 
+                                    alt="{{ $Detail->title}} - Karşıyaka On Dance" >
+                                </a>  
                            @endforeach
                         </div>
                     </div>
@@ -217,10 +208,13 @@
 
            
                     <div class="mt-35 d-flex justify-content-start align-items-center">
-                
-                        <div class="d-flex align-items-center justify-content-center">
-                            <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-colored white"><i class="fas fa-cart-plus"></i> SEPETE EKLE</button>
-                        </div>
+                        @if ($Detail->option4 == 0)
+                            <div class="d-flex align-items-center justify-content-center">
+                                <button type="submit" class="height-55 width-150 d-block fs-15 lh-12 bg-colored white"><i class="fas fa-cart-plus"></i> SEPETE EKLE</button>
+                            </div>
+                        @endif
+                       
+
                         <div class="d-flex align-items-center justify-content-center">
                             <a href="https://api.whatsapp.com/send?phone={{config('settings.telefon2')}}&text=Merhaba {{ $Detail->title}} hakkında bilgi almak istiyorum."
                                 class="btn height-55 width-200 white bg-success d-flex align-items-center ml-20" target="_blank">

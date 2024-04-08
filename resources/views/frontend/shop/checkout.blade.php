@@ -144,7 +144,7 @@
                                             <span class="uncheck d-flex align-items-center justify-content-center width-16 height-16 bg-white b-1 b-gray3 relative">
                                                 <span class="checked width-8 height-8 bg-dark2"></span>
                                             </span>
-                                            <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">Bu web sitesindeki şartları <a href="{{ route('home')}}" target="_blank" class="colored underline-hover"> okudum ve kabul ediyorum.</a> </span>
+                                            <span class="fs-13 fs-12-sm gray6 ml-15 unselectable">Bu web sitesindeki şartları <a href="{{ route('corporatedetail','mesafeli-satis-sozlesmesi')}}" target="_blank" class="colored underline-hover"> okudum ve kabul ediyorum.</a> </span>
                                         </label>
                                     </div>
 
