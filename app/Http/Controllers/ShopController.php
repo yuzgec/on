@@ -40,15 +40,7 @@ class ShopController extends Controller
         $Detail = ProductCategory::where('slug', $slug)->firstOrFail();
         //dd($Detail);
         
-        $Products= Product::whereHas('categories', function ($query) use ($Detail) {
-            $query->where('categories.id', $Detail->id);
-        })
-        ->where('status', 1)
-        ->with(['categories' => function ($query) {
-            $query->select('id', 'parent_id');
-        }])
-        ->orderBy('sku', 'asc')
-        ->paginate(100);
+        $Products = ProductCategory::with('products')->find($Detail->id);
 
         //dd($Products);
         return view('frontend.shop.category',compact('Detail', 'Products'));

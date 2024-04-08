@@ -50,18 +50,22 @@
                         </label>
                     </div>
                 </div>
+            
 
+                @foreach ($Attribute as $item)
                 <div class="form-group mb-3 row">
-                    <label class="form-label col-3 col-form-label">Ürün Özellikleri </label>
-
-                        <div class="col-6 col-md-2 form-selectgroup-pills">
-                            <label class="form-selectgroup-item">
-                                <input type="checkbox" name="name" value="HTML" class="form-selectgroup-input" checked="">
-                                <span class="form-selectgroup-label">HTML</span>
-                            </label>
-                        </div>
-                      
+                    <label class="form-label col-3 col-form-label">Ürün Özellikleri ({{ $item->name}}) </label>
+                        @foreach (\App\Models\AttributeValue::where('attribute_id', $item->id)->get() as $row)
+                            <div class="col-6 col-md-2 form-selectgroup-pills">
+                                <label class="form-selectgroup-item">
+                                    <input type="checkbox" name="name" value="{{ $row->value}}" class="form-selectgroup-input">
+                                    <span class="form-selectgroup-label">{{ $row->value}}</span>
+                                </label>
+                            </div>
+                        @endforeach
                   </div>
+                @endforeach
+
 
                 <div class="form-group mb-3 row">
                     <label class="form-label col-3 col-form-label">Listele </label>

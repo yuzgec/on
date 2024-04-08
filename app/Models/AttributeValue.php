@@ -20,7 +20,6 @@ class AttributeValue extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_attribute_values')
-                    ->withPivot('attribute_id');
+        return $this->belongsToMany(Product::class, 'product_attribute_values')->withPivot('attribute_id');
     }
 }

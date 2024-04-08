@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
-use App\Models\Author;
-use App\Models\AuthorPivot;
-use App\Models\Language;
+use App\Models\Attribute;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductCategoryPivot;
-use App\Models\Publisher;
-use App\Models\Translator;
-use App\Models\Years;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,8 +28,11 @@ class ProductController extends Controller
 
     public function create()
     {
+        $Attribute = Attribute::with('values')->get();
+
+        //dd($Attribute);
         $Kategori = ProductCategory::get()->toFlatTree();
-        return view('backend.product.create',compact('Kategori' ));
+        return view('backend.product.create',compact('Kategori','Attribute'));
     }
 
     public function store(ProductRequest $request)
