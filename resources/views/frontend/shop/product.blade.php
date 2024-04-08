@@ -76,13 +76,13 @@
                         <div id="image-slider" class="custom-slider block-img arrows-mosaic controls-mouseover lightbox_gallery" 
                             data-slick='{ "asNavFor": ".nav-to-custom-slider", "dots": false, "fade": true, "speed":600, "lazyLoad": "progressive", "arrows": false, "draggable":false, "slidesToShow": 1, "slidesToScroll": 1, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 1}},{"breakpoint": 768,"settings":{"slidesToShow": 1}}]}' >
                             <a href="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'img')}}" class="zoom c-point">
-                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'img')}}" 
+                                <img src="{{ (!$Detail->getFirstMediaUrl('page')) ? '/resimyok.jpg' : $Detail->getFirstMediaUrl('page', 'imgpng')}}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" >
                             </a>  
                             @foreach($Detail->getMedia('gallery') as $item)
 
-                            <a href="{{ $item->getUrl('img') }}" class="zoom c-point">
-                                <img src="{{ $item->getUrl('img') }}" 
+                            <a href="{{ $item->getUrl('imgpng') }}" class="zoom c-point">
+                                <img src="{{ $item->getUrl('imgpng') }}" 
                                 alt="{{ $Detail->title}} - Karşıyaka On Dance" >
                             </a>  
 
