@@ -54,7 +54,7 @@ class ShopController extends Controller
             [
                 'id' => $p->id,
                 'name' => $p->title,
-                'price' => $p->price,
+                'price' => $p->price / 1.20,
                 'weight' => 0,
                 'qty' => 1,
                 'options' => [

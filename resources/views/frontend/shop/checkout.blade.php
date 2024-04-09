@@ -225,10 +225,17 @@
                                         <h4 class="fs-15 uppercase gray9">Ara Toplam</h4>
                                         <p class="ml-auto fs-14 gray5">{{ Cart::instance('shopping')->subtotal()}}</p>
                                     </div>
+                               
+                                    <div class="d-flex fullwidth mt-30 justify-content-between align-items-start">
+                                        <h4 class="fs-15 uppercase gray9">KDV %20</h4>
+                                        <p class="ml-auto fs-14 gray5">{{ Cart::instance('shopping')->tax()}}</p>
+                                    </div>
+
                                     <div class="d-flex fullwidth mt-30 justify-content-between align-items-start">
                                         <h4 class="fs-15 uppercase gray9">Kargo</h4>
                                         <p class="ml-auto fs-14 gray5">Ücretsiz</p>
                                     </div>
+
                                 </div>
 
                                 <div class="mt-45 pt-45 bt-1 b-gray1">

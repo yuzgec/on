@@ -59,6 +59,15 @@
                         Ücretsiz
                     </p>
                 </div>
+
+                <div class="d-flex fullwidth justify-centent-between">
+                    <h5 class="fs-14 gray5">
+                        KDV %20
+                    </h5>
+                    <p class="ml-auto fs-16 gray5">
+                       {{ Cart::instance('shopping')->tax()}}
+                    </p>
+                </div>
                 <div class="mt-20 pb-30 bb-1 b-gray1 d-flex fullwidth justify-centent-between">
                     <h5 class="fs-14 gray9">
                         Toplam 

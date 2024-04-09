@@ -225,7 +225,6 @@
                 </div>
             </div>
 
-
             <div class="col-12 t-center mt-100 mt-50-sm">
 
                 <div class="bb-1 b-gray2">
