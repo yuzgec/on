@@ -69,7 +69,6 @@ class ProductCategoryController extends Controller
     public function update(ProductCategoryRequest $request, $id)
     {
 
-        //dd($request->all());
         $Update = ProductCategory::findOrFail($id);
 
         $Update->title = $request->title;

@@ -224,7 +224,33 @@
                 </form>
                 </div>
             </div>
+
+
+            <div class="col-12 t-center mt-100 mt-50-sm">
+
+                <div class="bb-1 b-gray2">
+                    <ul class="nav justify-content-center d-inline-flex width-auto radius-md radius-no-lb radius-no-rb bt-1 br-1 bl-1 b-gray2" role="tablist">
+                        <li role="presentation" class="d-flex">
+                            <button type="button" data-bs-target="#tab10a" aria-selected="true" aria-controls="tab10a" role="tab" data-bs-toggle="pill" class="show md-btn px-15-sm bg-dark br-1 b-gray2 radius-md radius-no-right radius-no-lb dark4 white-active fs-11 bold uppercase slow-sm active">
+                                Açıklama
+                           </button>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="tab-content slide-effect t-center mt-30 light fs-18 gray7 lh-30">
+            
+                    <div id="tab10a" role="tabpanel" class="tab-pane active">
+                        <div class="tab-container">
+                               {!! $Detail->desc !!} 
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+
 @endsection

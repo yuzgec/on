@@ -15,9 +15,7 @@ style="background-image: url(https://goldeyes.net/quadra/images/backgrounds/back
 
             <div
                 class="mt-30 uppercase fs-12 bold bg-soft-dark3 radius-lg py-10 px-40 d-inline-flex width-auto lh-normal align-items-center">
-                <a href="{{ route('home')}}">
-                    <i class="ti-home"></i>
-                </a>
+                <a href="{{ route('home')}}"><i class="ti-home"></i></a>
                 <i class="ti-angle-right fs-7 mx-15"></i>
                 <a href="{{ route('home')}}" title="Anasayfa">Anasayfa</a>
                 <i class="ti-angle-right fs-7 mx-15"></i>
