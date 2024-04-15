@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use App\Models\Search;
+use App\Models\Product;
 use Carbon\Carbon;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
     public function index(){
+
+        //dd(Product::all());
 
         $Search = Search::select('key')->whereBetween('created_at', [Carbon::yesterday(),Carbon::today()])->paginate(10);
 
@@ -18,16 +21,17 @@ class DashboardController extends Controller
             'report_type' => 'group_by_date',
             'model' => 'App\Models\ShopCart',
             'group_by_field' => 'created_at',
-            'group_by_period' => 'day',
-            'chart_type' => 'line',
-            'column_class'          => 'col-md-12',
+            'group_by_period' => 'week',
+            'chart_type' => 'bar',
+            'column_class'   => 'col-md-8',
 
         ];
         $Chart = new LaravelChart($chart_options);
+        $PopularPages = Product::orderByViews('desc')->take(10)->get();
 
-     
+        //dd($PopularPages);
 
-        return view('backend.index', compact('Search', 'Chart'));
+        return view('backend.index', compact('Search', 'Chart', 'PopularPages'));
     }
 
     public function formlar(){

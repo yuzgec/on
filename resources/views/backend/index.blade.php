@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-md-9 mt-3">
+    <div class="col-12 col-md-4 mt-3">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">En Çok Bakılan Sayfalar</h3>
@@ -56,10 +56,12 @@
                 </tr>
                 </thead>
                 <tbody>
+                    @foreach($PopularPages as $item)
                     <tr>
-                        <td>Hakkımızda</td>
-                        <td>3,550</td>
+                        <td>{{ $item->title}}</td>
+                        <td>{{ $item->views_count}}</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -90,7 +92,7 @@
 @endsection
 
 @section('customJS')
-{!! $Chart->renderChartJsLibrary() !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 {!! $Chart->renderJs() !!}
 @endsection
 
