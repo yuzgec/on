@@ -17,13 +17,10 @@ class HomeController extends Controller
 {
 
     public function index(){
-
         $About = Page::where('id',1)->first();
         $Gallery = Page::where('id',2)->first();
         return view('frontend.index',compact('About','Gallery'));
     }
-
-
 
     public function preregistration(){
         return view('frontend.page.preregistration');

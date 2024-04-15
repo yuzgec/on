@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Form;
 use App\Models\Search;
 use Carbon\Carbon;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
@@ -12,7 +13,17 @@ class DashboardController extends Controller
 
         $Search = Search::select('key')->whereBetween('created_at', [Carbon::yesterday(),Carbon::today()])->paginate(10);
 
-        return view('backend.index', compact('Search'));
+        $chart_options = [
+            'chart_title' => 'Sipariş Raporu',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\ShopCart',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'bar',
+        ];
+        $Chart = new LaravelChart($chart_options);
+
+        return view('backend.index', compact('Search', 'Chart'));
     }
 
     public function formlar(){

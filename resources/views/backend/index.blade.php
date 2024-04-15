@@ -35,7 +35,30 @@
         </div>
     </div>
 
+    <div class="col-md-12 mt-2 nb-2">
+        <div class="card">
+            <div class="card-body">
 
+                <h1>{{ $Chart->options['chart_title'] }}</h1>
+                {!! $Chart->renderHtml() !!}
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-4 mt-2 nb-2">
+        <div class="card">
+            <div class="card-body">
+
+                <h1>{{ $Chart->options['chart_title'] }}</h1>
+                {!! $Chart->renderHtml() !!}
+
+            </div>
+
+        </div>
+    </div>
 
     <div class="col-12 col-md-9 mt-3">
         <div class="card">
@@ -81,5 +104,10 @@
         </div>
     </div>
 
+@endsection
+
+@section('customJS')
+{!! $Chart->renderChartJsLibrary() !!}
+{!! $Chart->renderJs() !!}
 @endsection
 
