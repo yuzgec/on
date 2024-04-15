@@ -111,12 +111,15 @@
                 <td>X</td>
                 <td>{{ $item->qty}}</td>
             </tr>
+            @if ($item->ticket_name)
+              
+        
             <tr>
                 <td colspan="4">
-                <b> Katılımcı = Olcay Yüzgeç</b>
+                <b> Katılımcı = {{ $item->ticket_name}}</b>
                 </td>
             </tr>
-                    
+            @endif   
             </tbody>
         </table>
       </div>
@@ -136,11 +139,11 @@
           <tbody>
             <tr>
               <td>ARA TOPLAM</td>
-              <td>{{ $Detail->basket_total}}₺ </td>
+              <td>{{ money(round($Detail->basket_total / 1.20))}} </td>
             </tr>
             <tr>
               <td>KDV</td>
-              <td>{{ $Detail->basket_total}}₺ </td>
+              <td>{{ money(floatval($Detail->basket_total) - floatval(round($Detail->basket_total / 1.20)))}} </td>
             </tr>
             <tr>
             <td>TOPLAM</td>
