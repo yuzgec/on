@@ -19,9 +19,13 @@ class DashboardController extends Controller
             'model' => 'App\Models\ShopCart',
             'group_by_field' => 'created_at',
             'group_by_period' => 'day',
-            'chart_type' => 'bar',
+            'chart_type' => 'line',
+            'column_class'          => 'col-md-12',
+
         ];
         $Chart = new LaravelChart($chart_options);
+
+     
 
         return view('backend.index', compact('Search', 'Chart'));
     }
