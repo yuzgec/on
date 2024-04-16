@@ -20,7 +20,7 @@ class OrderController extends Controller
         $Detail = ShopCart::with('getOrder')->where('cart_id',$id)->withCount('getOrder')->first();
 
         $gib = (new Gib)->setCredentials(config('settings.earsiv_portal_user'), config('settings.earsiv_portal_pass'))->login();
-        $invoce = $gib->getHtml($Detail->invoide_id);
+        $invoce = $gib->getHtml($Detail->invoice_id);
 
         dd($invoce);
 
