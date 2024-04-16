@@ -102,6 +102,7 @@
           </div>
         </div>
       </div>
+      
       <livewire:sms-counter /> 
       
     <div class="{{ $Chart->options['column_class'] }} mt-2 nb-2">

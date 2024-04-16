@@ -30,7 +30,7 @@ class SmsCounter extends Component
             //dd($counter);
 
             curl_close($curl);
-            echo $counter;
+            $this->responseMessage = $counter;
 
     }
 
