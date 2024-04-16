@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class SmsCounter extends Component
 {
-    public $counter = 0;
+    public $counter;
 
     public function counter(){
 
@@ -26,6 +26,8 @@ class SmsCounter extends Component
             ]); 
 
             $counter = curl_exec($curl); 
+
+            dd($counter);
 
             curl_close($curl);
             echo $counter;

@@ -12,8 +12,6 @@ class DashboardController extends Controller
 {
     public function index(){
 
-        //dd(Product::all());
-
         $Search = Search::select('key')->whereBetween('created_at', [Carbon::yesterday(),Carbon::today()])->paginate(10);
 
         $chart_options = [
@@ -21,15 +19,13 @@ class DashboardController extends Controller
             'report_type' => 'group_by_date',
             'model' => 'App\Models\ShopCart',
             'group_by_field' => 'created_at',
-            'group_by_period' => 'week',
+            'group_by_period' => 'day',
             'chart_type' => 'bar',
             'column_class'   => 'col-md-8',
 
         ];
         $Chart = new LaravelChart($chart_options);
         $PopularPages = Product::orderByViews('desc')->take(10)->get();
-
-        //dd($PopularPages);
 
         return view('backend.index', compact('Search', 'Chart', 'PopularPages'));
     }
