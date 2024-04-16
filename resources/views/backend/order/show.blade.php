@@ -13,22 +13,22 @@
             <div class="d-flex">
                 <a class="btn btn-primary btn-sm rounded m-1" href="{{  url()->previous() }}" title="Geri">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
-                    Fatura Oluştur
+                    Fatura İptal
                 </a> 
 
                 <a class="btn btn-primary btn-sm rounded m-1" href="{{  url()->previous() }}" title="Geri">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
-                    Fatura Oluştur
+                    Fatura İmzala
                 </a> 
               
                 <a class="btn btn-primary btn-sm rounded m-1" href="{{  url()->previous() }}" title="Geri">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
-                    Fatura Oluştur
+                    HTML Fatura
                 </a> 
               
-                <a class="btn btn-primary btn-sm rounded m-1" href="{{  url()->previous() }}" title="Geri">
+                <a class="btn btn-primary btn-sm rounded m-1" href="{{  $Download }}" title="Geri">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 18v-6a3 3 0 0 0 -3 -3h-10l4 -4m0 8l-4 -4" /></svg>
-                    Fatura Oluştur
+                    Fatura İndir
                 </a> 
               
             </div>
