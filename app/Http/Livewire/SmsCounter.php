@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class SmsCounter extends Component
 {
-    public $counter = null;
+    public $counter;
 
     public function counter(){
 
@@ -30,7 +30,7 @@ class SmsCounter extends Component
             //dd($counter);
 
             curl_close($curl);
-            $this->responseMessage = $counter;
+            $this->counter = $counter;
 
     }
 
