@@ -23,6 +23,7 @@ class OrderController extends Controller
         $Invoce = $gib->getHtml($Detail->invoice_id);
         $Download = $gib->getDownloadURL($Detail->invoice_id);
         $gib->logout();
+        
         return view('backend.order.show', compact('Detail', 'Invoice', 'Download'));
     }
 }
