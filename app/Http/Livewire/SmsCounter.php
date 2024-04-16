@@ -27,7 +27,7 @@ class SmsCounter extends Component
 
             $counter = curl_exec($curl); 
 
-            dd($counter);
+            //dd($counter);
 
             curl_close($curl);
             echo $counter;
