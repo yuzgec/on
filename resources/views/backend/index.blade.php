@@ -35,6 +35,95 @@
         </div>
     </div>
 
+
+
+    <div class="col-md-6 col-xl-3 mt-2">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"></path><path d="M12 3v3m0 12v3"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  132 Sales
+                </div>
+                <div class="text-secondary">
+                  12 waiting payments
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-3 mt-2">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"></path><path d="M12 3v3m0 12v3"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  132 Sales
+                </div>
+                <div class="text-secondary">
+                  12 waiting payments
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-3 mt-2">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"></path><path d="M12 3v3m0 12v3"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  132 Sales
+                </div>
+                <div class="text-secondary">
+                  12 waiting payments
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xl-3 mt-2">
+        <div class="card card-sm">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"></path><path d="M12 3v3m0 12v3"></path></svg>
+                </span>
+              </div>
+              <div class="col">
+                <div class="font-weight-medium">
+                  132 Sales
+                </div>
+                <div class="text-secondary">
+                  12 waiting payments
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="{{ $Chart->options['column_class'] }} mt-2 nb-2">
         <div class="card">
             <div class="card-body">
@@ -43,27 +132,43 @@
         </div>
     </div>
 
-    <div class="col-12 col-md-4 mt-3">
+
+    <div class="col-12 col-md-4 mt-2">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">En Çok Bakılan Sayfalar</h3>
+                <div class="ms-auto lh-1">
+                    <div class="dropdown">
+                      <a class="dropdown-toggle text-secondary" href="#" data-bs-toggle="dropdown" 
+                      aria-haspopup="true" aria-expanded="false">Son 7 Gün</a>
+                      <div class="dropdown-menu dropdown-menu-end" style="">
+                        <a class="dropdown-item active" href="#">Son 7 Gün</a>
+                        <a class="dropdown-item" href="#">Son 30 Gün</a>
+                        <a class="dropdown-item" href="#">Hepsi</a>
+                      </div>
+                    </div>
+                  </div>
             </div>
-            <table class="table card-table table-vcenter">
-                <thead>
-                <tr>
-                    <th>Sayfa Adı</th>
-                    <th colspan="2">Ziyaret Sayısı</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach($PopularPages as $item)
-                    <tr>
-                        <td>{{ $item->title}}</td>
-                        <td>{{ $item->views_count}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                <div class="divide-y">
+                    <table class="table card-table table-vcenter">
+                        <thead>
+                        <tr>
+                            <th>Sayfa Adı</th>
+                            <th colspan="2">Ziyaret Sayısı</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($PopularPages as $item)
+                            <tr>
+                                <td>{{ $item->title}}</td>
+                                <td>{{ $item->views_count}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
