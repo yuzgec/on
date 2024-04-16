@@ -114,10 +114,10 @@
               </div>
               <div class="col">
                 <div class="font-weight-medium">
-                    <livewire:sms-counter /> SMS Kaldı
+                    SMS Kaldı
                 </div>
                 <div class="text-secondary">
-                    <button class="btn btn-sm btn-primary" wire:click="smsCounter">SMS Kontur Sorgula</button>
+                    <livewire:sms-counter /> 
                 </div>
               </div>
             </div>

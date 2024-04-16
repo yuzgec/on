@@ -1,3 +1,3 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    <button class="btn btn-sm btn-primary" wire:click="smsCounter">SMS Kontur Sorgula</button>
 </div>
