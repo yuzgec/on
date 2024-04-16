@@ -22,7 +22,6 @@ class OrderController extends Controller
         $gib = (new Gib)->setCredentials(config('settings.earsiv_portal_user'), config('settings.earsiv_portal_pass'))->login();
         $Invoice = $gib->getHtml($Detail->invoice_id);
         $Download = $gib->getDownloadURL($Detail->invoice_id);
-        $gib->logout();
 
         return view('backend.order.show', compact('Detail', 'Invoice', 'Download'));
     }
