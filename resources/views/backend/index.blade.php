@@ -114,10 +114,10 @@
               </div>
               <div class="col">
                 <div class="font-weight-medium">
-                  132 Sales
+                    <livewire:sms-counter /> SMS Kaldı
                 </div>
                 <div class="text-secondary">
-                  12 waiting payments
+                    <button class="btn btn-sm btn-primary" wire:click="smsCounter">SMS Kontur Sorgula</button>
                 </div>
               </div>
             </div>
