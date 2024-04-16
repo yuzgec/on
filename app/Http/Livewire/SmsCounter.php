@@ -25,10 +25,10 @@ class SmsCounter extends Component
             CURLOPT_HTTPHEADER => array( 'Content-Type: text/xml' ),
             ]); 
 
-            $response = curl_exec($curl); 
+            $counter = curl_exec($curl); 
 
             curl_close($curl);
-            echo $response;
+            echo $counter;
 
     }
 
