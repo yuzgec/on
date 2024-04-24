@@ -81,11 +81,11 @@
           </tr>
 
           <tr>
-            <td>Sipariş Notu</td>
+            <td>Ödeme Durumu</td>
             <td><span class="badge bg-{{shopPayBadge($Detail->basket_status)}} me-1"></span> {{$Detail->basket_status}}</td>
           </tr>
           <tr>
-            <td>Sipariş Notu</td>
+            <td>Sipariş Tarihi</td>
             <td>{{ $Detail->created_at }}</td>
           </tr>
          
@@ -111,8 +111,23 @@
                 <td>X</td>
                 <td>{{ $item->qty}}</td>
             </tr>
+            @if ($item->size)
+        
+            <tr>
+                <td colspan="4">
+                <b> Beden = {{ $item->size}}</b>
+                </td>
+            </tr>
+            @endif   
+            @if ($item->color)
+        
+            <tr>
+                <td colspan="4">
+                <b> Renk = {{ $item->color}}</b>
+                </td>
+            </tr>
+            @endif   
             @if ($item->ticket_name)
-              
         
             <tr>
                 <td colspan="4">
