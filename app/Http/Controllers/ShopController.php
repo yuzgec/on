@@ -13,14 +13,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Models\City;
 
-
 use Mlevent\Fatura\Enums\Currency;
 use Mlevent\Fatura\Enums\InvoiceType;
 use Mlevent\Fatura\Enums\Unit;
 use Mlevent\Fatura\Gib;
 use Mlevent\Fatura\Models\InvoiceModel;
 use Mlevent\Fatura\Models\InvoiceItemModel;
-
 
 class ShopController extends Controller
 {
@@ -37,17 +35,15 @@ class ShopController extends Controller
     }
 
     public function category($slug){
-        $Detail = ProductCategory::where('slug', $slug)->firstOrFail();
-        //dd($Detail);
-        
+        $Detail = ProductCategory::where('slug', $slug)->firstOrFail();        
         $Products = ProductCategory::with('products')->find($Detail->id);
 
-        //dd($Products);
         return view('frontend.shop.category',compact('Detail', 'Products'));
     }
 
     public function addtocart(Request $request)
     {
+
         $p = Product::find($request->id);
         Basket::create(['product_id' => $p->id]);
         Cart::instance('shopping')->add(
@@ -65,7 +61,8 @@ class ShopController extends Controller
                     'size' => ($request->size) ? $request->size : null,
                     'color' => ($request->color) ? $request->color : null,
                     'url' => $p->slug,
-                    'student' => $request->student
+                    'student' => $request->student,
+                    'tax' => ($p->tax) ? $p->tax : 20
                 ]
             ]);
         //alert()->image('Image Title!','Image Description','Image URL','Image Width','Image Height','Image Alt');
@@ -90,8 +87,6 @@ class ShopController extends Controller
         $merchant_id 	= env('PAYTR_MERCHANT_ID');
         $merchant_key 	= env('PAYTR_MERCHANT_KEY');
         $merchant_salt	= env('PAYTR_MERCHANT_SALT');
-
-        //dd($request->all());
 
         #
         ## Müşterinizin sitenizde kayıtlı veya form vasıtasıyla aldığınız eposta adresi
@@ -240,6 +235,7 @@ class ShopController extends Controller
                 $Order->color =  $item->options->color;
                 $Order->size =  $item->options->size;
                 $Order->ticket_name =  $item->options->student;
+                $Order->tax =  $item->options->tax;
                 $Order->save();
             } 
 
@@ -296,8 +292,7 @@ class ShopController extends Controller
             $Shop->basket_status = 'Ödendi';
             $Shop->basket_total = $data['total_amount'] / 100;
 
-         /*    $gib = (new Gib)->setTestCredentials()
-            ->login(); */
+         /*    $gib = (new Gib)->setTestCredentials()->login(); */
             $gib = (new Gib)->setCredentials(config('settings.earsiv_portal_user'), config('settings.earsiv_portal_pass'))->login();
             $invoice = new InvoiceModel(
                 tarih            : date('d/m/Y'),       // ☑️ Opsiyonel @string      @default=(dd/mm/yyyy)
@@ -331,7 +326,7 @@ class ShopController extends Controller
                     miktar: $cartItem->qty, // Miktar
                     birim: Unit::Adet, // Bu örnekte her zaman 'Adet' olarak kabul edilmiştir
                     birimFiyat: $cartItem->price, // Birim fiyatı
-                    kdvOrani: 20, // KDV oranı, varsayılan bir değer
+                    kdvOrani: $cartItem->tax, // KDV oranı, varsayılan bir değer
                 );
             
                 // Oluşturulan InvoiceItemModel nesnesini faturaya ekle
@@ -375,14 +370,6 @@ class ShopController extends Controller
             $Shop->save();
             $gib->logout();
 
-            ## BURADA YAPILMASI GEREKENLER
-            ## 1) Siparişi onaylayın.
-            ## 2) Eğer müşterinize mesaj / SMS / e-posta gibi bilgilendirme yapacaksanız bu aşamada yapmalısınız.
-            ## 3) 1. ADIM'da gönderilen payment_amount sipariş tutarı taksitli alışveriş yapılması durumunda
-            ## değişebilir. Güncel tutarı $data['total_amount'] değerinden alarak muhasebe işlemlerinizde kullanabilirsiniz.
-
-
-
         } else { ## Ödemeye Onay Verilmedi
 
             $update = ShopCart::where('cart_id', request('merchant_oid'))->first();
@@ -393,19 +380,12 @@ class ShopController extends Controller
                 $update->error_message = $data['failed_reason_msg'];
                 $update->save();
             }
-            ## BURADA YAPILMASI GEREKENLER
-            ## 1) Siparişi iptal edin.
-            ## 2) Eğer ödemenin onaylanmama sebebini kayıt edecekseniz aşağıdaki değerleri kullanabilirsiniz.
-            ## $data['failed_reason_code'] - başarısız hata kodu
-            ## $data['failed_reason_msg'] - başarısız hata mesajı
-
         }
 
         Cart::instance('shopping')->destroy();
 
         ## Bildirimin alındığını PayTR sistemine bildir.
         echo "OK";
-   
         exit;
 
     }
@@ -416,11 +396,7 @@ class ShopController extends Controller
             return redirect()->route('home');
         }
 
-
         $Detail = ShopCart::where('cart_id', request('merchant_oid'))->first();
-
-        //dd($Detail);
-
         return view('frontend.shop.success', compact('Detail'));
     }
 
@@ -430,12 +406,10 @@ class ShopController extends Controller
             return redirect()->route('home');
         }
 
-
         $Detail = ShopCart::where('cart_id', request('merchant_oid'))->first();
 
         return view('frontend.shop.failed', compact('Detail'));
     }
-
 
     public function getDistricts(City $city)
     {

@@ -124,8 +124,12 @@
                     </div>
                     <div class="col-3">
                         <div class="input-group mb-2">
-                            <span class="input-group-text">₺</span>
-                            <input type="text" class="form-control" name="campagin_price" placeholder="Özel Fiyat Giriniz" autocomplete="off" value="{{ old('campagin_price') }}">
+                            <span class="input-group-text">%</span>
+
+                            <input type="text" class="form-control  @if($errors->has('tax')) is-invalid @endif" name="tax" placeholder="KDV Giriniz" autocomplete="off" value="{{ old('tax') }}">
+                            @if($errors->has('tax'))
+                                <div class="invalid-feedback valid">{{$errors->first('tax')}}</div>
+                            @endif
                         </div>
                     </div>
                 </div>

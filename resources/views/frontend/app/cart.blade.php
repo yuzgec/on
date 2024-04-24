@@ -21,7 +21,11 @@
                                        {{ $cart->name}}
                                     </h4>
                                     <p class="mt-3 fs-14 gray5">
-                                        {{ $cart->options->category}}
+                                        {{ $cart->options->category}} 
+                                        <strong> 
+                                            {{ $cart->options->size ? '- Beden : '.$cart->options->size  : null}} 
+                                            {{ $cart->options->student ? '- Katılımcı : '.$cart->options->student  : null}}
+                                        </strong>
                                     </p>
                                 </div>
                     

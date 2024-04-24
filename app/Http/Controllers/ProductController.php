@@ -45,7 +45,7 @@ class ProductController extends Controller
 
             $New->price = $request->price;
             $New->old_price = $request->old_price;
-            $New->campagin_price = $request->campagin_price;
+            $New->tax = $request->tax;
             $New->sku = $request->sku;
             $New->external = $request->external;
 
@@ -121,7 +121,7 @@ class ProductController extends Controller
 
             $Update->price = $request->price;
             $Update->old_price = $request->old_price;
-            $Update->campagin_price = $request->campagin_price;
+            $Update->tax = $request->tax;
             $Update->sku = $request->sku;
 
             $Update->short = $request->short;

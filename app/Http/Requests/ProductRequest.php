@@ -17,6 +17,7 @@ class ProductRequest extends FormRequest
         return [
             'title'                 => 'required|min:2|max:99',
             'category.*'            => 'required',
+            'tax'                   => 'required|in:10,20',
             'sku'                   => 'required|unique:products,sku,'.$this->id,
             'price'                 => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'image'                 => 'image|max:5120|mimes:jpg,jpeg,png,gif',
@@ -35,6 +36,10 @@ class ProductRequest extends FormRequest
             'price.reqex'               => 'Fiyat Alanı Ugun Değil Örn:1.90',
             'sku.required'              => 'Stok Kodu Zorunludur',
             'category.required'         => 'Ürün Kategori seçimi zorunludur.',
+
+            'tax.required'              => 'KDV zorunludur.',
+            'tax.in'                    => 'KDV 10 veya 20 olmalıdır.',
+
 
             'image.max'                 => 'Resim boyutu en yüksek 5120kb(5mb) olmalıdır',
             'image.mimes'               => 'Resim formatı jpg,jpeg,png,gif olmalıdır',
