@@ -136,7 +136,7 @@
                                 <input id="radioSize2" name="size" type="radio" class="check width-0 height-0 opacity-0 p-0" value="S"/>
                                 <label for="radioSize2" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                     <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#000" data-bcolor="#000"></span>
                                         <span class="text absolute zi-2 fs-12 lh-12 gray7">S</span>
                                     </span>
                                 </label>
@@ -146,7 +146,7 @@
                                 <input id="radioSize3" name="size" type="radio" class="check width-0 height-0 opacity-0 p-0" value="M"/>
                                 <label for="radioSize3" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                     <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#000" data-bcolor="#000"></span>
                                         <span class="text absolute zi-2 fs-12 lh-12 gray7">M</span>
                                     </span>
                                 </label>
@@ -156,7 +156,7 @@
                                 <input id="radioSize4" name="size" type="radio" class="check width-0 height-0 opacity-0 p-0" value="L"/>
                                 <label for="radioSize4" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                     <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#000" data-bcolor="#000"></span>
                                         <span class="text absolute zi-2 fs-12 lh-12 gray7">L</span>
                                     </span>
                                 </label>
@@ -167,7 +167,7 @@
                             
                                 <label for="radioSize5" class="d-inline-flex align-items-center justify-content-start c-pointer mb-0">
                                     <span class="uncheck d-flex align-items-center justify-content-center width-45 height-45 relative circle b-1 b-gray2" data-bgcolor="#F3F1F0">
-                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#D2AC97" data-bcolor="#D2AC97"></span>
+                                        <span class="checked fullwidth fullheight circle zi-1 b-1" data-bgcolor="#000" data-bcolor="#000"></span>
                                         <span class="text absolute zi-2 fs-12  lh-12gray7">XL</span>
                                     </span>
                                 </label>

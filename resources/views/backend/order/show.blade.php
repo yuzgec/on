@@ -44,7 +44,6 @@
       <div class="card-header">
         <h3 class="card-title">Kullanıcı Bilgileri </h3>
       </div>
-
     
       <table class="table card-table table-vcenter table-hover table-striped">
       
@@ -84,6 +83,13 @@
             <td>Ödeme Durumu</td>
             <td><span class="badge bg-{{shopPayBadge($Detail->basket_status)}} me-1"></span> {{$Detail->basket_status}}</td>
           </tr>
+          @if ($Detail->error_message )
+          <tr>
+            <td>Hata Mesajı</td>
+            <td>{{ $Detail->error_message }}</td>
+          </tr>
+          @endif
+       
           <tr>
             <td>Sipariş Tarihi</td>
             <td>{{ $Detail->created_at }}</td>

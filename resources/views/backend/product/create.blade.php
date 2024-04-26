@@ -55,17 +55,68 @@
                 @foreach ($Attribute as $item)
                 <div class="form-group mb-3 row">
                     <label class="form-label col-3 col-form-label">Ürün Özellikleri ({{ $item->name}}) </label>
-                        @foreach (\App\Models\AttributeValue::where('attribute_id', $item->id)->get() as $row)
-                            <div class="col-6 col-md-2 form-selectgroup-pills">
-                                <label class="form-selectgroup-item">
-                                    <input type="checkbox" name="name" value="{{ $row->value}}" class="form-selectgroup-input">
-                                    <span class="form-selectgroup-label">{{ $row->value}}</span>
-                                </label>
-                            </div>
-                        @endforeach
-                  </div>
+                    @foreach ($item->values as $row)
+                        <div class="col-6 col-md-2 form-selectgroup-pills">
+                            <label class="form-selectgroup-item">
+                                <input type="checkbox" wire:model="selectedValues.{{ $item->id }}.{{ $row->id }}" class="form-selectgroup-input">
+                                <span class="form-selectgroup-label">{{ $row->value}}</span>
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
                 @endforeach
 
+                <div class="form-group mb-3 row">                    
+                    <label class="form-label col-3 col-form-label">Variyantlar </label>
+                    <div class="col">
+                        <a wire:click="createVariants" class="btn btn-primary">Varyant Oluştur</a>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3 row">
+                    <label class="form-label col-3 col-form-label">Variyantlar </label>
+                    <div class="col">
+
+                        <div class="accordion" id="accordion-example">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true">
+                                    Kırmızı S
+                                    </button>
+                                </h2>
+                                <div id="collapse-1" class="accordion-collapse collapse show" data-bs-parent="#accordion-example" style="">
+                                    <div class="accordion-body pt-0">
+                                        <div class="mt-2"></div>
+
+                                        <div class="form-group mb-3 row">
+                                            <label class="form-label col-3 col-form-label">Fiyat </label>
+                                            <div class="col-5">
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">₺</span>
+                                                    <input type="text" class="form-control  @if($errors->has('sku')) is-invalid @endif" name="price" placeholder="Fiyat Giriniz" autocomplete="off" value="{{ old('price') }}">
+                                                    @if($errors->has('price'))
+                                                        <div class="invalid-feedback" style="display: block">{{$errors->first('price')}}</div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">₺</span>
+                                                    <input type="text" class="form-control" name="old_price" placeholder="Eski Fiyat Giriniz" autocomplete="off" value="{{ old('old_price') }}">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <x-form-inputtext label="Stok" name="v_sku"/>
+                                        <x-form-textarea label="Açıklama" name="v_desc" :ck/>
+
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group mb-3 row">
                     <label class="form-label col-3 col-form-label">Listele </label>
