@@ -41,7 +41,6 @@ class ProductController extends Controller
         DB::transaction(function () use ($request){
             $New = new Product;
             $New->title = $request->title;
-            $New->shortname = $request->shortname;
 
             $New->price = $request->price;
             $New->old_price = $request->old_price;
@@ -116,7 +115,6 @@ class ProductController extends Controller
 
             $Update = Product::findOrFail($id);
             $Update->title = $request->title;
-            $Update->shortname = $request->shortname;
             $Update->external = $request->external;
 
             $Update->price = $request->price;
