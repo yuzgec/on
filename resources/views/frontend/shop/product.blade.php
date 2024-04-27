@@ -110,11 +110,11 @@
                 <div class="mt-25 fs-16 dark1 lh-25">
                     {!! $Detail->short !!}
                 </div>
-                @if (!$Detail->firstCategoryName == 'Etkinlikler')
+                @if ($Detail->option4 == 1)
                 <div class="d-inline-flex width-auto align-items-center justify-content-start py-10 px-20 radius-lg" data-color="#37302E" data-bgcolor="#F2E9E4">
                     <i class="ti-package fs-12 mr-10"></i>
                     <p class="fs-13">
-                        {{ CARGO_LIMIT }} Üzeri Ücretsiz Kargo
+                        Stok Kalmamıştır.
                     </p>
                 </div>
                 @endif
@@ -184,7 +184,6 @@
                             </div>
                         @endif
                        
-
                         <div class="d-flex align-items-center justify-content-center">
                             <a href="https://api.whatsapp.com/send?phone={{config('settings.telefon2')}}&text=Merhaba {{ $Detail->title}} hakkında bilgi almak istiyorum."
                                 class="btn height-55 width-200 white bg-success d-flex align-items-center ml-20" target="_blank">
